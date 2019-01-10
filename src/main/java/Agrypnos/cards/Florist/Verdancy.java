@@ -16,9 +16,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
 
-public class CatastrophicGrowth extends CustomCard
+public class Verdancy extends CustomCard
 {
-    public static final String ID = Agrypnos.createID("CatastrophicGrowth");
+    public static final String ID = Agrypnos.createID("Verdancy");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = Agrypnos.makePath(CardImages.FLORIST_SKILL);
 
@@ -32,7 +32,7 @@ public class CatastrophicGrowth extends CustomCard
     private static final int COST = 3;
     private static final int UPGRADED_COST = 2;
 
-    public CatastrophicGrowth() {
+    public Verdancy() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         this.exhaust = true;
     }
@@ -61,7 +61,7 @@ public class CatastrophicGrowth extends CustomCard
     // Which card to return when making a copy of this card.
     @Override
     public AbstractCard makeCopy() {
-        return new CatastrophicGrowth();
+        return new Verdancy();
     }
 
     //Upgraded stats.
