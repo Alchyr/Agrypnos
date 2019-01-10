@@ -61,7 +61,7 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <copy file="target/Agrypnos.jar" tofile="../lib/Agrypnos.jar"/>
+                                <copy file="target/Agrypnos.jar" tofile="../Agrypnos/Agrypnos.jar"/>
                             </target>
                         </configuration>
                         <goals>

@@ -32,8 +32,6 @@ import Agrypnos.relics.Floriculture;
 public class TheFlorist extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(Agrypnos.class.getName());
 
-    public static Random rnd = new Random();
-
     // =============== BASE STATS =================
 
     public static final int ENERGY_PER_TURN = 3;
@@ -132,7 +130,7 @@ public class TheFlorist extends CustomPlayer {
         retVal.add(BasicDefend.ID);
 
         retVal.add(Dandelion.ID); //Dandelion is basically BetterDefend
-        retVal.add(Rose.ID); //Rose is a card that does damage + vulnerable, similar to bash
+        retVal.add(Trowel.ID); //Trowel - does damage, grow a flower
 
         //retVal.add(Snapdragon.ID);
         //retVal.add(Sunflower.ID);
@@ -161,31 +159,25 @@ public class TheFlorist extends CustomPlayer {
     // Character select screen effect
     @Override
     public void doCharSelectScreenSelectEffect() {
-        CardCrawlGame.sound.playA("SHOVEL", 0.5f); // Sound Effect
-        CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT,
-                false); // Screen Effect
+        CardCrawlGame.sound.playA("BELL", 0.3f); // Sound Effect
     }
 
     // Character select on-button-press sound effect
     @Override
     public String getCustomModeCharacterButtonSoundKey() {
-        return "BELL";
+        return "ORB_DARK_CHANNEL";
     }
 
-    // Should return how much HP your maximum HP reduces by when starting a run at
-    // ascension 14 or higher. (ironclad loses 5, defect and silent lose 4 hp respectively)
     @Override
     public int getAscensionMaxHPLoss() {
         return 4;
     }
 
-    // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
         return CardColorEnum.FLORIST_GREEN;
     }
 
-    // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
         return Agrypnos.FLORIST_GREEN;
@@ -198,46 +190,36 @@ public class TheFlorist extends CustomPlayer {
         return FontHelper.energyNumFontGreen;
     }
 
-    // Should return class name as it appears in run history screen.
     @Override
     public String getLocalizedCharacterName() {
         return "The Florist";
     }
 
-    //Which starting card should specific events give you?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Rose();
+        return new Trowel();
     }
 
-    // The class name as it appears next to your player name in game
     @Override
     public String getTitle(AbstractPlayer.PlayerClass playerClass) {
         return "the Florist";
     }
 
-    // Should return a new instance of your character, sending this.name as its name parameter.
     @Override
     public AbstractPlayer newInstance() {
         return new TheFlorist(this.name, this.chosenClass);
     }
 
-    // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
         return Agrypnos.FLORIST_GREEN;
     }
 
-    // Should return a Color object to be used as screen tint effect when your
-    // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
         return Agrypnos.FLORIST_ATTACK_HEART_PURPLE;
     }
 
-    // Should return an AttackEffect array of any size greater than 0. These effects
-    // will be played in sequence as your character's finishing combo on the heart.
-    // Attack effects are the same as used in damage action and the like.
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
         return new AbstractGameAction.AttackEffect[] {
@@ -248,17 +230,11 @@ public class TheFlorist extends CustomPlayer {
         };
     }
 
-    // Should return a string containing what text is shown when your character is
-    // about to attack the heart. For example, the defect is "NL You charge your
-    // core to its maximum..."
     @Override
     public String getSpireHeartText() {
         return "You'll use its flesh as a seedbed.";
     }
 
-    // The vampire events refer to the base game characters as "brother", "sister",
-    // and "broken one" respectively.This method should return a String containing
-    // the full text that will be displayed as the first screen of the vampires event.
     @Override
     public String getVampireText() {
         return "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. Might they want flowers? As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~sister,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~";

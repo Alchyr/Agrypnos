@@ -28,7 +28,7 @@ public class Dandelion extends FlowerCard
 
     private static final int COST = 1;
     private static final int BLOCK = 6;
-    private static final int UPGRADE_PLUS_BLOCK = 4;
+    private static final int UPGRADE_PLUS_BLOCK = 3;
     private static final int GROWTH = 2;
     private static final int UPGRADE_PLUS_GROWTH = 1;
 
@@ -39,8 +39,8 @@ public class Dandelion extends FlowerCard
         initialValue = BLOCK;
         FlowerGrowth = GrowthType.block;
 
-        this.baseBlock = this.BLOCK;
-        this.magicNumber = this.baseMagicNumber = this.GROWTH;
+        this.baseBlock = BLOCK;
+        this.magicNumber = this.baseMagicNumber = GROWTH;
     }
 
     @Override

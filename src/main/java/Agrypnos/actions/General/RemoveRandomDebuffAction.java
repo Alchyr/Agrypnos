@@ -29,7 +29,7 @@ public class RemoveRandomDebuffAction extends AbstractGameAction {
             }
         }
 
-        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.c, this.c, debuffs.get(AbstractDungeon.cardRng.random(0,debuffs.size() - 1)).ID));
+        AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.c, this.c, debuffs.get(AbstractDungeon.cardRng.random(debuffs.size() - 1)).ID));
 
         this.isDone = true;
     }

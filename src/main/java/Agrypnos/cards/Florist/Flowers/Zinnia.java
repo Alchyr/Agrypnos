@@ -29,8 +29,8 @@ public class Zinnia extends FlowerCard
     public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
 
     private static final int COST = 1;
-    private static final int BUFF = 6;
-    private static final int UPGRADE_PLUS_BUFF = 3;
+    private static final int UPG_COST = 1;
+    private static final int BUFF = 5;
     private static final int GROWTH = 1;
 
 
@@ -48,6 +48,8 @@ public class Zinnia extends FlowerCard
     @Override
     public int baseCost()
     {
+        if (upgraded)
+            return UPG_COST;
         return COST;
     }
 
@@ -82,8 +84,7 @@ public class Zinnia extends FlowerCard
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeMagicNumber(UPGRADE_PLUS_BUFF);
-            initialValue = baseMagicNumber;
+            this.upgradeBaseCost(UPG_COST);
             this.initializeDescription();
         }
     }

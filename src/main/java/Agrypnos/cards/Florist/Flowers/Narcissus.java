@@ -55,6 +55,13 @@ public class Narcissus extends FlowerCard
     }
 
     @Override
+    public void triggerOnEndOfTurnForPlayingCard()
+    {
+        super.triggerOnEndOfTurnForPlayingCard();
+        AbstractDungeon.actionManager.addToBottom(getTriggerGrowthAction());
+    }
+
+    @Override
     public TriggerGrowthAction getTriggerGrowthAction()
     {
         return new TriggerGrowthAction(this, GROWTH);

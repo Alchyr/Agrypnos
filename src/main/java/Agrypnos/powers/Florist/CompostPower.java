@@ -21,7 +21,7 @@ public class CompostPower extends TwoAmountPower {
     public static final String IMG = Agrypnos.makePath(PowerImages.COMPOST);
 
 
-    public static final int EXHAUST_FOR_TRIGGER = 3;
+    public static final int EXHAUST_FOR_TRIGGER = 4;
 
     public CompostPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         this.name = NAME;

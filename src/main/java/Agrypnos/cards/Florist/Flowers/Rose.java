@@ -25,21 +25,21 @@ public class Rose extends FlowerCard
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final CardRarity RARITY = CardRarity.BASIC;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
 
     private static final int COST = 2;
     private static final int DAMAGE = 10;
-    private static final int UPGRADE_PLUS_DAMAGE = 4;
+    private static final int UPGRADE_PLUS_DAMAGE = 3;
     private static final int GROWTH = 3;
-    private static final int UPGRADE_PLUS_GROWTH = 2;
+    private static final int UPGRADE_PLUS_GROWTH = 1;
 
     private static final int DAMAGE_PER_THORN = 10;
 
 
-    public static AbstractCard thornCard;
+    private static AbstractCard thornCard;
 
 
     public Rose() {

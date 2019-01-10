@@ -99,6 +99,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         //Most Stuff
         BaseMod.addCard(new BasicStrike()); //strike
         BaseMod.addCard(new BasicDefend()); //block
+        BaseMod.addCard(new Trowel()); //whack and grow
         BaseMod.addCard(new Thorn()); //damage + vulnerable
         BaseMod.addCard(new FloralScent()); //weak to all
         BaseMod.addCard(new Watering()); //grow all flowers
@@ -138,6 +139,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         // Unlock the cards
         UnlockTracker.unlockCard(BasicStrike.ID);
         UnlockTracker.unlockCard(BasicDefend.ID);
+        UnlockTracker.unlockCard(Trowel.ID);
         UnlockTracker.unlockCard(Thorn.ID);
         UnlockTracker.unlockCard(FloralScent.ID);
         UnlockTracker.unlockCard(Watering.ID);

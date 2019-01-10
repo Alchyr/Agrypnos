@@ -17,7 +17,7 @@
   },
   "Agrypnos:MortarAndPestle": {
     "NAME": "Mortar And Pestle",
-    "DESCRIPTION": "Exhaust 1 Flower in your hand. Heal !M! HP."
+    "DESCRIPTION": "Exhaust 2 Flowers in your hand. Heal !M! HP. NL Exhaust."
   },
   "Agrypnos:Shell": {
     "NAME": "Shell",
@@ -136,8 +136,8 @@
   },
   "Agrypnos:Composting": {
     "NAME": "Composting",
-    "DESCRIPTION": "Each time you Exhaust 3 cards, gain !M! stack of Fertilizer.",
-    "UPGRADE_DESCRIPTION": "Each time you Exhaust 3 cards, gain !M! stacks of Fertilizer."
+    "DESCRIPTION": "Each time you Exhaust 4 cards, gain !M! stack of Fertilizer.",
+    "UPGRADE_DESCRIPTION": "Each time you Exhaust 4 cards, gain !M! stacks of Fertilizer."
   },
   "Agrypnos:MorningSun": {
     "NAME": "Morning Sun",

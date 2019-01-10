@@ -1,6 +1,7 @@
 package Agrypnos.cards.Florist;
 
 import Agrypnos.Agrypnos;
+import Agrypnos.actions.Florist.ExhaustXFlowersAction;
 import Agrypnos.actions.Florist.ResetXFlowerGrowthAction;
 import Agrypnos.cards.CardImages;
 import Agrypnos.cards.Florist.Flowers.FlowerCard;
@@ -35,7 +36,7 @@ public class MortarAndPestle extends CustomCard
     private static final int HEAL = 3;
     private static final int UPGRADE_HEAL = 2;
 
-    private static final int EXHAUST_COUNT = 1;
+    private static final int EXHAUST_COUNT = 2;
 
     private int exhaustCount;
 
@@ -45,21 +46,23 @@ public class MortarAndPestle extends CustomCard
 
         exhaustCount = EXHAUST_COUNT;
 
+        this.exhaust = true;
+
         tags.add(CardTags.HEALING);
     }
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        boolean hasFlowerCard = false;
+        int flowerCount = 0;
 
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
             if (c instanceof FlowerCard)
             {
-                hasFlowerCard = true;
+                flowerCount++;
                 break;
             }
         }
-        if (hasFlowerCard) {
+        if (flowerCount >= 2) {
             return true;
         }
         cantUseMessage = "This card cannot be used without any Flowers.";
@@ -68,7 +71,7 @@ public class MortarAndPestle extends CustomCard
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ResetXFlowerGrowthAction(p,p,exhaustCount,false));
+        AbstractDungeon.actionManager.addToBottom(new ExhaustXFlowersAction(p,p,exhaustCount,false));
         AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, this.magicNumber));
     }
 

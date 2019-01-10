@@ -34,7 +34,7 @@ public class CorpseFlower extends FlowerCard implements StartupCard {
     private static final int COST = 2;
     private static final int POISON = 7;
     private static final int UPGRADE_PLUS_POISON = 2;
-    private static final int GROWTH = 4;
+    private static final int GROWTH = 3;
     private static final int UPGRADE_PLUS_GROWTH = 2;
 
 

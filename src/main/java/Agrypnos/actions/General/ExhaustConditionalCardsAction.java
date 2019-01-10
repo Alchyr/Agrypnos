@@ -48,6 +48,7 @@ public class ExhaustConditionalCardsAction extends AbstractGameAction {
             {
                 AbstractCard c = removeCards.getTopCard();
                 AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, source));
+                removeCards.removeTopCard();
             }
             this.isDone = true;
         }
