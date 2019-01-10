@@ -48,7 +48,7 @@ public class FloralScent extends CustomCard
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new VFXAction(new WindyParticleEffect(), 0.5f));
-        AbstractDungeon.actionManager.addToBottom(new SFXAction("WIND", 1.5f));
+        AbstractDungeon.actionManager.addToBottom(new SFXAction("ATTACK_WHIFF_1", 1.0f));
 
         Iterator monsters = AbstractDungeon.getCurrRoom().monsters.monsters.iterator();
         AbstractMonster mo;
