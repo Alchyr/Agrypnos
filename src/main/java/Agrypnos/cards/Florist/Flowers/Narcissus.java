@@ -1,13 +1,11 @@
 package Agrypnos.cards.Florist.Flowers;
 
 import Agrypnos.Agrypnos;
+import Agrypnos.actions.Florist.NarcissusAction;
+import Agrypnos.actions.Florist.ResetFlowerGrowthAction;
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.cards.CardImages;
-import Agrypnos.cards.Florist.Seed;
 import Agrypnos.util.CardColorEnum;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -15,11 +13,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.ArrayList;
-
-public class GhostLily extends FlowerCard
+public class Narcissus extends FlowerCard
 {
-    public static final String ID = Agrypnos.createID("GhostLily");
+    public static final String ID = Agrypnos.createID("Narcissus");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = Agrypnos.makePath(CardImages.FLORIST_SKILL);
 
@@ -30,84 +26,50 @@ public class GhostLily extends FlowerCard
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
 
-    private static final int COST = 1;
-    private static final int UPG_COST = 0;
+    private static final int COST = 2;
     private static final int REPLACE = 1;
+    private static final int GROWTH = 1;
 
-    private AbstractCard seedCard;
-
-
-    public GhostLily() {
+    public Narcissus() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
         initialValue = REPLACE;
         FlowerGrowth = GrowthType.magic;
-
         this.magicNumber = this.baseMagicNumber = REPLACE;
 
-        this.isEthereal = true;
-
-        seedCard = new Seed().makeCopy();
+        this.exhaust = true;
     }
 
     @Override
     public int baseCost()
     {
-        if (upgraded)
-            return UPG_COST;
         return COST;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new UseCardAction(this));
-    }
+        AbstractDungeon.actionManager.addToBottom(new NarcissusAction(this.magicNumber));
 
-    @Override
-    public void triggerOnEndOfTurnForPlayingCard()
-    {
-        super.triggerOnEndOfTurnForPlayingCard();
-        AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
-    }
-
-
-    @Override
-    public void triggerOnExhaust() {
-        ArrayList<FlowerCard> FlowerCardsInHand = new ArrayList<>();
-
-        for (AbstractCard c : AbstractDungeon.player.hand.group)
-        {
-            if (c instanceof FlowerCard)
-                FlowerCardsInHand.add((FlowerCard)c);
-        }
-        if (FlowerCardsInHand.size() > 0)
-        {
-            for (FlowerCard c : FlowerCardsInHand)
-            {
-                if (!c.equals(this))
-                    AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
-
-                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(seedCard, magicNumber));
-            }
-        }
+        if (ResetOnPlay)
+            AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(this));
     }
 
     @Override
     public TriggerGrowthAction getTriggerGrowthAction()
     {
-        return new TriggerGrowthAction(this, magicNumber);
+        return new TriggerGrowthAction(this, GROWTH);
     }
 
     @Override
     public AbstractCard makeCopy() {
-        return new GhostLily();
+        return new Narcissus();
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.seedCard.upgrade();
+            this.exhaust = false;
             this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }

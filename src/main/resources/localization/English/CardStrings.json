@@ -11,6 +11,14 @@
     "NAME": "Rose",
     "DESCRIPTION": "Flower. NL Deal !D! damage. NL Add a Thorn to your hand for every 10 damage dealt. NL At the end of your turn, increase the damage by !M!."
   },
+  "Agrypnos:Trowel": {
+    "NAME": "Trowel",
+    "DESCRIPTION": "Deal !D! damage. Trigger the growth of a random Flower in your hand."
+  },
+  "Agrypnos:MortarAndPestle": {
+    "NAME": "Mortar And Pestle",
+    "DESCRIPTION": "Exhaust 1 Flower in your hand. Heal !M! HP."
+  },
   "Agrypnos:Shell": {
     "NAME": "Shell",
     "DESCRIPTION": "Gain !B! Block for each Flower in your hand."
@@ -21,8 +29,8 @@
   },
   "Agrypnos:Prune": {
     "NAME": "Prune",
-    "DESCRIPTION": "Reset growth of a random Flower. Draw 2 cards.",
-    "UPGRADE_DESCRIPTION":  "Reset growth of a Flower. Draw 2 cards."
+    "DESCRIPTION": "Reset the growth of a random Flower. Draw 2 cards.",
+    "UPGRADE_DESCRIPTION":  "Reset the growth of a Flower in your hand. Draw 2 cards."
   },
   "Agrypnos:FloralScent": {
     "NAME": "Floral Scent",
@@ -31,10 +39,10 @@
   },
   "Agrypnos:Watering": {
     "NAME": "Watering",
-    "DESCRIPTION": "Trigger growth of all Flowers in your hand."
+    "DESCRIPTION": "Trigger the growth of all Flowers in your hand."
   },
-  "Agrypnos:CatastrophicGrowth": {
-    "NAME": "Catastrophic Growth",
+  "Agrypnos:Verdancy": {
+    "NAME": "Verdancy",
     "DESCRIPTION": "Double the total growth of each Flower in your hand. NL Exhaust."
   },
   "Agrypnos:NaturalNutrition": {
@@ -44,8 +52,8 @@
   },
   "Agrypnos:Rot": {
     "NAME": "Rot",
-    "DESCRIPTION": "Apply !M! Poison. NL Exhaust a random card.",
-    "UPGRADE_DESCRIPTION": "Apply !M! Poison. NL Exhaust a card."
+    "DESCRIPTION": "Apply !M! Poison. NL Exhaust a random card in your hand.",
+    "UPGRADE_DESCRIPTION": "Apply !M! Poison. NL Exhaust a card in your hand."
   },
   "Agrypnos:Thorn": {
     "NAME": "Thorn",
@@ -70,6 +78,11 @@
     "NAME": "Dandelion",
     "DESCRIPTION": "Flower. NL Gain !B! Block. NL At the end of your turn, increase Block gain by !M!."
   },
+  "Agrypnos:Narcissus": {
+    "NAME": "Narcissus",
+    "DESCRIPTION": "Flower. NL Choose a card. Exhaust !M! random other card(s). NL Add !M! copies of the chosen card to your hand. NL At the end of your turn, increase the number by 1. NL Exhaust.",
+    "UPGRADE_DESCRIPTION":  "Flower. NL Choose a card. Exhaust !M! random other card(s). NL Add !M! copies of the chosen card to your hand. NL At the end of your turn, increase the number by 1."
+  },
   "Agrypnos:QueenOfTheNight": {
     "NAME": "Queen of the Night",
     "DESCRIPTION": "Flower. NL Unplayable. NL Upon taking damage, reduce it by !B! and discard this card. NL At the end of your turn, increase the reduction by !M!."
@@ -77,6 +90,10 @@
   "Agrypnos:Zinnia": {
     "NAME": "Zinnia",
     "DESCRIPTION": "Flower. NL Gain !M! Dexterity until the end of this turn. NL At the end of your turn, increase the Dexterity gain by 1. NL Exhaust."
+  },
+  "Agrypnos:Rue": {
+    "NAME": "Rue",
+    "DESCRIPTION": "Flower. NL Remove !M! random debuff(s). NL Any unused removal grants 1 Artifact instead. NL Exhaust."
   },
   "Agrypnos:Lotus": {
     "NAME": "Lotus",

@@ -11,7 +11,6 @@ import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.StartupCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.green.DeadlyPoison;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -41,9 +40,13 @@ public class CorpseFlower extends FlowerCard implements StartupCard {
 
     private int growth;
 
+    private boolean triggered;
+
 
     public CorpseFlower() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+
+        triggered = false;
 
         this.magicNumber = this.baseMagicNumber = POISON;
         initialValue = POISON;
@@ -77,6 +80,17 @@ public class CorpseFlower extends FlowerCard implements StartupCard {
         }
         if (ResetOnPlay)
             AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(this));
+    }
+
+    public void applyPowers()
+    {
+        super.applyPowers();
+
+        if (!AbstractDungeon.player.hasPower(CorpseFlowerPower.POWER_ID) && !triggered)
+        {
+            triggered = true;
+            AbstractDungeon.actionManager.addToBottom(new HiddenApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new CorpseFlowerPower(AbstractDungeon.player)));
+        }
     }
 
     @Override

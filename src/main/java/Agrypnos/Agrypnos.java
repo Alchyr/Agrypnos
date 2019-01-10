@@ -102,13 +102,14 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new Thorn()); //damage + vulnerable
         BaseMod.addCard(new FloralScent()); //weak to all
         BaseMod.addCard(new Watering()); //grow all flowers
-        BaseMod.addCard(new CatastrophicGrowth()); //double growth
+        BaseMod.addCard(new Verdancy()); //double growth
         BaseMod.addCard(new Prune()); //reset growth, draw
         BaseMod.addCard(new NaturalNutrition()); //grow plants, cost hp no energy
         BaseMod.addCard(new Tumbleweed()); //damage all enemies, exhaust
         BaseMod.addCard(new Rot()); //give poison, exhaust card
         BaseMod.addCard(new Seed()); //random flower + small amount of block
         BaseMod.addCard(new Shell()); //Defend scaling with number of flowers
+        BaseMod.addCard(new MortarAndPestle()); //Heal that requires exhausting a Flower
 
         //Powers
         BaseMod.addCard(new Fertilize()); //Triggers growth of flowers at start of turn
@@ -127,8 +128,10 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new Snapdragon()); //uncommon, deal x damage
         BaseMod.addCard(new Myosotis()); //uncommon, permanent growing damage
         BaseMod.addCard(new QueenOfTheNight()); //rare, damage reduction in hand
+        BaseMod.addCard(new Narcissus()); //rare, copies a card in hand, exhausts other cards
         BaseMod.addCard(new GhostLily()); //rare, exhaust all flowers give seeds
         BaseMod.addCard(new Lotus()); //rare, increase card draw
+        BaseMod.addCard(new Rue()); //rare, remove debuff/grant artifact
         BaseMod.addCard(new Camellia()); //rare, deal damage with somewhat exponential scaling
 
         logger.info("CARDS: Unlocking");
@@ -138,13 +141,14 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(Thorn.ID);
         UnlockTracker.unlockCard(FloralScent.ID);
         UnlockTracker.unlockCard(Watering.ID);
-        UnlockTracker.unlockCard(CatastrophicGrowth.ID);
+        UnlockTracker.unlockCard(Verdancy.ID);
         UnlockTracker.unlockCard(Prune.ID);
         UnlockTracker.unlockCard(NaturalNutrition.ID);
         UnlockTracker.unlockCard(Tumbleweed.ID);
         UnlockTracker.unlockCard(Rot.ID);
         UnlockTracker.unlockCard(Seed.ID);
         UnlockTracker.unlockCard(Shell.ID);
+        UnlockTracker.unlockCard(MortarAndPestle.ID);
 
         //Powers
         UnlockTracker.unlockCard(Fertilize.ID);
@@ -159,12 +163,14 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(GhostLily.ID);
         UnlockTracker.unlockCard(Lotus.ID);
         UnlockTracker.unlockCard(Sunflower.ID);
+        UnlockTracker.unlockCard(Narcissus.ID);
         UnlockTracker.unlockCard(Zinnia.ID);
         UnlockTracker.unlockCard(CorpseFlower.ID);
         UnlockTracker.unlockCard(Dandelion.ID);
         UnlockTracker.unlockCard(Camellia.ID);
         UnlockTracker.unlockCard(Snapdragon.ID);
         UnlockTracker.unlockCard(Wolfsbane.ID);
+        UnlockTracker.unlockCard(Rue.ID);
         UnlockTracker.unlockCard(Myosotis.ID);
     }
 

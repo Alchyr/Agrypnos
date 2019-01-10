@@ -1,16 +1,12 @@
 package Agrypnos.cards.Florist.Flowers;
 
 import Agrypnos.actions.Florist.TriggerGrowthAction;
-import Agrypnos.cards.Florist.CatastrophicGrowth;
-import Agrypnos.cards.Florist.NaturalNutrition;
-import Agrypnos.cards.Florist.Watering;
 import Agrypnos.powers.Florist.MorningSunPower;
 import Agrypnos.util.CustomTags;
 import basemod.abstracts.CustomCard;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AlwaysRetainField;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public abstract class FlowerCard extends CustomCard {
     static public boolean ResetOnPlay = true;
@@ -42,6 +38,22 @@ public abstract class FlowerCard extends CustomCard {
     }
 
     public abstract int baseCost();
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractCard AbstractCopy = super.makeStatEquivalentCopy();
+
+        if (AbstractCopy instanceof FlowerCard)
+        {
+            ((FlowerCard) AbstractCopy).initialValue = this.initialValue;
+            ((FlowerCard) AbstractCopy).grown = this.grown;
+            ((FlowerCard) AbstractCopy).FlowerGrowth = this.FlowerGrowth;
+            ((FlowerCard) AbstractCopy).MorningSunCostReduction = this.MorningSunCostReduction;
+            ((FlowerCard) AbstractCopy).MorningSunTurnCostReduction = this.MorningSunTurnCostReduction;
+        }
+
+        return AbstractCopy;
+    }
 
     @Override
     public void applyPowers() {

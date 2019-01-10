@@ -48,11 +48,7 @@ public class MoveRandomCardAction extends AbstractGameAction {
         while(sourceCards.hasNext()) {
             card = (AbstractCard)sourceCards.next();
             if (this.predicate.test(card)) {
-                if (this.source == this.p.drawPile) {
-                    tempCards.addToRandomSpot(card);
-                } else {
-                    tempCards.addToRandomSpot(card);
-                }
+                tempCards.addToRandomSpot(card);
             }
         }
 
@@ -80,8 +76,6 @@ public class MoveRandomCardAction extends AbstractGameAction {
                     AbstractDungeon.player.hand.refreshHandLayout();
                     AbstractDungeon.player.hand.applyPowers();
                 }
-
-
             }
             this.isDone = true;
         }

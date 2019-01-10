@@ -1,7 +1,12 @@
 {
   "ResetFlowerGrowthAction": {
     "TEXT": [
-      "Reset"
+      "Reset."
+    ]
+  },
+  "NarcissusAction": {
+    "TEXT": [
+      "Duplicate."
     ]
   }
 }

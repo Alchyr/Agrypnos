@@ -253,7 +253,7 @@ public class TheFlorist extends CustomPlayer {
     // core to its maximum..."
     @Override
     public String getSpireHeartText() {
-        return "You prepare to use the Heart as a seedbed.";
+        return "You'll use its flesh as a seedbed.";
     }
 
     // The vampire events refer to the base game characters as "brother", "sister",
