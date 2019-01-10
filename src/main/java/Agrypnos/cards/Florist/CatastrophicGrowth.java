@@ -34,6 +34,7 @@ public class CatastrophicGrowth extends CustomCard
 
     public CatastrophicGrowth() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        this.exhaust = true;
     }
 
     // Actions the card should do.
