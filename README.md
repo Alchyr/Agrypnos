@@ -5,7 +5,9 @@ A Slay the Spire mod. It has a Florist.
 
 
 A lot of assets are from https://github.com/Gremious/StS-DefaultModBase
-I need to work on that
+
+I need to work on that.
+Also, no cards have their own images.
 
 
 Progress to completion:
