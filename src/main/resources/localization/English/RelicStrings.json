@@ -1,0 +1,30 @@
+{
+  "Agrypnos:Floriculture": {
+    "NAME": "Floriculture",
+    "FLAVOR": "Of all the fields of study, none are as pleasant as the field of flowers.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, draw a #yFlower from your deck."
+    ]
+  },
+  "Agrypnos:War Drum": {
+    "NAME": "War Drum",
+    "FLAVOR": "The drums of war are nothing, if not steady.",
+    "DESCRIPTIONS": [
+      "If the same number of cards are played two turns in a row, gain [E] at the start of the next turn."
+    ]
+  },
+  "Agrypnos:Flower Pot": {
+    "NAME": "Flower Pot",
+    "FLAVOR": "It is dull and empty, but a beautiful flower can grow here.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, add a #ySeed to your hand."
+    ]
+  },
+  "Agrypnos:Miniature Garden": {
+    "NAME": "Miniature Garden",
+    "FLAVOR": "A garden for a traveler.",
+    "DESCRIPTIONS": [
+      "At the end of each turn, discard all #yFlowers. #yFlowers no longer lose their growth when played."
+    ]
+  }
+}

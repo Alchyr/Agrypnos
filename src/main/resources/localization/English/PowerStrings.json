@@ -1,0 +1,53 @@
+{
+  "Agrypnos:FertilizerPower": {
+    "NAME": "Fertilizer",
+    "DESCRIPTIONS": [
+      "At the start of your turn, trigger the growth of ",
+      " random Flower.",
+      " random Flowers."
+    ]
+  },
+  "Agrypnos:PollenPower": {
+    "NAME": "Pollen",
+    "DESCRIPTIONS": [
+      "When a Flower grows, apply ",
+      " Poison to a random enemy."
+    ]
+  },
+  "Agrypnos:QueenOfTheNightPower": {
+    "NAME": "Queen of the Night",
+    "DESCRIPTIONS": [
+      "Reduces incoming damage by ",
+      "."
+    ]
+  },
+  "Agrypnos:CorpseFlowerPower": {
+    "NAME": "Corpse Flower",
+    "DESCRIPTIONS": [
+      "Triggers growth of Corpse Flowers on applying poison."
+    ]
+  },
+  "Agrypnos:RoseThorns": {
+    "NAME": "Rose Garden",
+    "DESCRIPTIONS": [
+      "The next ",
+      " times you are attacked, deal 4 damage back and add a Thorn to your hand."
+    ]
+  },
+  "Agrypnos:CompostPower": {
+    "NAME": "Compost",
+    "DESCRIPTIONS": [
+      "After exhausting ",
+      " more card, gain ",
+      " more cards, gain ",
+      " stack of Fertilizer."
+    ]
+  },
+  "Agrypnos:MorningSunPower": {
+    "NAME": "Morning Sun",
+    "DESCRIPTIONS": [
+      "Reduce the cost of all Flowers that have not grown by ",
+      "."
+    ]
+  }
+}

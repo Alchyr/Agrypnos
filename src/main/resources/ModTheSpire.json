@@ -1,0 +1,10 @@
+{
+  "modid": "Agrypnos",
+  "name": "The Florist",
+  "author_list": ["Alchyr"],
+  "description": "A content mod. Contains a florist and some percussion.",
+  "version": "0.1.0",
+  "sts_version": "01-03-2019",
+  "mts_version": "3.6.3",
+  "dependencies": ["basemod"]
+}
