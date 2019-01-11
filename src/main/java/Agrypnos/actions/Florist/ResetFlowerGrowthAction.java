@@ -1,6 +1,6 @@
 package Agrypnos.actions.Florist;
 
-import Agrypnos.cards.Florist.Flowers.FlowerCard;
+import Agrypnos.abstracts.FlowerCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -66,6 +66,7 @@ public class ResetFlowerGrowthAction extends AbstractGameAction {
                 }
                 break;
         }
+        target.flash(FlowerCard.resetFlash);
         this.isDone = true;
     }
 }

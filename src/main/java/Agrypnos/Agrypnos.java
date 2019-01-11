@@ -100,10 +100,13 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new BasicStrike()); //strike
         BaseMod.addCard(new BasicDefend()); //block
         BaseMod.addCard(new Trowel()); //whack and grow
+        BaseMod.addCard(new Till()); //whack and smack and if they have block vulnerable
+        BaseMod.addCard(new Replanting()); //reset a flower and now it's free
         BaseMod.addCard(new Thorn()); //damage + vulnerable
         BaseMod.addCard(new FloralScent()); //weak to all
         BaseMod.addCard(new Watering()); //grow all flowers
         BaseMod.addCard(new Verdancy()); //double growth
+        BaseMod.addCard(new StormShelter()); //armor, no flower growth
         BaseMod.addCard(new Prune()); //reset growth, draw
         BaseMod.addCard(new NaturalNutrition()); //grow plants, cost hp no energy
         BaseMod.addCard(new Tumbleweed()); //damage all enemies, exhaust
@@ -140,8 +143,11 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(BasicStrike.ID);
         UnlockTracker.unlockCard(BasicDefend.ID);
         UnlockTracker.unlockCard(Trowel.ID);
+        UnlockTracker.unlockCard(Replanting.ID);
         UnlockTracker.unlockCard(Thorn.ID);
         UnlockTracker.unlockCard(FloralScent.ID);
+        UnlockTracker.unlockCard(StormShelter.ID);
+        UnlockTracker.unlockCard(Till.ID);
         UnlockTracker.unlockCard(Watering.ID);
         UnlockTracker.unlockCard(Verdancy.ID);
         UnlockTracker.unlockCard(Prune.ID);

@@ -1,10 +1,9 @@
 package Agrypnos.cards.Florist;
 
 import Agrypnos.Agrypnos;
-import Agrypnos.actions.Florist.ResetFlowerGrowthAction;
 import Agrypnos.actions.Florist.ResetXFlowerGrowthAction;
 import Agrypnos.cards.CardImages;
-import Agrypnos.cards.Florist.Flowers.FlowerCard;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.util.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.FastDrawCardAction;
@@ -16,7 +15,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Prune extends CustomCard {
     public static final String ID = Agrypnos.createID("Prune");
@@ -32,8 +30,6 @@ public class Prune extends CustomCard {
 
     private static final int COST = 0;
     private static final int DRAW = 2;
-
-    private static Random rnd = new Random();
 
     public Prune() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -58,28 +54,9 @@ public class Prune extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (upgraded)
-        {
-            AbstractDungeon.actionManager.addToBottom(new ResetXFlowerGrowthAction(p,p,1,false));
+        AbstractDungeon.actionManager.addToBottom(new ResetXFlowerGrowthAction(p,p,1, !upgraded));
 
-            AbstractDungeon.actionManager.addToBottom(new FastDrawCardAction(p, 2));
-        }
-        else
-        {
-            ArrayList<FlowerCard> FlowerCardsInHand = new ArrayList<>();
-
-            for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                if (c instanceof FlowerCard)
-                    FlowerCardsInHand.add((FlowerCard) c);
-            }
-            if (FlowerCardsInHand.size() > 0) {
-                FlowerCard c = FlowerCardsInHand.get(rnd.nextInt(FlowerCardsInHand.size()));
-
-                AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(c));
-
-                AbstractDungeon.actionManager.addToBottom(new FastDrawCardAction(p, 2));
-            }
-        }
+        AbstractDungeon.actionManager.addToBottom(new FastDrawCardAction(p, 2));
     }
 
     @Override

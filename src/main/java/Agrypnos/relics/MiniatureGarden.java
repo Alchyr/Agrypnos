@@ -3,7 +3,7 @@ package Agrypnos.relics;
 import Agrypnos.Agrypnos;
 import Agrypnos.abstracts.Relic;
 import Agrypnos.actions.Florist.DiscardAllFlowersAction;
-import Agrypnos.cards.Florist.Flowers.FlowerCard;
+import Agrypnos.abstracts.FlowerCard;
 
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;

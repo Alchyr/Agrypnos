@@ -31,6 +31,7 @@ public class CorpseFlowerPower extends AbstractPower implements InvisiblePower {
         this.updateDescription();
     }
 
+
     @Override
     public void onExhaust(AbstractCard card) {
         AbstractDungeon.actionManager.addToBottom(new GrowCorpseFlowersAction());

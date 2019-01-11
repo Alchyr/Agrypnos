@@ -2,17 +2,15 @@ package Agrypnos.cards.Florist;
 
 import Agrypnos.Agrypnos;
 import Agrypnos.cards.CardImages;
-import Agrypnos.cards.Florist.Flowers.FlowerCard;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.util.CardColorEnum;
 import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.FrostOrbPassiveEffect;
 
 import java.util.ArrayList;
 

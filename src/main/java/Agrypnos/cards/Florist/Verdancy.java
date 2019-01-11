@@ -4,7 +4,7 @@ import Agrypnos.Agrypnos;
 import Agrypnos.actions.Florist.TriggerDoublingGrowthAction;
 import Agrypnos.actions.General.UpdateHandAction;
 import Agrypnos.cards.CardImages;
-import Agrypnos.cards.Florist.Flowers.FlowerCard;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.util.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;

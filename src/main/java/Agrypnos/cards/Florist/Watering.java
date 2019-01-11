@@ -1,9 +1,10 @@
 package Agrypnos.cards.Florist;
 
 import Agrypnos.Agrypnos;
+import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.actions.General.UpdateHandAction;
 import Agrypnos.cards.CardImages;
-import Agrypnos.cards.Florist.Flowers.FlowerCard;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.util.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -49,7 +50,7 @@ public class Watering extends CustomCard
         {
             for (FlowerCard c : FlowerCardsInHand)
             {
-                AbstractDungeon.actionManager.addToBottom(c.getTriggerGrowthAction());
+                AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(c.getTriggerGrowthAction(), true, FlowerCard.growthFlash));
             }
             AbstractDungeon.actionManager.addToBottom(new UpdateHandAction());
         }

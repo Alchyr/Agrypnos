@@ -1,13 +1,13 @@
 package Agrypnos.cards.Florist.Flowers;
 
 import Agrypnos.Agrypnos;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.actions.Florist.ResetFlowerGrowthAction;
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.cards.CardImages;
 import Agrypnos.util.CardColorEnum;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.green.Adrenaline;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -61,7 +61,7 @@ public class Sunflower extends FlowerCard
     public void triggerOnEndOfTurnForPlayingCard()
     {
         super.triggerOnEndOfTurnForPlayingCard();
-        AbstractDungeon.actionManager.addToBottom(getTriggerGrowthAction());
+        AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(getTriggerGrowthAction(), true, growthFlash));
     }
 
     @Override

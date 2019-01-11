@@ -1,6 +1,7 @@
 package Agrypnos.cards.Florist.Flowers;
 
 import Agrypnos.Agrypnos;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.actions.Florist.ResetFlowerGrowthAction;
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.actions.General.HiddenApplyPowerAction;
@@ -74,6 +75,7 @@ public class QueenOfTheNight extends FlowerCard
 
     @Override
     public void triggerWhenDrawn() {
+        triggered = false;
         if (!AbstractDungeon.player.hasPower(QueenOfTheNightPower.POWER_ID) && !triggered)
         {
             triggered = true;
@@ -94,7 +96,12 @@ public class QueenOfTheNight extends FlowerCard
     @Override
     public void triggerOnEndOfTurnForPlayingCard() {
         super.triggerOnEndOfTurnForPlayingCard();
-        AbstractDungeon.actionManager.addToBottom(getTriggerGrowthAction());
+        AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(getTriggerGrowthAction(), true, growthFlash));
+        if (!AbstractDungeon.player.hasPower(QueenOfTheNightPower.POWER_ID) && !triggered)
+        {
+            triggered = true;
+            AbstractDungeon.actionManager.addToTop(new HiddenApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new QueenOfTheNightPower(AbstractDungeon.player), 1, true));
+        }
     }
 
     @Override

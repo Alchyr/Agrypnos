@@ -159,7 +159,7 @@ public class TheFlorist extends CustomPlayer {
     // Character select screen effect
     @Override
     public void doCharSelectScreenSelectEffect() {
-        CardCrawlGame.sound.playA("BELL", 0.3f); // Sound Effect
+        CardCrawlGame.sound.playA("TINGSHA", 0.3f); // Sound Effect
     }
 
     // Character select on-button-press sound effect

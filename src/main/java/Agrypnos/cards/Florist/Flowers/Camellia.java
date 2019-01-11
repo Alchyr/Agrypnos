@@ -1,6 +1,7 @@
 package Agrypnos.cards.Florist.Flowers;
 
 import Agrypnos.Agrypnos;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.actions.Florist.ResetFlowerGrowthAction;
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.cards.CardImages;
@@ -71,7 +72,7 @@ public class Camellia extends FlowerCard
     public void triggerOnEndOfTurnForPlayingCard()
     {
         super.triggerOnEndOfTurnForPlayingCard();
-        AbstractDungeon.actionManager.addToBottom(getTriggerGrowthAction());
+        AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(getTriggerGrowthAction(), true, growthFlash));
     }
 
     @Override

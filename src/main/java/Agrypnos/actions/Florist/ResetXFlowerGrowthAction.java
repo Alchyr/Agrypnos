@@ -1,6 +1,6 @@
 package Agrypnos.actions.Florist;
 
-import Agrypnos.cards.Florist.Flowers.FlowerCard;
+import Agrypnos.abstracts.FlowerCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -56,8 +56,6 @@ public class ResetXFlowerGrowthAction extends AbstractGameAction
                 this.isDone = true;
                 return;
             }
-
-            int i;
 
             ArrayList<FlowerCard> FlowerCardsInHand = new ArrayList<>();
 
@@ -128,18 +126,26 @@ public class ResetXFlowerGrowthAction extends AbstractGameAction
                 this.tickDuration();
                 return;
             }
+            else
+            {
+                for (int i = 0; i < amount; i++)
+                {
+                    if (FlowerCardsInHand.size() > 0) {
+                        FlowerCard c = FlowerCardsInHand.remove(AbstractDungeon.cardRng.random(FlowerCardsInHand.size() - 1));
+
+                        AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(c));
+                    }
+                }
+                this.isDone = true;
+            }
         }
 
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
-            Iterator selectedCards = AbstractDungeon.handCardSelectScreen.selectedCards.group.iterator();
-
-            while(selectedCards.hasNext()) {
-                AbstractCard c = (AbstractCard)selectedCards.next();
-
+            for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group)
+            {
                 if (c instanceof  FlowerCard) {
                     AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction((FlowerCard)c));
                 }
-
                 this.p.hand.addToTop(c);
             }
 

@@ -1,9 +1,10 @@
 package Agrypnos.cards.Florist;
 
 import Agrypnos.Agrypnos;
+import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.actions.General.UpdateHandAction;
 import Agrypnos.cards.CardImages;
-import Agrypnos.cards.Florist.Flowers.FlowerCard;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.util.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -14,7 +15,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.AdrenalineEffect;
 import com.megacrit.cardcrawl.vfx.combat.OfferingEffect;
 
 import java.util.ArrayList;
@@ -59,9 +59,15 @@ public class NaturalNutrition extends CustomCard
         {
             for (FlowerCard c : FlowerCardsInHand)
             {
-                AbstractDungeon.actionManager.addToBottom(c.getTriggerGrowthAction());
                 if (upgraded)
+                {
                     AbstractDungeon.actionManager.addToBottom(c.getTriggerGrowthAction());
+                    AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(c.getTriggerGrowthAction(), true, FlowerCard.growthFlash));
+                }
+                else
+                {
+                    AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(c.getTriggerGrowthAction(), true, FlowerCard.growthFlash));
+                }
             }
 
             AbstractDungeon.actionManager.addToBottom(new UpdateHandAction());

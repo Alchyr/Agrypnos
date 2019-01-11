@@ -58,8 +58,8 @@ public class QueenOfTheNightPower extends AbstractPower implements InvisiblePowe
                 if (damageAmount < 0)
                     damageAmount = 0;
 
-                AbstractDungeon.actionManager.addToBottom(new DiscardQueenOfNightAction());
-                AbstractDungeon.actionManager.addToBottom(new HiddenRemoveSpecificPowerAction(this.owner, this.owner, this.POWER_ID));
+                AbstractDungeon.actionManager.addToTop(new DiscardQueenOfNightAction());
+                AbstractDungeon.actionManager.addToTop(new HiddenRemoveSpecificPowerAction(this.owner, this.owner, this.POWER_ID));
             }
         }
         return damageAmount;

@@ -14,7 +14,7 @@ public class FlowerPot extends Relic
 
     public FlowerPot() {
         super(ID, "FlowerPot",
-                RelicTier.UNCOMMON, LandingSound.CLINK);
+                RelicTier.COMMON, LandingSound.CLINK);
     }
 
     @Override

@@ -2,14 +2,11 @@ package Agrypnos.cards.Florist;
 
 import Agrypnos.Agrypnos;
 import Agrypnos.actions.Florist.ExhaustXFlowersAction;
-import Agrypnos.actions.Florist.ResetXFlowerGrowthAction;
 import Agrypnos.cards.CardImages;
-import Agrypnos.cards.Florist.Flowers.FlowerCard;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.util.CardColorEnum;
 import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -17,7 +14,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-import java.util.ArrayList;
 
 public class MortarAndPestle extends CustomCard
 {
@@ -33,10 +29,10 @@ public class MortarAndPestle extends CustomCard
     public static final AbstractCard.CardColor COLOR = CardColorEnum.FLORIST_GREEN;
 
     private static final int COST = 0;
-    private static final int HEAL = 3;
-    private static final int UPGRADE_HEAL = 2;
+    private static final int HEAL = 4;
+    private static final int UPGRADE_HEAL = 3;
 
-    private static final int EXHAUST_COUNT = 2;
+    private static final int EXHAUST_COUNT = 1;
 
     private int exhaustCount;
 
@@ -54,18 +50,16 @@ public class MortarAndPestle extends CustomCard
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
         int flowerCount = 0;
-
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
             if (c instanceof FlowerCard)
             {
                 flowerCount++;
-                break;
             }
         }
-        if (flowerCount >= 2) {
+        if (flowerCount >= 1) {
             return true;
         }
-        cantUseMessage = "This card cannot be used without any Flowers.";
+        cantUseMessage = "This card cannot be used without enough Flowers.";
         return false;
     }
 

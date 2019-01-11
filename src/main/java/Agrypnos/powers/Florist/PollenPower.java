@@ -1,7 +1,7 @@
 package Agrypnos.powers.Florist;
 
 import Agrypnos.Agrypnos;
-import Agrypnos.cards.Florist.Flowers.FlowerCard;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.powers.PowerImages;
 
 import com.badlogic.gdx.graphics.Texture;

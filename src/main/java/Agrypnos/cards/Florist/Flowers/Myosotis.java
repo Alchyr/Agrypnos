@@ -1,6 +1,7 @@
 package Agrypnos.cards.Florist.Flowers;
 
 import Agrypnos.Agrypnos;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.cards.CardImages;
 import Agrypnos.util.CardColorEnum;

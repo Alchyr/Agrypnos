@@ -1,6 +1,7 @@
 package Agrypnos.cards.Florist.Flowers;
 
 import Agrypnos.Agrypnos;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.actions.Florist.ResetFlowerGrowthAction;
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.cards.CardImages;
@@ -29,7 +30,7 @@ public class Zinnia extends FlowerCard
     public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
 
     private static final int COST = 1;
-    private static final int UPG_COST = 1;
+    private static final int UPG_COST = 0;
     private static final int BUFF = 5;
     private static final int GROWTH = 1;
 
@@ -66,7 +67,7 @@ public class Zinnia extends FlowerCard
     public void triggerOnEndOfTurnForPlayingCard()
     {
         super.triggerOnEndOfTurnForPlayingCard();
-        AbstractDungeon.actionManager.addToBottom(getTriggerGrowthAction());
+        AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(getTriggerGrowthAction(), true, growthFlash));
     }
 
     @Override

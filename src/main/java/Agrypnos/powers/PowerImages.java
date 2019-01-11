@@ -8,4 +8,5 @@ public class PowerImages {
     public static String MORNINGSUN = "powers/MorningSun.png";
     public static String POLLEN = "powers/Pollen.png";
     public static String COMPOST = "powers/Compost.png";
+    public static String NOGROW = "powers/NoGrow.png";
 }

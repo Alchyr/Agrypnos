@@ -1,6 +1,7 @@
 package Agrypnos.cards.Florist.Flowers;
 
 import Agrypnos.Agrypnos;
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.actions.Florist.ResetFlowerGrowthAction;
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.actions.General.HiddenApplyPowerAction;
@@ -32,10 +33,10 @@ public class CorpseFlower extends FlowerCard implements StartupCard {
     public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
 
     private static final int COST = 2;
-    private static final int POISON = 7;
+    private static final int POISON = 8;
     private static final int UPGRADE_PLUS_POISON = 2;
-    private static final int GROWTH = 3;
-    private static final int UPGRADE_PLUS_GROWTH = 2;
+    private static final int GROWTH = 2;
+    private static final int UPGRADE_PLUS_GROWTH = 1;
 
 
     private int growth;

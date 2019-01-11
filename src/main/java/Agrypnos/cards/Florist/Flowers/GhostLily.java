@@ -1,6 +1,8 @@
 package Agrypnos.cards.Florist.Flowers;
 
 import Agrypnos.Agrypnos;
+import Agrypnos.abstracts.FlowerCard;
+import Agrypnos.actions.Florist.GhostLilyAction;
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.cards.CardImages;
 import Agrypnos.cards.Florist.Seed;
@@ -73,23 +75,7 @@ public class GhostLily extends FlowerCard
 
     @Override
     public void triggerOnExhaust() {
-        ArrayList<FlowerCard> FlowerCardsInHand = new ArrayList<>();
-
-        for (AbstractCard c : AbstractDungeon.player.hand.group)
-        {
-            if (c instanceof FlowerCard)
-                FlowerCardsInHand.add((FlowerCard)c);
-        }
-        if (FlowerCardsInHand.size() > 0)
-        {
-            for (FlowerCard c : FlowerCardsInHand)
-            {
-                if (!c.equals(this))
-                    AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
-
-                AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(seedCard, magicNumber));
-            }
-        }
+        AbstractDungeon.actionManager.addToBottom(new GhostLilyAction(seedCard, this.magicNumber));
     }
 
     @Override

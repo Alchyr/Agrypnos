@@ -14,6 +14,14 @@
       " Poison to a random enemy."
     ]
   },
+  "Agrypnos:NoGrowPower": {
+    "NAME": "Storm Shelter",
+    "DESCRIPTIONS": [
+      "Flowers will not grow for ",
+      " turn.",
+      " turns."
+    ]
+  },
   "Agrypnos:QueenOfTheNightPower": {
     "NAME": "Queen of the Night",
     "DESCRIPTIONS": [

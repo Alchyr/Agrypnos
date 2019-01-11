@@ -29,8 +29,8 @@ public class Trowel extends CustomCard
     public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 5;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int DAMAGE = 7;
+    private static final int UPGRADE_PLUS_DMG = 3;
     private static final int GROW_AMOUNT = 1;
 
 
@@ -51,7 +51,7 @@ public class Trowel extends CustomCard
 
     @Override
     public AbstractCard makeCopy() {
-        return new BasicStrike();
+        return new Trowel();
     }
 
     @Override

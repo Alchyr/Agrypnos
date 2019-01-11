@@ -3,8 +3,10 @@ package Agrypnos.relics;
 import Agrypnos.Agrypnos;
 import Agrypnos.abstracts.Relic;
 
+import com.megacrit.cardcrawl.actions.common.ApplyPoisonOnRandomMonsterAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -68,6 +70,16 @@ public class WarDrum extends Relic
     public void onPlayerEndTurn() {
         if (pulse)
             stopPulse();
+    }
+
+    @Override
+    public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
+        super.onUseCard(targetCard, useCardAction);
+
+        if (targetCard.type == AbstractCard.CardType.ATTACK && targetCard.target == AbstractCard.CardTarget.ENEMY)
+        {
+            useCardAction.target = AbstractDungeon.getRandomMonster();
+        }
     }
 
     @Override
