@@ -23,7 +23,6 @@ import basemod.abstracts.CustomCard;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Random;
 
 public class Seed extends CustomCard
 {
@@ -39,10 +38,7 @@ public class Seed extends CustomCard
     public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
 
     private static final int COST = -2;
-    private static final int BLOCK = 3;
-    private static final int UPGRADE_PLUS_BLOCK = 2;
-
-    private static Random rnd = new Random();
+    private static final int BLOCK = 4;
 
     public Seed() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -108,7 +104,7 @@ public class Seed extends CustomCard
             }
         }
 
-        AbstractCard randomFlower = CardLibrary.getCard(FlowerCardKeys.get(rnd.nextInt(FlowerCardKeys.size()))).makeCopy();
+        AbstractCard randomFlower = CardLibrary.getCard(FlowerCardKeys.get(AbstractDungeon.cardRandomRng.random(FlowerCardKeys.size() - 1))).makeCopy();
 
         if (upgraded)
             randomFlower.upgrade();
@@ -127,7 +123,6 @@ public class Seed extends CustomCard
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeBlock(UPGRADE_PLUS_BLOCK);
             this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }

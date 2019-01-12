@@ -4,6 +4,11 @@
       "Reset."
     ]
   },
+  "GrowFlowersAction": {
+    "TEXT": [
+      "Grow."
+    ]
+  },
   "NarcissusAction": {
     "TEXT": [
       "Duplicate."

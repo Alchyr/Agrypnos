@@ -105,7 +105,10 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new Thorn()); //damage + vulnerable
         BaseMod.addCard(new FloralScent()); //weak to all
         BaseMod.addCard(new Watering()); //grow all flowers
+        BaseMod.addCard(new BigShovel()); //damage, get seeds
         BaseMod.addCard(new Verdancy()); //double growth
+        BaseMod.addCard(new CombTheEarth()); //seed in hand, seed in deck
+        BaseMod.addCard(new Pesticide()); //poison cycled
         BaseMod.addCard(new StormShelter()); //armor, no flower growth
         BaseMod.addCard(new Prune()); //reset growth, draw
         BaseMod.addCard(new NaturalNutrition()); //grow plants, cost hp no energy
@@ -127,7 +130,9 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new Zinnia()); //common, temporary dex
         BaseMod.addCard(new Dandelion()); //common, gain block
         BaseMod.addCard(new Wolfsbane()); //common, apply poison
+        BaseMod.addCard(new MorningGlory()); //uncommon, decent damage, but decays instead of grow
         BaseMod.addCard(new Sunflower()); //uncommon, give energy
+        BaseMod.addCard(new Poppy()); //uncommon, give temporary health
         BaseMod.addCard(new CorpseFlower()); //uncommon, poison, grow on apply poison
         BaseMod.addCard(new Snapdragon()); //uncommon, deal x damage
         BaseMod.addCard(new Myosotis()); //uncommon, permanent growing damage
@@ -149,6 +154,9 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(StormShelter.ID);
         UnlockTracker.unlockCard(Till.ID);
         UnlockTracker.unlockCard(Watering.ID);
+        UnlockTracker.unlockCard(CombTheEarth.ID);
+        UnlockTracker.unlockCard(Pesticide.ID);
+        UnlockTracker.unlockCard(BigShovel.ID);
         UnlockTracker.unlockCard(Verdancy.ID);
         UnlockTracker.unlockCard(Prune.ID);
         UnlockTracker.unlockCard(NaturalNutrition.ID);
@@ -171,6 +179,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(GhostLily.ID);
         UnlockTracker.unlockCard(Lotus.ID);
         UnlockTracker.unlockCard(Sunflower.ID);
+        UnlockTracker.unlockCard(Poppy.ID);
         UnlockTracker.unlockCard(Narcissus.ID);
         UnlockTracker.unlockCard(Zinnia.ID);
         UnlockTracker.unlockCard(CorpseFlower.ID);
@@ -178,6 +187,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(Camellia.ID);
         UnlockTracker.unlockCard(Snapdragon.ID);
         UnlockTracker.unlockCard(Wolfsbane.ID);
+        UnlockTracker.unlockCard(MorningGlory.ID);
         UnlockTracker.unlockCard(Rue.ID);
         UnlockTracker.unlockCard(Myosotis.ID);
     }

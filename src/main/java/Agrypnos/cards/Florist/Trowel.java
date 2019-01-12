@@ -2,6 +2,7 @@ package Agrypnos.cards.Florist;
 
 import Agrypnos.Agrypnos;
 import Agrypnos.actions.Florist.GrowRandomFlowersAction;
+import Agrypnos.actions.Florist.GrowXFlowersAction;
 import Agrypnos.cards.CardImages;
 import Agrypnos.util.CardColorEnum;
 import basemod.abstracts.CustomCard;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.green.Alchemize;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -46,7 +48,7 @@ public class Trowel extends CustomCard
                 new com.megacrit.cardcrawl.actions.common.DamageAction(m,
                         new DamageInfo(p, this.damage, this.damageTypeForTurn),
                         AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-        AbstractDungeon.actionManager.addToBottom(new GrowRandomFlowersAction(p.hand, GROW_AMOUNT));
+        AbstractDungeon.actionManager.addToBottom(new GrowXFlowersAction(p, p, GROW_AMOUNT, !this.upgraded));
     }
 
     @Override
@@ -59,6 +61,7 @@ public class Trowel extends CustomCard
         if (!this.upgraded) {
             this.upgradeName();
             this.upgradeDamage(UPGRADE_PLUS_DMG);
+            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
     }

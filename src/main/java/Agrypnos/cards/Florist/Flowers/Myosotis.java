@@ -41,8 +41,8 @@ public class Myosotis extends FlowerCard
         initialValue = DAMAGE;
         FlowerGrowth = GrowthType.permanentdamage;
 
-        this.baseDamage = this.DAMAGE;
-        this.magicNumber = this.baseMagicNumber = this.GROWTH;
+        this.baseDamage = DAMAGE;
+        this.magicNumber = this.baseMagicNumber = GROWTH;
 
         this.isEthereal = true;
     }

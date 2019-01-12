@@ -25,9 +25,9 @@ public class RoseGarden extends CustomCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int MAGIC = 4;
-    private static final int UPGRADE_MAGIC_NUM = 2;
+    private static final int UPGRADE_MAGIC_NUM = 3;
 
 
     public RoseGarden() {

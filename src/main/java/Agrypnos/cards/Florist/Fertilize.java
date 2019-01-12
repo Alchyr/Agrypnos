@@ -25,7 +25,7 @@ public class Fertilize extends CustomCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int MAGIC = 1;
     private static final int MAGIC_UPGRADE = 1;
 
@@ -54,6 +54,7 @@ public class Fertilize extends CustomCard {
         if (!this.upgraded) {
             this.upgradeName();
             this.upgradeMagicNumber(MAGIC_UPGRADE);
+            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
     }

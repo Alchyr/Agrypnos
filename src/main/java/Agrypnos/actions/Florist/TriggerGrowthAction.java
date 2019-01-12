@@ -106,7 +106,7 @@ public class TriggerGrowthAction extends AbstractGameAction {
                     AbstractCard c;
                     while(cardIterator.hasNext()) {
                         c = (AbstractCard)cardIterator.next();
-                        if (c.uuid.equals(target.uuid) && c instanceof FlowerCard) {
+                        if (c.uuid.equals(target.uuid)) {
                             c.baseDamage += growth;
                             c.isDamageModified = false;
                         }

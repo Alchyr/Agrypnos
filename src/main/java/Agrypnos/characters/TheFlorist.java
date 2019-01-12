@@ -62,7 +62,7 @@ public class TheFlorist extends CustomPlayer {
                 orbTextures,
                 "img/Agrypnos/character/Florist/orb/vfx.png", null,
                 new SpriterAnimation(
-                        "img/Agrypnos/character/Florist/Spriter/theDefaultAnimation.scml"));
+                        "img/Agrypnos/character/Florist/Spriter/Character.scml"));
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================

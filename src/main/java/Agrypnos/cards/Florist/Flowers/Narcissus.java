@@ -28,8 +28,8 @@ public class Narcissus extends FlowerCard
     public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
 
     private static final int COST = 2;
-    private static final int REPLACE = 1;
-    private static final int GROWTH = 1;
+    private static final int REPLACE = 2;
+    private static final int GROWTH = 2;
 
     public Narcissus() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

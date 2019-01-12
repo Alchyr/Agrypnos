@@ -5,8 +5,11 @@ import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.powers.Florist.NoGrowPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.combat.PowerIconShowEffect;
+
+import java.util.Iterator;
 
 public class TriggerDoublingGrowthAction extends AbstractGameAction {
     FlowerCard target;
@@ -67,7 +70,24 @@ public class TriggerDoublingGrowthAction extends AbstractGameAction {
                 target.applyPowers();
                 break;
             case permanentdamage:
-                AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(target, target.magicNumber * 2));
+                int growth = target.baseDamage - target.initialValue;
+                target.baseDamage += growth;
+                if (target.baseDamage != target.initialValue)
+                    target.grown = true;
+
+
+                Iterator cardIterator = AbstractDungeon.player.masterDeck.group.iterator();
+
+                AbstractCard c;
+                while(cardIterator.hasNext()) {
+                    c = (AbstractCard)cardIterator.next();
+                    if (c.uuid.equals(target.uuid)) {
+                        c.baseDamage += growth;
+                        c.isDamageModified = false;
+                    }
+                }
+
+                target.applyPowers();
                 break;
         }
 

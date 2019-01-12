@@ -52,6 +52,7 @@ public abstract class FlowerCard extends CustomCard {
             ((FlowerCard) AbstractCopy).initialValue = this.initialValue;
             ((FlowerCard) AbstractCopy).grown = this.grown;
             ((FlowerCard) AbstractCopy).FlowerGrowth = this.FlowerGrowth;
+            ((FlowerCard) AbstractCopy).magicNumber = this.magicNumber;
             ((FlowerCard) AbstractCopy).MorningSunCostReduction = this.MorningSunCostReduction;
             ((FlowerCard) AbstractCopy).MorningSunTurnCostReduction = this.MorningSunTurnCostReduction;
         }
