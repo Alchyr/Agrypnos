@@ -36,12 +36,12 @@ public class Snapdragon extends FlowerCard
 
 
     public Snapdragon() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         this.baseDamage = DAMAGE;
         this.initialValue = DAMAGE;
         this.FlowerGrowth = GrowthType.damage;
-        this.magicNumber = this.baseMagicNumber = this.BONUS_HITS;
+        this.magicNumber = this.baseMagicNumber = BONUS_HITS;
     }
 
     @Override
@@ -72,12 +72,6 @@ public class Snapdragon extends FlowerCard
     {
         super.triggerOnEndOfTurnForPlayingCard();
         AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(getTriggerGrowthAction(), true, growthFlash));
-    }
-
-    @Override
-    public TriggerGrowthAction getTriggerGrowthAction()
-    {
-        return new TriggerGrowthAction(this, GROWTH);
     }
 
     @Override

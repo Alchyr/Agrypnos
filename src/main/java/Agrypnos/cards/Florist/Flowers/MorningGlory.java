@@ -28,19 +28,18 @@ public class MorningGlory extends FlowerCard
     public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
 
     private static final int COST = 2;
-    private static final int DAMAGE = 24;
-    private static final int UPGRADE_PLUS_DAMAGE = 6;
-    private static final int LOSS = 4;
+    private static final int DAMAGE = 22;
+    private static final int UPGRADE_PLUS_DAMAGE = 5;
+    private static final int GROWTH = -4;
 
 
     public MorningGlory() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         initialValue = DAMAGE;
         FlowerGrowth = GrowthType.damage;
 
         this.baseDamage = DAMAGE;
-        this.magicNumber = this.baseMagicNumber = LOSS;
     }
 
     @Override
@@ -62,12 +61,6 @@ public class MorningGlory extends FlowerCard
     {
         super.triggerOnEndOfTurnForPlayingCard();
         AbstractDungeon.actionManager.addToBottom(getTriggerGrowthAction());
-    }
-
-    @Override
-    public TriggerGrowthAction getTriggerGrowthAction()
-    {
-        return new TriggerGrowthAction(this, -magicNumber);
     }
 
     @Override

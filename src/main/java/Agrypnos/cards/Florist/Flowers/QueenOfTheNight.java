@@ -24,6 +24,7 @@ public class QueenOfTheNight extends FlowerCard
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
     private static final CardType TYPE = CardType.SKILL;
@@ -40,14 +41,16 @@ public class QueenOfTheNight extends FlowerCard
 
 
     public QueenOfTheNight() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         initialValue = PROTECT;
 
-        this.FlowerGrowth = GrowthType.block;
+        this.FlowerGrowth = GrowthType.magic;
 
-        this.block = this.baseBlock = PROTECT;
-        this.magicNumber = this.baseMagicNumber = GROWTH;
+        this.magicNumber = this.baseMagicNumber = PROTECT;
+
+        this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
+        this.initializeDescription();
     }
 
     @Override
@@ -105,12 +108,6 @@ public class QueenOfTheNight extends FlowerCard
     }
 
     @Override
-    public TriggerGrowthAction getTriggerGrowthAction()
-    {
-        return new TriggerGrowthAction(this, magicNumber);
-    }
-
-    @Override
     public AbstractCard makeCopy() {
         return new QueenOfTheNight();
     }
@@ -119,9 +116,10 @@ public class QueenOfTheNight extends FlowerCard
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeBlock(UPGRADE_PLUS_PROTECT);
-            this.initialValue = this.baseBlock;
-            this.upgradeMagicNumber(UPGRADE_PLUS_GROWTH);
+            this.upgradeMagicNumber(UPGRADE_PLUS_PROTECT);
+            this.initialValue = this.baseMagicNumber;
+            this.upgradeGrowth(UPGRADE_PLUS_GROWTH);
+            this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
             this.initializeDescription();
         }
     }

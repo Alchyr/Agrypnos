@@ -36,7 +36,7 @@ public class Zinnia extends FlowerCard
 
 
     public Zinnia() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         initialValue = BUFF;
         FlowerGrowth = GrowthType.magic;
@@ -68,12 +68,6 @@ public class Zinnia extends FlowerCard
     {
         super.triggerOnEndOfTurnForPlayingCard();
         AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(getTriggerGrowthAction(), true, growthFlash));
-    }
-
-    @Override
-    public TriggerGrowthAction getTriggerGrowthAction()
-    {
-        return new TriggerGrowthAction(this, GROWTH);
     }
 
     @Override

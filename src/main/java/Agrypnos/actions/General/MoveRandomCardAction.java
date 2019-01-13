@@ -54,6 +54,7 @@ public class MoveRandomCardAction extends AbstractGameAction {
 
         if (tempCards.size() == 0) {
             this.isDone = true;
+            return;
         }
         else
         {
@@ -77,8 +78,7 @@ public class MoveRandomCardAction extends AbstractGameAction {
                     AbstractDungeon.player.hand.applyPowers();
                 }
             }
-            this.isDone = true;
         }
-
+        this.isDone = true;
     }
 }

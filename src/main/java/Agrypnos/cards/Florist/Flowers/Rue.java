@@ -37,7 +37,7 @@ public class Rue extends FlowerCard
 
 
     public Rue() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         initialValue = REMOVAL;
         FlowerGrowth = GrowthType.magic;
@@ -86,12 +86,6 @@ public class Rue extends FlowerCard
     {
         super.triggerOnEndOfTurnForPlayingCard();
         AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(getTriggerGrowthAction(), true, growthFlash));
-    }
-
-    @Override
-    public TriggerGrowthAction getTriggerGrowthAction()
-    {
-        return new TriggerGrowthAction(this, GROWTH);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package Agrypnos.relics;
 
 import Agrypnos.Agrypnos;
-import Agrypnos.cards.Florist.Seed;
+import Agrypnos.cards.Florist.Skills.Seed;
 import Agrypnos.abstracts.Relic;
 
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;

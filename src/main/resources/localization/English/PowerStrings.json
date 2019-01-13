@@ -14,6 +14,13 @@
       " Poison to a random enemy."
     ]
   },
+  "Agrypnos:SunZenithPower": {
+    "NAME": "Sun's Zenith",
+    "DESCRIPTIONS": [
+      "At the start of your turn, reduce the cost of the Flower in your hand that has grown the most times by ",
+      " until the end of the turn."
+    ]
+  },
   "Agrypnos:NoGrowPower": {
     "NAME": "Storm Shelter",
     "DESCRIPTIONS": [

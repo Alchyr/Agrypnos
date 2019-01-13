@@ -5,7 +5,7 @@ import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.actions.Florist.ResetFlowerGrowthAction;
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.cards.CardImages;
-import Agrypnos.cards.Florist.Thorn;
+import Agrypnos.cards.Florist.Attacks.Thorn;
 import Agrypnos.util.CardColorEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -33,9 +33,8 @@ public class Rose extends FlowerCard
 
     private static final int COST = 2;
     private static final int DAMAGE = 10;
-    private static final int UPGRADE_PLUS_DAMAGE = 3;
-    private static final int GROWTH = 3;
-    private static final int UPGRADE_PLUS_GROWTH = 1;
+    private static final int UPGRADE_PLUS_DAMAGE = 4;
+    private static final int GROWTH = 4;
 
     private static final int DAMAGE_PER_THORN = 10;
 
@@ -44,13 +43,12 @@ public class Rose extends FlowerCard
 
 
     public Rose() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         initialValue = DAMAGE;
         this.FlowerGrowth = GrowthType.damage;
 
         this.baseDamage = DAMAGE;
-        this.magicNumber = this.baseMagicNumber = GROWTH;
 
         thornCard = new Thorn().makeCopy();
     }
@@ -70,7 +68,7 @@ public class Rose extends FlowerCard
                 )
         );
 
-        AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(thornCard, (int)(this.damage / DAMAGE_PER_THORN)));
+        AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(thornCard, (this.damage / DAMAGE_PER_THORN)));
 
         if (ResetOnPlay)
             AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(this));
@@ -84,12 +82,6 @@ public class Rose extends FlowerCard
     }
 
     @Override
-    public TriggerGrowthAction getTriggerGrowthAction()
-    {
-        return new TriggerGrowthAction(this, magicNumber);
-    }
-
-    @Override
     public AbstractCard makeCopy() {
         return new Rose();
     }
@@ -100,7 +92,6 @@ public class Rose extends FlowerCard
             this.upgradeName();
             this.upgradeDamage(UPGRADE_PLUS_DAMAGE);
             initialValue = baseDamage;
-            this.upgradeMagicNumber(UPGRADE_PLUS_GROWTH);
             this.initializeDescription();
         }
     }

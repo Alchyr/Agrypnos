@@ -3,12 +3,10 @@ package Agrypnos.cards.Florist.Flowers;
 import Agrypnos.Agrypnos;
 import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.actions.Florist.GhostLilyAction;
-import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.cards.CardImages;
-import Agrypnos.cards.Florist.Seed;
+import Agrypnos.cards.Florist.Skills.Seed;
 import Agrypnos.util.CardColorEnum;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,8 +14,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import java.util.ArrayList;
 
 public class GhostLily extends FlowerCard
 {
@@ -35,17 +31,18 @@ public class GhostLily extends FlowerCard
     private static final int COST = 1;
     private static final int UPG_COST = 0;
     private static final int REPLACE = 1;
+    private static final int GROWTH = 1;
 
     private AbstractCard seedCard;
 
 
     public GhostLily() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         initialValue = REPLACE;
-        FlowerGrowth = GrowthType.magic;
-
         this.magicNumber = this.baseMagicNumber = REPLACE;
+
+        FlowerGrowth = GrowthType.magic;
 
         this.isEthereal = true;
 
@@ -76,12 +73,6 @@ public class GhostLily extends FlowerCard
     @Override
     public void triggerOnExhaust() {
         AbstractDungeon.actionManager.addToBottom(new GhostLilyAction(seedCard, this.magicNumber));
-    }
-
-    @Override
-    public TriggerGrowthAction getTriggerGrowthAction()
-    {
-        return new TriggerGrowthAction(this, magicNumber);
     }
 
     @Override

@@ -23,6 +23,7 @@ public class Wolfsbane extends FlowerCard {
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
@@ -35,18 +36,15 @@ public class Wolfsbane extends FlowerCard {
     private static final int UPGRADE_PLUS_GROWTH = 1;
 
 
-    private int growth;
-
-
     public Wolfsbane() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         initialValue = POISON;
         this.FlowerGrowth = GrowthType.magic;
-
         this.magicNumber = this.baseMagicNumber = POISON;
 
-        growth = GROWTH;
+        this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
+        this.initializeDescription();
     }
 
     @Override
@@ -69,11 +67,6 @@ public class Wolfsbane extends FlowerCard {
     }
 
     @Override
-    public TriggerGrowthAction getTriggerGrowthAction() {
-        return new TriggerGrowthAction(this, growth);
-    }
-
-    @Override
     public AbstractCard makeCopy() {
         return new Wolfsbane();
     }
@@ -84,8 +77,8 @@ public class Wolfsbane extends FlowerCard {
             this.upgradeName();
             this.upgradeMagicNumber(UPGRADE_PLUS_POISON);
             initialValue = baseMagicNumber;
-            growth += UPGRADE_PLUS_GROWTH;
-            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            this.upgradeGrowth(UPGRADE_PLUS_GROWTH);
+            this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
             this.initializeDescription();
         }
     }

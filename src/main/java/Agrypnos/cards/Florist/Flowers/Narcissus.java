@@ -29,10 +29,10 @@ public class Narcissus extends FlowerCard
 
     private static final int COST = 2;
     private static final int REPLACE = 2;
-    private static final int GROWTH = 2;
+    private static final int GROWTH = 1;
 
     public Narcissus() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         initialValue = REPLACE;
         FlowerGrowth = GrowthType.magic;
@@ -60,12 +60,6 @@ public class Narcissus extends FlowerCard
     {
         super.triggerOnEndOfTurnForPlayingCard();
         AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(getTriggerGrowthAction(), true, growthFlash));
-    }
-
-    @Override
-    public TriggerGrowthAction getTriggerGrowthAction()
-    {
-        return new TriggerGrowthAction(this, GROWTH);
     }
 
     @Override

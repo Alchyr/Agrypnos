@@ -30,11 +30,11 @@ public class Poppy extends FlowerCard
     private static final int COST = 1;
     private static final int TEMPORARY_HEALTH = 6;
     private static final int UPG_TEMPORARY_HEALTH = 3;
-    private static final int GROWTH = 1;
+    private static final int GROWTH = 2;
 
 
     public Poppy() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         initialValue = TEMPORARY_HEALTH;
         FlowerGrowth = GrowthType.magic;
@@ -63,12 +63,6 @@ public class Poppy extends FlowerCard
     {
         super.triggerOnEndOfTurnForPlayingCard();
         AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(getTriggerGrowthAction(), true, growthFlash));
-    }
-
-    @Override
-    public TriggerGrowthAction getTriggerGrowthAction()
-    {
-        return new TriggerGrowthAction(this, GROWTH);
     }
 
     @Override

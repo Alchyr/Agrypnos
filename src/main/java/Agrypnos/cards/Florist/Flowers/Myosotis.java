@@ -24,6 +24,7 @@ public class Myosotis extends FlowerCard
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
@@ -36,15 +37,17 @@ public class Myosotis extends FlowerCard
 
 
     public Myosotis() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         initialValue = DAMAGE;
         FlowerGrowth = GrowthType.permanentdamage;
 
         this.baseDamage = DAMAGE;
-        this.magicNumber = this.baseMagicNumber = GROWTH;
 
         this.isEthereal = true;
+
+        this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
+        this.initializeDescription();
     }
 
     @Override
@@ -76,12 +79,6 @@ public class Myosotis extends FlowerCard
     }
 
     @Override
-    public TriggerGrowthAction getTriggerGrowthAction()
-    {
-        return new TriggerGrowthAction(this, magicNumber);
-    }
-
-    @Override
     public AbstractCard makeCopy() {
         return new Myosotis();
     }
@@ -90,7 +87,9 @@ public class Myosotis extends FlowerCard
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeMagicNumber(UPGRADE_PLUS_GROWTH);
+            this.upgradeGrowth(UPGRADE_PLUS_GROWTH);
+
+            this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
             this.initializeDescription();
         }
     }

@@ -34,10 +34,10 @@ public class Sunflower extends FlowerCard
 
 
     public Sunflower() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
-        this.magicNumber = this.baseMagicNumber = this.ENERGY;
-        initialValue = this.ENERGY;
+        this.magicNumber = this.baseMagicNumber = ENERGY;
+        initialValue = ENERGY;
         FlowerGrowth = GrowthType.magic;
     }
 
@@ -62,12 +62,6 @@ public class Sunflower extends FlowerCard
     {
         super.triggerOnEndOfTurnForPlayingCard();
         AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(getTriggerGrowthAction(), true, growthFlash));
-    }
-
-    @Override
-    public TriggerGrowthAction getTriggerGrowthAction()
-    {
-        return new TriggerGrowthAction(this, GROWTH);
     }
 
     @Override

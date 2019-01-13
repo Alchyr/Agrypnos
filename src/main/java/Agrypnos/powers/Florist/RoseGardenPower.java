@@ -1,7 +1,7 @@
 package Agrypnos.powers.Florist;
 
 import Agrypnos.Agrypnos;
-import Agrypnos.cards.Florist.Thorn;
+import Agrypnos.cards.Florist.Attacks.Thorn;
 import Agrypnos.powers.PowerImages;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;

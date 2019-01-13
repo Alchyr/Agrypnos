@@ -44,13 +44,13 @@ public class QueenOfTheNightPower extends AbstractPower implements InvisiblePowe
             {
                 if (c instanceof QueenOfTheNight)
                 {
-                    reduction += c.block;
+                    reduction += c.magicNumber;
                     hasCard = true;
                 }
             }
             if (!hasCard)
             {
-                AbstractDungeon.actionManager.addToBottom(new HiddenRemoveSpecificPowerAction(this.owner, this.owner, this.POWER_ID));
+                AbstractDungeon.actionManager.addToBottom(new HiddenRemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
             }
             else
             {
@@ -59,7 +59,7 @@ public class QueenOfTheNightPower extends AbstractPower implements InvisiblePowe
                     damageAmount = 0;
 
                 AbstractDungeon.actionManager.addToTop(new DiscardQueenOfNightAction());
-                AbstractDungeon.actionManager.addToTop(new HiddenRemoveSpecificPowerAction(this.owner, this.owner, this.POWER_ID));
+                AbstractDungeon.actionManager.addToTop(new HiddenRemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
             }
         }
         return damageAmount;

@@ -2,6 +2,9 @@ package Agrypnos.characters;
 
 import java.util.*;
 
+import Agrypnos.cards.Florist.Attacks.BasicStrike;
+import Agrypnos.cards.Florist.Attacks.Trowel;
+import Agrypnos.cards.Florist.Skills.BasicDefend;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,7 +19,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
@@ -26,7 +28,6 @@ import basemod.animations.SpriterAnimation;
 import Agrypnos.Agrypnos;
 import Agrypnos.util.CardColorEnum;
 import Agrypnos.cards.Florist.Flowers.*;
-import Agrypnos.cards.Florist.*;
 import Agrypnos.relics.Floriculture;
 
 public class TheFlorist extends CustomPlayer {

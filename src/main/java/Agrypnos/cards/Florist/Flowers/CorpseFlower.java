@@ -39,21 +39,17 @@ public class CorpseFlower extends FlowerCard implements StartupCard {
     private static final int UPGRADE_PLUS_GROWTH = 1;
 
 
-    private int growth;
-
     private boolean triggered;
 
 
     public CorpseFlower() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         triggered = false;
 
         this.magicNumber = this.baseMagicNumber = POISON;
         initialValue = POISON;
         this.FlowerGrowth = GrowthType.magic;
-
-        growth = GROWTH;
 
         this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
         this.initializeDescription();
@@ -95,11 +91,6 @@ public class CorpseFlower extends FlowerCard implements StartupCard {
     }
 
     @Override
-    public TriggerGrowthAction getTriggerGrowthAction() {
-        return new TriggerGrowthAction(this, growth);
-    }
-
-    @Override
     public AbstractCard makeCopy() {
         return new CorpseFlower();
     }
@@ -109,8 +100,8 @@ public class CorpseFlower extends FlowerCard implements StartupCard {
         if (!this.upgraded) {
             this.upgradeName();
             this.upgradeMagicNumber(UPGRADE_PLUS_POISON);
+            this.upgradeGrowth(UPGRADE_PLUS_GROWTH);
             initialValue = baseMagicNumber;
-            growth += UPGRADE_PLUS_GROWTH;
             this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
             this.initializeDescription();
         }

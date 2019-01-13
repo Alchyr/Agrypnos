@@ -23,6 +23,8 @@ public abstract class FlowerCard extends CustomCard {
     private int MorningSunTurnCostReduction = 0; //tracks whether Morning Sun has already been activated this turn
     private int MorningSunCostReduction = 0; //tracks whether Morning Sun has already been activated this turn
 
+    protected int growth;
+
     public enum GrowthType
     {
         damage,
@@ -33,15 +35,39 @@ public abstract class FlowerCard extends CustomCard {
         permanentdamage
     }
 
-    public FlowerCard(String ID, String NAME, String IMG, int COST, String DESCRIPTION, CardType TYPE, CardColor COLOR, CardRarity RARITY, CardTarget TARGET) {
+    public FlowerCard(String ID, String NAME, String IMG, int COST, String DESCRIPTION, CardType TYPE, CardColor COLOR, CardRarity RARITY, CardTarget TARGET, int GROWTH) {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
+        this.growth = GROWTH;
         AlwaysRetainField.alwaysRetain.set(this, true);
         initialValue = 0;
         this.tags.add(CustomTags.FLOWER);
     }
 
     public abstract int baseCost();
+
+    public int GrowthCount()
+    {
+        if (growth == 0)
+            return 0;
+
+        switch (FlowerGrowth)
+        {
+            case damage:
+            case permanentdamage:
+                return Math.abs(baseDamage - initialValue) / growth;
+            case block:
+                return Math.abs(baseBlock - initialValue) / growth;
+            case magic:
+                return Math.abs(baseMagicNumber - initialValue) / growth;
+            case draw:
+                return Math.abs(baseDraw - initialValue) / growth;
+            case heal:
+                return Math.abs(baseHeal - initialValue) / growth;
+            default:
+                return 0;
+        }
+    }
 
     @Override
     public AbstractCard makeStatEquivalentCopy() {
@@ -51,6 +77,7 @@ public abstract class FlowerCard extends CustomCard {
         {
             ((FlowerCard) AbstractCopy).initialValue = this.initialValue;
             ((FlowerCard) AbstractCopy).grown = this.grown;
+            ((FlowerCard) AbstractCopy).growth = this.growth;
             ((FlowerCard) AbstractCopy).FlowerGrowth = this.FlowerGrowth;
             ((FlowerCard) AbstractCopy).magicNumber = this.magicNumber;
             ((FlowerCard) AbstractCopy).MorningSunCostReduction = this.MorningSunCostReduction;
@@ -58,6 +85,16 @@ public abstract class FlowerCard extends CustomCard {
         }
 
         return AbstractCopy;
+    }
+
+    public void upgradeGrowth(int GrowthIncrease)
+    {
+        this.growth += GrowthIncrease;
+    }
+
+    public TriggerGrowthAction getTriggerGrowthAction()
+    {
+        return new TriggerGrowthAction(this, growth);
     }
 
     @Override
@@ -71,7 +108,7 @@ public abstract class FlowerCard extends CustomCard {
             MorningSunCostReduction = 0;
         }
 
-        if (!grown && MorningSunTurnCostReduction == 0 && cost > 0 && AbstractDungeon.player.hasPower(MorningSunPower.POWER_ID))
+        if (!grown && cost > 0 && AbstractDungeon.player.hasPower(MorningSunPower.POWER_ID))
         {
             MorningSunTurnCostReduction = AbstractDungeon.player.getPower(MorningSunPower.POWER_ID).amount;
             MorningSunTurnCostReduction = Math.min(MorningSunTurnCostReduction, this.costForTurn); //cap by the cost
@@ -122,8 +159,6 @@ public abstract class FlowerCard extends CustomCard {
             }
         }
     }
-
-    public abstract TriggerGrowthAction getTriggerGrowthAction();
 
     @Override
     public void triggerOnEndOfTurnForPlayingCard()

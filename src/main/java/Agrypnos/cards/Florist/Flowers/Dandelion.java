@@ -22,6 +22,7 @@ public class Dandelion extends FlowerCard
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
@@ -35,13 +36,15 @@ public class Dandelion extends FlowerCard
 
 
     public Dandelion() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
         initialValue = BLOCK;
         FlowerGrowth = GrowthType.block;
 
         this.baseBlock = BLOCK;
-        this.magicNumber = this.baseMagicNumber = GROWTH;
+
+        this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
+        this.initializeDescription();
     }
 
     @Override
@@ -65,12 +68,6 @@ public class Dandelion extends FlowerCard
     }
 
     @Override
-    public TriggerGrowthAction getTriggerGrowthAction()
-    {
-        return new TriggerGrowthAction(this, magicNumber);
-    }
-
-    @Override
     public AbstractCard makeCopy() {
         return new Dandelion();
     }
@@ -80,8 +77,10 @@ public class Dandelion extends FlowerCard
         if (!this.upgraded) {
             this.upgradeName();
             this.upgradeBlock(UPGRADE_PLUS_BLOCK);
-            this.upgradeMagicNumber(UPGRADE_PLUS_GROWTH);
+            this.upgradeGrowth(UPGRADE_PLUS_GROWTH);
             initialValue = baseBlock;
+
+            this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
             this.initializeDescription();
         }
     }

@@ -23,6 +23,8 @@ public class GrowXFlowersAction extends AbstractGameAction
     private boolean isRandom;
     private boolean anyNumber;
 
+    /* If growing a large number of random flowers, use GrowRandomFlowers instead */
+
     static {
         uiStrings = CardCrawlGame.languagePack.getUIString("GrowFlowersAction");
         TEXT = uiStrings.TEXT;

@@ -1,7 +1,9 @@
 package Agrypnos;
 
-import Agrypnos.cards.Florist.*;
+import Agrypnos.cards.Florist.Attacks.*;
 import Agrypnos.cards.Florist.Flowers.*;
+import Agrypnos.cards.Florist.Powers.*;
+import Agrypnos.cards.Florist.Skills.*;
 import Agrypnos.util.CardColorEnum;
 import Agrypnos.util.CharacterEnum;
 import Agrypnos.characters.*;
@@ -122,6 +124,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new Fertilize()); //Triggers growth of flowers at start of turn
         BaseMod.addCard(new Composting()); //Grants fertilize by exhausting cards
         BaseMod.addCard(new MorningSun()); //Reduces cost of un-grown flowers
+        BaseMod.addCard(new SunZenith()); //Reduces cost of most-grown flower
         BaseMod.addCard(new Pollen()); //Poison when flowers grow
         BaseMod.addCard(new RoseGarden()); //Thorns and thorns
 
@@ -133,6 +136,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new MorningGlory()); //uncommon, decent damage, but decays instead of grow
         BaseMod.addCard(new Sunflower()); //uncommon, give energy
         BaseMod.addCard(new Poppy()); //uncommon, give temporary health
+        BaseMod.addCard(new Poinsettia()); //uncommon, exhaust cards for block
         BaseMod.addCard(new CorpseFlower()); //uncommon, poison, grow on apply poison
         BaseMod.addCard(new Snapdragon()); //uncommon, deal x damage
         BaseMod.addCard(new Myosotis()); //uncommon, permanent growing damage
@@ -171,12 +175,14 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(Composting.ID);
         UnlockTracker.unlockCard(Pollen.ID);
         UnlockTracker.unlockCard(MorningSun.ID);
+        UnlockTracker.unlockCard(SunZenith.ID);
         UnlockTracker.unlockCard(RoseGarden.ID);
 
         //Flowers
         UnlockTracker.unlockCard(Rose.ID);
         UnlockTracker.unlockCard(QueenOfTheNight.ID);
         UnlockTracker.unlockCard(GhostLily.ID);
+        UnlockTracker.unlockCard(Poinsettia.ID);
         UnlockTracker.unlockCard(Lotus.ID);
         UnlockTracker.unlockCard(Sunflower.ID);
         UnlockTracker.unlockCard(Poppy.ID);
