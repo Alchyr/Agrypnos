@@ -255,7 +255,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addKeyword("Fertilizer", Fertilizer, "Triggers the growth of one random Flower at the start of your turn for each stack.");
 
         final String[] Seed = { "Seed", "seed" , "Seeds" , "seeds" };
-        BaseMod.addKeyword("Seed", Seed, "#yEthereal card that grants a small amount of #yBlock and a random #yFlower when #yExhausted.");
+        BaseMod.addKeyword("Seed", Seed, "#yEthereal card that grants a small amount of #yBlock and a random #yFlower when #yExhausted. #yUpgraded #ySeeds grant an #yUpgraded #yFlower.");
     }
 
     @SuppressWarnings("unused")

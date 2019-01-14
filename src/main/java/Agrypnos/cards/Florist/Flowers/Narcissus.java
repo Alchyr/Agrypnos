@@ -27,7 +27,7 @@ public class Narcissus extends FlowerCard
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
-    private static final int COST = 2;
+    private static final int COST = 1;
     private static final int REPLACE = 2;
     private static final int GROWTH = 1;
 
