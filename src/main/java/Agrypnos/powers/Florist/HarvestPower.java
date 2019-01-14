@@ -47,12 +47,6 @@ public class HarvestPower extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        if (this.amount == 1) { //technically should be impossible to get only 1, but you never know
-            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
-        }
-
-        else if (this.amount > 1) {
-            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2];
-        }
+        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
 }

@@ -36,6 +36,13 @@
       "."
     ]
   },
+  "Agrypnos:HarvestPower": {
+    "NAME": "Harvest",
+    "DESCRIPTIONS": [
+      "Upon playing a Flower that has grown at least once, gain ",
+      " Block."
+    ]
+  },
   "Agrypnos:CorpseFlowerPower": {
     "NAME": "Corpse Flower",
     "DESCRIPTIONS": [
