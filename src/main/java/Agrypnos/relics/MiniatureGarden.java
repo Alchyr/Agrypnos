@@ -16,7 +16,7 @@ public class MiniatureGarden extends Relic
 
     public MiniatureGarden() {
         super(ID, "MiniatureGarden",
-                RelicTier.RARE, LandingSound.MAGICAL);
+                RelicTier.SHOP, LandingSound.MAGICAL);
     }
 
     @Override
