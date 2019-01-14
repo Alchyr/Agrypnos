@@ -10,4 +10,5 @@ public class PowerImages {
     public static String COMPOST = "powers/Compost.png";
     public static String NOGROW = "powers/NoGrow.png";
     public static String SUNZENITH = "powers/SunZenith.png";
+    public static String HARVEST = "powers/Harvest.png";
 }

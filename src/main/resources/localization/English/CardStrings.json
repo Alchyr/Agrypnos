@@ -209,6 +209,10 @@
     "NAME": "Fertilize",
     "DESCRIPTION": "Grants !M! Fertilizer."
   },
+  "Agrypnos:Harvest": {
+    "NAME": "Harvest",
+    "DESCRIPTION": "Upon playing a Flower that has grown at least once, gain !M! Block."
+  },
   "Agrypnos:Pollen": {
     "NAME": "Pollen",
     "DESCRIPTION": "When a Flower grows, apply !M! Poison to a random enemy."

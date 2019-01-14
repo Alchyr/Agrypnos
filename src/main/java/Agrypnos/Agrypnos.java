@@ -136,6 +136,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new Composting()); //Grants fertilize by exhausting cards
         BaseMod.addCard(new MorningSun()); //Reduces cost of un-grown flowers
         BaseMod.addCard(new SunZenith()); //Reduces cost of most-grown flower
+        BaseMod.addCard(new Harvest()); //Playing grown flower gain block
         BaseMod.addCard(new Pollen()); //Poison when flowers grow
         BaseMod.addCard(new RoseGarden()); //Thorns and thorns
 
@@ -196,6 +197,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(Fertilize.ID);
         UnlockTracker.unlockCard(Composting.ID);
         UnlockTracker.unlockCard(Pollen.ID);
+        UnlockTracker.unlockCard(Harvest.ID);
         UnlockTracker.unlockCard(MorningSun.ID);
         UnlockTracker.unlockCard(SunZenith.ID);
         UnlockTracker.unlockCard(RoseGarden.ID);
