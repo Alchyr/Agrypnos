@@ -11,5 +11,5 @@ Also, no cards have their own images.
 
 
 Progress to completion:
-29/~80 cards? maybe more, maybe less.
-4/x relics - Probably going to aim for just a few more character relics, and then maybe some more generic ones.
+52/~80 cards? maybe more, maybe less.
+3/x relics - Probably going to aim for just a few more character relics
