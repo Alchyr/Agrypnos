@@ -24,9 +24,9 @@ public class Snapdragon extends FlowerCard
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.NONE;
+    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = -1;
     private static final int DAMAGE = 6;
@@ -42,6 +42,11 @@ public class Snapdragon extends FlowerCard
         this.initialValue = DAMAGE;
         this.FlowerGrowth = GrowthType.damage;
         this.magicNumber = this.baseMagicNumber = BONUS_HITS;
+    }
+
+    @Override
+    public boolean UPGRADE_GROWTH() {
+        return false;
     }
 
     @Override

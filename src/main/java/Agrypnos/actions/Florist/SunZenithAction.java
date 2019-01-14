@@ -3,6 +3,7 @@ package Agrypnos.actions.Florist;
 import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.actions.General.ReduceCostUntilEndOfTurnAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -14,7 +15,7 @@ public class SunZenithAction extends AbstractGameAction
     private AbstractPlayer p;
 
     public SunZenithAction(int amount) {
-        this.p = (AbstractPlayer)target;
+        this.p = AbstractDungeon.player;
         this.amount = amount;
         this.actionType = ActionType.CARD_MANIPULATION;
     }
@@ -24,7 +25,7 @@ public class SunZenithAction extends AbstractGameAction
         ArrayList<FlowerCard> FlowerCardsInHand = new ArrayList<>();
 
         for (AbstractCard c : p.hand.group) {
-            if (c instanceof FlowerCard)
+            if (c instanceof FlowerCard && c.costForTurn >= 0)
                 FlowerCardsInHand.add((FlowerCard) c);
         }
 
@@ -48,7 +49,7 @@ public class SunZenithAction extends AbstractGameAction
                 }
             }
 
-            AbstractDungeon.actionManager.addToBottom(new ReduceCostUntilEndOfTurnAction(FlowerCardsInHand.get(mostGrowIndex).uuid, this.amount));
+            AbstractDungeon.actionManager.addToBottom(new ReduceCostUntilEndOfTurnAction(FlowerCardsInHand.get(mostGrowIndex).uuid, -this.amount));
         }
 
         this.isDone = true;

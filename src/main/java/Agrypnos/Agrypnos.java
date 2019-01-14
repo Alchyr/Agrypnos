@@ -9,8 +9,8 @@ import Agrypnos.util.CharacterEnum;
 import Agrypnos.characters.*;
 import Agrypnos.relics.*;
 
+import Agrypnos.util.GrowthVariable;
 import basemod.BaseMod;
-import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 
 import com.badlogic.gdx.graphics.Color;
@@ -35,7 +35,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
 
     // Colors
 
-    public static final Color FLORIST_GREEN = CardHelper.getColor(129.0f, 112.0f, 30.0f);
+    public static final Color FLORIST_COLOR = CardHelper.getColor(219.0f, 197.0f, 103.0f);
     public static final Color FLORIST_ATTACK_HEART_PURPLE = CardHelper.getColor(229.0f, 211.0f, 84.0f);
 
     // Card backgrounds/basic images
@@ -63,7 +63,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.subscribe(this);
 
         logger.info("CHARACTER: Creating Florist Color");
-        BaseMod.addColor(CardColorEnum.FLORIST_GREEN, FLORIST_GREEN,
+        BaseMod.addColor(CardColorEnum.FLORIST_COLOR, FLORIST_COLOR,
                 makePath(FLORIST_ATTACK_BACK), makePath(FLORIST_SKILL_BACK), makePath(FLORIST_POWER_BACK),
                 makePath(FLORIST_ENERGY_ORB),
                 makePath(FLORIST_ATTACK_PORTRAIT), makePath(FLORIST_SKILL_PORTRAIT), makePath(FLORIST_POWER_PORTRAIT),
@@ -82,19 +82,24 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
     // ===================================== RELICS =====================================
     @Override
     public void receiveEditRelics() {
-        logger.info("RELIC: SHARED: Added War Drum.");
-        BaseMod.addRelic(new WarDrum(), RelicType.SHARED);
+        //logger.info("RELIC: SHARED: Added War Drum.");
+        //BaseMod.addRelic(new WarDrum(), RelicType.SHARED);
+        logger.info("RELIC: FLORIST: Added Floristry.");
+        BaseMod.addRelicToCustomPool(new Floristry(), CardColorEnum.FLORIST_COLOR);
         logger.info("RELIC: FLORIST: Added Floriculture.");
-        BaseMod.addRelicToCustomPool(new Floriculture(), CardColorEnum.FLORIST_GREEN);
+        BaseMod.addRelicToCustomPool(new Floriculture(), CardColorEnum.FLORIST_COLOR);
         logger.info("RELIC: FLORIST: Added Flower Pot.");
-        BaseMod.addRelicToCustomPool(new FlowerPot(), CardColorEnum.FLORIST_GREEN);
+        BaseMod.addRelicToCustomPool(new FlowerPot(), CardColorEnum.FLORIST_COLOR);
         logger.info("RELIC: FLORIST: Added Miniature Garden.");
-        BaseMod.addRelicToCustomPool(new MiniatureGarden(), CardColorEnum.FLORIST_GREEN);
+        BaseMod.addRelicToCustomPool(new MiniatureGarden(), CardColorEnum.FLORIST_COLOR);
     }
 
     // ===================================== CARDS =====================================
     @Override
     public void receiveEditCards() {
+        logger.info("CARDS: Adding Growth variable");
+        BaseMod.addDynamicVariable(new GrowthVariable());
+
         logger.info("CARDS: Adding all");
         // Add the cards
 
@@ -103,12 +108,18 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new BasicDefend()); //block
         BaseMod.addCard(new Trowel()); //whack and grow
         BaseMod.addCard(new Till()); //whack and smack and if they have block vulnerable
+        BaseMod.addCard(new Rake()); //slash all and seed
         BaseMod.addCard(new Replanting()); //reset a flower and now it's free
         BaseMod.addCard(new Thorn()); //damage + vulnerable
         BaseMod.addCard(new FloralScent()); //weak to all
         BaseMod.addCard(new Watering()); //grow all flowers
+        BaseMod.addCard(new Rainfall()); //grow ALL flowers
         BaseMod.addCard(new BigShovel()); //damage, get seeds
+        BaseMod.addCard(new SpringArrival()); //SEEDS
+        BaseMod.addCard(new NaturePurity()); //exhaust not flower, get energy
         BaseMod.addCard(new Verdancy()); //double growth
+        BaseMod.addCard(new Restock()); //draw flowers if no flowers
+        BaseMod.addCard(new EntanglingVines()); //damage + strength down temporarily
         BaseMod.addCard(new CombTheEarth()); //seed in hand, seed in deck
         BaseMod.addCard(new Pesticide()); //poison cycled
         BaseMod.addCard(new StormShelter()); //armor, no flower growth
@@ -129,21 +140,26 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new RoseGarden()); //Thorns and thorns
 
         //Flowers
-        BaseMod.addCard(new Rose()); //basic, 2 cost damage + give thorn
+        BaseMod.addCard(new Dandelion()); //basic, gain block
+        BaseMod.addCard(new Azalea()); //common, 1 cost damage
+        BaseMod.addCard(new Rose()); //common, 2 cost damage + give thorn
         BaseMod.addCard(new Zinnia()); //common, temporary dex
         BaseMod.addCard(new Dandelion()); //common, gain block
         BaseMod.addCard(new Wolfsbane()); //common, apply poison
         BaseMod.addCard(new MorningGlory()); //uncommon, decent damage, but decays instead of grow
         BaseMod.addCard(new Sunflower()); //uncommon, give energy
+        BaseMod.addCard(new Cattail()); //uncommon, block + weak
         BaseMod.addCard(new Poppy()); //uncommon, give temporary health
+        BaseMod.addCard(new Carnation()); //uncommon, gain mediocre block, double if exhausted and move to discard
         BaseMod.addCard(new Poinsettia()); //uncommon, exhaust cards for block
         BaseMod.addCard(new CorpseFlower()); //uncommon, poison, grow on apply poison
         BaseMod.addCard(new Snapdragon()); //uncommon, deal x damage
+        BaseMod.addCard(new Orchid()); //uncommon, reduce x +growth strength
         BaseMod.addCard(new Myosotis()); //uncommon, permanent growing damage
         BaseMod.addCard(new QueenOfTheNight()); //rare, damage reduction in hand
         BaseMod.addCard(new Narcissus()); //rare, copies a card in hand, exhausts other cards
         BaseMod.addCard(new GhostLily()); //rare, exhaust all flowers give seeds
-        BaseMod.addCard(new Lotus()); //rare, increase card draw
+        BaseMod.addCard(new Lotus()); //rare, draw cards
         BaseMod.addCard(new Rue()); //rare, remove debuff/grant artifact
         BaseMod.addCard(new Camellia()); //rare, deal damage with somewhat exponential scaling
 
@@ -153,14 +169,20 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(BasicDefend.ID);
         UnlockTracker.unlockCard(Trowel.ID);
         UnlockTracker.unlockCard(Replanting.ID);
+        UnlockTracker.unlockCard(Rake.ID);
         UnlockTracker.unlockCard(Thorn.ID);
         UnlockTracker.unlockCard(FloralScent.ID);
         UnlockTracker.unlockCard(StormShelter.ID);
         UnlockTracker.unlockCard(Till.ID);
         UnlockTracker.unlockCard(Watering.ID);
+        UnlockTracker.unlockCard(NaturePurity.ID);
         UnlockTracker.unlockCard(CombTheEarth.ID);
         UnlockTracker.unlockCard(Pesticide.ID);
         UnlockTracker.unlockCard(BigShovel.ID);
+        UnlockTracker.unlockCard(EntanglingVines.ID);
+        UnlockTracker.unlockCard(Restock.ID);
+        UnlockTracker.unlockCard(SpringArrival.ID);
+        UnlockTracker.unlockCard(Rainfall.ID);
         UnlockTracker.unlockCard(Verdancy.ID);
         UnlockTracker.unlockCard(Prune.ID);
         UnlockTracker.unlockCard(NaturalNutrition.ID);
@@ -185,10 +207,13 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(Poinsettia.ID);
         UnlockTracker.unlockCard(Lotus.ID);
         UnlockTracker.unlockCard(Sunflower.ID);
+        UnlockTracker.unlockCard(Cattail.ID);
         UnlockTracker.unlockCard(Poppy.ID);
+        UnlockTracker.unlockCard(Carnation.ID);
         UnlockTracker.unlockCard(Narcissus.ID);
         UnlockTracker.unlockCard(Zinnia.ID);
         UnlockTracker.unlockCard(CorpseFlower.ID);
+        UnlockTracker.unlockCard(Orchid.ID);
         UnlockTracker.unlockCard(Dandelion.ID);
         UnlockTracker.unlockCard(Camellia.ID);
         UnlockTracker.unlockCard(Snapdragon.ID);
@@ -219,13 +244,16 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
     @Override
     public void receiveEditKeywords() {
         final String[] Flower = { "Flower", "flower", "Flowers", "flowers" };
-        BaseMod.addKeyword(Flower, "Cards that stay in your hand and slowly grow in power. Their growth resets when used.");
+        BaseMod.addKeyword("Flower", Flower, "Cards that stay in your hand and slowly grow in power. Their growth resets when used.");
 
         final String[] Thorn = { "Thorn","thorn" };
-        BaseMod.addKeyword(Thorn, "A 0 cost damage card that applies Vulnerable.");
+        BaseMod.addKeyword("Thorn", Thorn, "A 0 cost damage card that applies Vulnerable.");
 
         final String[] Fertilizer = { "Fertilizer", "fertilizer" };
-        BaseMod.addKeyword(Fertilizer, "Triggers the growth of one random Flower at the start of your turn for each stack.");
+        BaseMod.addKeyword("Fertilizer", Fertilizer, "Triggers the growth of one random Flower at the start of your turn for each stack.");
+
+        final String[] Seed = { "Seed", "seed" , "Seeds" , "seeds" };
+        BaseMod.addKeyword("Seed", Seed, "#yEthereal card that grants a small amount of #yBlock and a random #yFlower when #yExhausted.");
     }
 
     @SuppressWarnings("unused")

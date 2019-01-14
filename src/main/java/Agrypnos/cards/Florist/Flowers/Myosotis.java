@@ -2,7 +2,6 @@ package Agrypnos.cards.Florist.Flowers;
 
 import Agrypnos.Agrypnos;
 import Agrypnos.abstracts.FlowerCard;
-import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.cards.CardImages;
 import Agrypnos.util.CardColorEnum;
 
@@ -24,11 +23,10 @@ public class Myosotis extends FlowerCard
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 2;
     private static final int DAMAGE = 1;
@@ -45,9 +43,11 @@ public class Myosotis extends FlowerCard
         this.baseDamage = DAMAGE;
 
         this.isEthereal = true;
+    }
 
-        this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
-        this.initializeDescription();
+    @Override
+    public boolean UPGRADE_GROWTH() {
+        return true;
     }
 
     @Override
@@ -89,7 +89,6 @@ public class Myosotis extends FlowerCard
             this.upgradeName();
             this.upgradeGrowth(UPGRADE_PLUS_GROWTH);
 
-            this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
             this.initializeDescription();
         }
     }

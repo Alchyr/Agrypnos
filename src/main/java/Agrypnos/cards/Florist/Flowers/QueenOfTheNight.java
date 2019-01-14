@@ -24,11 +24,10 @@ public class QueenOfTheNight extends FlowerCard
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = -2;
     private static final int PROTECT = 4;
@@ -48,9 +47,11 @@ public class QueenOfTheNight extends FlowerCard
         this.FlowerGrowth = GrowthType.magic;
 
         this.magicNumber = this.baseMagicNumber = PROTECT;
+    }
 
-        this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
-        this.initializeDescription();
+    @Override
+    public boolean UPGRADE_GROWTH() {
+        return true;
     }
 
     @Override
@@ -119,7 +120,6 @@ public class QueenOfTheNight extends FlowerCard
             this.upgradeMagicNumber(UPGRADE_PLUS_PROTECT);
             this.initialValue = this.baseMagicNumber;
             this.upgradeGrowth(UPGRADE_PLUS_GROWTH);
-            this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
             this.initializeDescription();
         }
     }

@@ -5,6 +5,7 @@ import Agrypnos.abstracts.Relic;
 import Agrypnos.actions.Florist.DiscardAllFlowersAction;
 import Agrypnos.abstracts.FlowerCard;
 
+import Agrypnos.characters.TheFlorist;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -21,6 +22,11 @@ public class MiniatureGarden extends Relic
     @Override
     public AbstractRelic makeCopy() {
         return new MiniatureGarden();
+    }
+
+    public boolean canSpawn()
+    {
+        return AbstractDungeon.player instanceof TheFlorist;
     }
 
     @Override

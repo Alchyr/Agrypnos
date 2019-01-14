@@ -25,7 +25,7 @@ public class Poppy extends FlowerCard
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 1;
     private static final int TEMPORARY_HEALTH = 6;
@@ -42,6 +42,11 @@ public class Poppy extends FlowerCard
         this.magicNumber = this.baseMagicNumber = TEMPORARY_HEALTH;
 
         this.exhaust = true;
+    }
+
+    @Override
+    public boolean UPGRADE_GROWTH() {
+        return false;
     }
 
     @Override

@@ -22,15 +22,14 @@ public class Dandelion extends FlowerCard
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 1;
     private static final int BLOCK = 6;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
     private static final int GROWTH = 2;
     private static final int UPGRADE_PLUS_GROWTH = 1;
 
@@ -42,9 +41,11 @@ public class Dandelion extends FlowerCard
         FlowerGrowth = GrowthType.block;
 
         this.baseBlock = BLOCK;
+    }
 
-        this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
-        this.initializeDescription();
+    @Override
+    public boolean UPGRADE_GROWTH() {
+        return true;
     }
 
     @Override
@@ -80,7 +81,6 @@ public class Dandelion extends FlowerCard
             this.upgradeGrowth(UPGRADE_PLUS_GROWTH);
             initialValue = baseBlock;
 
-            this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
             this.initializeDescription();
         }
     }

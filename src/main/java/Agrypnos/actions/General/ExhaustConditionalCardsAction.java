@@ -1,5 +1,6 @@
 package Agrypnos.actions.General;
 
+import Agrypnos.Agrypnos;
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
@@ -39,16 +40,28 @@ public class ExhaustConditionalCardsAction extends AbstractGameAction {
             }
         }
 
+        Agrypnos.logger.info("Conditional Exhaust: " + removeCards.size() + " matching cards. Target: " + amount + " cards.");
+
         if (removeCards.size() == 0) {
             this.isDone = true;
         }
         else
         {
-            for (int i = 0; i < Math.min(removeCards.size(), amount); i++)
+            if (amount == -1)
             {
-                AbstractCard c = removeCards.getTopCard();
-                AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, source));
-                removeCards.removeTopCard();
+                for (AbstractCard c : removeCards.group)
+                {
+                    AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, source));
+                }
+                removeCards.clear();
+            }
+            else
+            {
+                for (int i = 0; i < Math.min(removeCards.size(), amount); i++)
+                {
+                    AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(removeCards.group.get(i), source));
+                }
+                removeCards.clear();
             }
             this.isDone = true;
         }

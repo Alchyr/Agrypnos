@@ -2,7 +2,6 @@ package Agrypnos.cards.Florist.Powers;
 
 import Agrypnos.Agrypnos;
 import Agrypnos.cards.CardImages;
-import Agrypnos.powers.Florist.MorningSunPower;
 import Agrypnos.powers.Florist.SunZenithPower;
 import Agrypnos.util.CardColorEnum;
 import basemod.abstracts.CustomCard;
@@ -24,12 +23,12 @@ public class SunZenith extends CustomCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 3;
     private static final int UPG_COST = 2;
 
-    private static final int REDUCTION = 1;
+    private static final int REDUCTION = 2;
 
 
     public SunZenith() {

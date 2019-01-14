@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 
 public class Camellia extends FlowerCard
 {
@@ -26,7 +27,7 @@ public class Camellia extends FlowerCard
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 1;
     private static final int DAMAGE = 3;
@@ -40,6 +41,11 @@ public class Camellia extends FlowerCard
         this.baseDamage = DAMAGE;
         this.initialValue = DAMAGE;
         this.FlowerGrowth = GrowthType.damage;
+    }
+
+    @Override
+    public boolean UPGRADE_GROWTH() {
+        return false;
     }
 
     @Override
@@ -58,6 +64,7 @@ public class Camellia extends FlowerCard
                 )
             );
         }
+
         if (ResetOnPlay)
             AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(this));
     }

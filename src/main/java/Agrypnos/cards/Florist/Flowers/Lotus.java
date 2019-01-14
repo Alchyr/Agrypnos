@@ -6,6 +6,7 @@ import Agrypnos.actions.Florist.ResetFlowerGrowthAction;
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.cards.CardImages;
 import Agrypnos.util.CardColorEnum;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.FastDrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -27,65 +28,49 @@ public class Lotus extends FlowerCard
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
-    private static final int COST = -2;
+    private static final int COST = 1;
+    private static final int UPG_COST = 0;
 
-    private static final int LIFETIME = 4;
-    private static final int GROWTH = -1;
+    private static final int DRAW = 2;
+    private static final int GROWTH = 1;
 
     public Lotus() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
-        initialValue = LIFETIME;
+        initialValue = DRAW;
 
         this.FlowerGrowth = GrowthType.magic;
-        this.magicNumber = this.baseMagicNumber = LIFETIME;
+        this.magicNumber = this.baseMagicNumber = DRAW;
+    }
+
+    @Override
+    public boolean UPGRADE_GROWTH() {
+        return false;
     }
 
     @Override
     public int baseCost()
     {
-        return 0;
+        if (upgraded)
+            return UPG_COST;
+        return COST;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new UseCardAction(this));
-    }
-    @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m)
-    {
-        cantUseMessage = "This card cannot be played.";
-        return false;
-    }
+        AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
 
-    @Override
-    public void triggerOnExhaust() {
-        AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(this)); //always resets on exhaust, because otherwise it's useless if brought back
-    }
 
-    @Override
-    public void atTurnStart() {
-        super.atTurnStart();
-        if (upgraded)
-        {
-            AbstractDungeon.actionManager.addToBottom(new FastDrawCardAction(AbstractDungeon.player, 2));
-        }
-        else
-        {
-            AbstractDungeon.actionManager.addToBottom(new FastDrawCardAction(AbstractDungeon.player, 1));
-        }
-        if (magicNumber <= 0)
-        {
-            AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand, true));
-        }
+        if (ResetOnPlay)
+            AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(this)); //always resets on exhaust, because otherwise it's useless if brought back
     }
 
     @Override
     public void triggerOnEndOfTurnForPlayingCard() {
         super.triggerOnEndOfTurnForPlayingCard();
-        AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(getTriggerGrowthAction(), true, null));
+        AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(getTriggerGrowthAction(), true, growthFlash));
     }
 
     @Override
@@ -97,7 +82,7 @@ public class Lotus extends FlowerCard
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
+            this.upgradeBaseCost(UPG_COST);
             this.initializeDescription();
         }
     }

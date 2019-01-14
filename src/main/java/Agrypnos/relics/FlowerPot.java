@@ -4,6 +4,7 @@ import Agrypnos.Agrypnos;
 import Agrypnos.cards.Florist.Skills.Seed;
 import Agrypnos.abstracts.Relic;
 
+import Agrypnos.characters.TheFlorist;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -20,6 +21,11 @@ public class FlowerPot extends Relic
     @Override
     public AbstractRelic makeCopy() {
         return new FlowerPot();
+    }
+
+    public boolean canSpawn()
+    {
+        return AbstractDungeon.player instanceof TheFlorist;
     }
 
     @Override

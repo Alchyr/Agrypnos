@@ -5,6 +5,7 @@ import java.util.*;
 import Agrypnos.cards.Florist.Attacks.BasicStrike;
 import Agrypnos.cards.Florist.Attacks.Trowel;
 import Agrypnos.cards.Florist.Skills.BasicDefend;
+import Agrypnos.relics.Floristry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,7 +29,6 @@ import basemod.animations.SpriterAnimation;
 import Agrypnos.Agrypnos;
 import Agrypnos.util.CardColorEnum;
 import Agrypnos.cards.Florist.Flowers.*;
-import Agrypnos.relics.Floriculture;
 
 public class TheFlorist extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(Agrypnos.class.getName());
@@ -150,9 +150,9 @@ public class TheFlorist extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(Floriculture.ID);
+        retVal.add(Floristry.ID);
 
-        UnlockTracker.markRelicAsSeen(Floriculture.ID);
+        UnlockTracker.markRelicAsSeen(Floristry.ID);
 
         return retVal;
     }
@@ -176,12 +176,12 @@ public class TheFlorist extends CustomPlayer {
 
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return CardColorEnum.FLORIST_GREEN;
+        return CardColorEnum.FLORIST_COLOR;
     }
 
     @Override
     public Color getCardTrailColor() {
-        return Agrypnos.FLORIST_GREEN;
+        return Agrypnos.FLORIST_COLOR;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -213,7 +213,7 @@ public class TheFlorist extends CustomPlayer {
 
     @Override
     public Color getCardRenderColor() {
-        return Agrypnos.FLORIST_GREEN;
+        return Agrypnos.FLORIST_COLOR;
     }
 
     @Override

@@ -39,46 +39,50 @@ public class MoveRandomCardAction extends AbstractGameAction {
     }
 
     public void update() {
-        Iterator sourceCards;
-        AbstractCard card;
-
-        CardGroup tempCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
-        sourceCards = this.source.group.iterator();
-
-        while(sourceCards.hasNext()) {
-            card = (AbstractCard)sourceCards.next();
-            if (this.predicate.test(card)) {
-                tempCards.addToRandomSpot(card);
-            }
-        }
-
-        if (tempCards.size() == 0) {
-            this.isDone = true;
-            return;
-        }
-        else
+        if (this.duration == Settings.ACTION_DUR_FAST)
         {
-            for (int i = 0; i < Math.min(tempCards.size(), amount); i++)
+            Iterator sourceCards;
+            AbstractCard card;
+
+            CardGroup tempCards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+            sourceCards = this.source.group.iterator();
+
+            while(sourceCards.hasNext()) {
+                card = (AbstractCard)sourceCards.next();
+                if (this.predicate.test(card)) {
+                    tempCards.addToRandomSpot(card);
+                }
+            }
+
+            if (tempCards.size() == 0) {
+                this.isDone = true;
+                return;
+            }
+            else
             {
-                AbstractCard c = tempCards.getTopCard();
-                if (this.destination == this.p.hand && this.p.hand.size() == BaseMod.MAX_HAND_SIZE) {
-                    this.source.moveToDiscardPile(c);
-                    this.p.createHandIsFullDialog();
-                } else {
-                    c.unhover();
-                    c.lighten(true);
-                    c.setAngle(0.0F);
-                    c.drawScale = 0.12F;
-                    c.targetDrawScale = 0.75F;
-                    c.current_x = CardGroup.DRAW_PILE_X;
-                    c.current_y = CardGroup.DRAW_PILE_Y;
-                    this.source.removeCard(c);
-                    this.destination.addToTop(c);
-                    AbstractDungeon.player.hand.refreshHandLayout();
-                    AbstractDungeon.player.hand.applyPowers();
+                for (int i = 0; i < Math.min(tempCards.size(), amount); i++)
+                {
+                    AbstractCard c = tempCards.group.get(i);
+
+                    if (this.destination == this.p.hand && this.p.hand.size() == BaseMod.MAX_HAND_SIZE) {
+                        this.source.moveToDiscardPile(c);
+                        this.p.createHandIsFullDialog();
+                    } else {
+                        c.unhover();
+                        c.lighten(true);
+                        c.setAngle(0.0F);
+                        c.drawScale = 0.12F;
+                        c.targetDrawScale = 0.75F;
+                        c.current_x = CardGroup.DRAW_PILE_X;
+                        c.current_y = CardGroup.DRAW_PILE_Y;
+                        this.source.removeCard(c);
+                        this.destination.addToTop(c);
+                        AbstractDungeon.player.hand.refreshHandLayout();
+                        AbstractDungeon.player.hand.applyPowers();
+                    }
                 }
             }
         }
-        this.isDone = true;
+        this.tickDuration();
     }
 }

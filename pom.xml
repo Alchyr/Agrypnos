@@ -61,7 +61,8 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <copy file="target/Agrypnos.jar" tofile="../Agrypnos/Agrypnos.jar"/>
+                                <copy file="target/Agrypnos.jar" tofile="C:/Program Files (x86)/Steam/steamapps/common/SlayTheSpire/Agrypnos/content/Agrypnos.jar"/>
+                                <copy file="target/Agrypnos.jar" tofile="C:/Program Files (x86)/Steam/steamapps/common/SlayTheSpire/mods/Agrypnos.jar"/>
                             </target>
                         </configuration>
                         <goals>

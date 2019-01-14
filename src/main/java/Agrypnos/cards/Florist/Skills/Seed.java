@@ -5,6 +5,7 @@ import Agrypnos.cards.CardImages;
 import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.util.CardColorEnum;
 
+import basemod.helpers.CardTags;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AlwaysRetainField;
 
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
@@ -35,7 +36,7 @@ public class Seed extends CustomCard
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = -2;
     private static final int BLOCK = 4;
@@ -82,7 +83,7 @@ public class Seed extends CustomCard
         while (i.hasNext())
         {
             AbstractCard c = i.next();
-            if (c instanceof FlowerCard)
+            if (c instanceof FlowerCard && !(c.tags.contains(CardTags.HEALING)))
             {
                 switch (c.rarity) //much more likely to generate more common cards
                 {
@@ -91,8 +92,10 @@ public class Seed extends CustomCard
                         FlowerCardKeys.add(c.cardID);
                         FlowerCardKeys.add(c.cardID);
                         FlowerCardKeys.add(c.cardID);
+                        FlowerCardKeys.add(c.cardID);
                         break;
                     case UNCOMMON:
+                        FlowerCardKeys.add(c.cardID);
                         FlowerCardKeys.add(c.cardID);
                         FlowerCardKeys.add(c.cardID);
                         break;

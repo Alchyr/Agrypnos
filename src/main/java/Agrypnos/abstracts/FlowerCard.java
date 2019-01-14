@@ -23,7 +23,11 @@ public abstract class FlowerCard extends CustomCard {
     private int MorningSunTurnCostReduction = 0; //tracks whether Morning Sun has already been activated this turn
     private int MorningSunCostReduction = 0; //tracks whether Morning Sun has already been activated this turn
 
-    protected int growth;
+    public int growth;
+
+    public boolean upgradePreview = false;
+
+    public abstract boolean UPGRADE_GROWTH();
 
     public enum GrowthType
     {

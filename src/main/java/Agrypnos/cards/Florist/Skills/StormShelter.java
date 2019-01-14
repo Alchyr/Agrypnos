@@ -24,7 +24,7 @@ public class StormShelter extends CustomCard
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 2;
     private static final int BLOCK = 16;
@@ -35,6 +35,7 @@ public class StormShelter extends CustomCard
     public StormShelter() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         this.baseBlock = BLOCK;
+        this.magicNumber = this.baseMagicNumber = DEBUFF_AMT;
     }
 
     // Actions the card should do.
@@ -43,7 +44,7 @@ public class StormShelter extends CustomCard
         AbstractDungeon.actionManager.addToBottom(
                 new com.megacrit.cardcrawl.actions.common.GainBlockAction(p, p, this.block));
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new NoGrowPower(p, p, DEBUFF_AMT), DEBUFF_AMT));
+                new ApplyPowerAction(p, p, new NoGrowPower(p, p, this.magicNumber), this.magicNumber));
     }
 
     // Which card to return when making a copy of this card.

@@ -1,5 +1,6 @@
 package Agrypnos.actions.Florist;
 
+import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.cards.Florist.Flowers.CorpseFlower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -46,7 +47,7 @@ public class GrowCorpseFlowersAction extends AbstractGameAction {
 
         for (CorpseFlower c : corpseFlowers)
         {
-            AbstractDungeon.actionManager.addToBottom(c.getTriggerGrowthAction());
+            AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(c.getTriggerGrowthAction(), true, FlowerCard.growthFlash));
         }
 
         this.isDone = true;

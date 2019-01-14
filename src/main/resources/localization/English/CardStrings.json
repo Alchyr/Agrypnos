@@ -14,16 +14,33 @@
   },
   "Agrypnos:Rose": {
     "NAME": "Rose",
-    "DESCRIPTION": "Flower. NL Deal !D! damage. NL Add a Thorn to your hand for every 10 damage dealt. NL At the end of your turn, increase the damage by 4."
+    "DESCRIPTION": "Flower. NL Deal !D! damage. NL Add a Thorn to your hand for every 10 damage dealt. NL At the end of your turn, increase the damage by !growth!."
   },
   "Agrypnos:Pesticide": {
     "NAME": "Pesticide",
     "DESCRIPTION": "Apply !M! Poison to all enemies. NL Draw 1 card."
   },
+  "Agrypnos:NaturePurity": {
+    "NAME": "Nature's Purity",
+    "DESCRIPTION": "Exhaust all cards other than Flower cards in your hand. NL Gain !M! [E] for each card Exhausted."
+  },
+  "Agrypnos:Restock": {
+    "NAME": "Restock",
+    "DESCRIPTION": "Can only be played if you have no Flowers in your hand. NL Draw !M! random Flowers from your draw pile."
+  },
+  "Agrypnos:Rake": {
+    "NAME": "Rake",
+    "DESCRIPTION": "Deal !D! damage to all enemies. Add !M! Seed to your hand.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage to all enemies. Add !M! Upgraded Seed to your hand."
+  },
+  "Agrypnos:EntanglingVines": {
+    "NAME": "Tangling Vines",
+    "DESCRIPTION": "Deal !D! damage to all enemies. NL All enemies lose !M! Strength this turn. NL Exhaust."
+  },
   "Agrypnos:BigShovel": {
     "NAME": "Big Shovel",
-    "DESCRIPTION": "Deal !D! damage. Add !M! Seeds to your hand.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. Add !M! Upgraded Seeds to your hand."
+    "DESCRIPTION": "Deal !D! damage. NL Add !M! Seeds to your hand.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Add !M! Upgraded Seeds to your hand."
   },
   "Agrypnos:Till": {
     "NAME": "Till",
@@ -53,7 +70,7 @@
   },
   "Agrypnos:StormShelter": {
     "NAME": "Storm Shelter",
-    "DESCRIPTION": "Gain !B! Block. For 1 turn, Flowers cannot grow."
+    "DESCRIPTION": "Gain !B! Block. For !M! turn, Flowers cannot grow."
   },
   "Agrypnos:Tumbleweed": {
     "NAME": "Tumbleweed",
@@ -77,6 +94,11 @@
     "NAME": "Verdancy",
     "DESCRIPTION": "Double the total growth of each Flower in your hand. NL Exhaust."
   },
+  "Agrypnos:SpringArrival": {
+    "NAME": "Spring's Arrival",
+    "DESCRIPTION": "Add X Seeds to your hand.",
+    "UPGRADE_DESCRIPTION":  "Add X + !M! Upgraded Seeds to your hand."
+  },
   "Agrypnos:NaturalNutrition": {
     "NAME": "Natural Nutrition",
     "DESCRIPTION": "Lose !M! HP. NL Trigger growth of all Flowers in your hand.",
@@ -98,71 +120,81 @@
   },
   "Agrypnos:Wolfsbane": {
     "NAME": "Wolfsbane",
-    "DESCRIPTION": "Flower. NL Apply !M! Poison. NL At the end of your turn, increase the Poison applied by ",
-    "EXTENDED_DESCRIPTION": ["."]
+    "DESCRIPTION": "Flower. NL Apply !M! Poison. NL At the end of your turn, increase the Poison applied by !growth!."
+  },
+  "Agrypnos:Azalea": {
+    "NAME": "Azalea",
+    "DESCRIPTION": "Flower. NL Deal !D! damage. NL At the end of your turn, increase the damage by !growth!."
   },
   "Agrypnos:CorpseFlower": {
     "NAME": "Corpse Flower",
-    "DESCRIPTION": "Flower. NL Apply !M! Poison to all enemies. NL When a card is Exhausted, increase the Poison applied by ",
-    "EXTENDED_DESCRIPTION": ["."]
+    "DESCRIPTION": "Flower. NL Apply !M! Poison to all enemies. NL When a card is Exhausted, increase the Poison applied by !growth!."
+  },
+  "Agrypnos:Carnation": {
+    "NAME": "Carnation",
+    "DESCRIPTION": "Flower. NL Gain !B! Block. NL When this card is Exhausted, gain twice as much and move this card to your discard pile. NL At the end of your turn, increase the Block by !growth!."
   },
   "Agrypnos:MorningGlory": {
     "NAME": "Morning Glory",
-    "DESCRIPTION": "Flower. NL Deal !D! damage. NL At the end of your turn, reduce damage dealt by 4."
+    "DESCRIPTION": "Flower. NL Deal !D! damage. NL At the end of your turn, reduce damage dealt by !growth!."
   },
   "Agrypnos:Poinsettia": {
     "NAME": "Poinsettia",
-    "DESCRIPTION": "Flower. NL Exhaust up to !M! cards. Gain !B! Block for each card exhausted. NL At the end of your turn, increase the Block per card by 1."
+    "DESCRIPTION": "Flower. NL Exhaust up to !M! cards. Gain !B! Block for each card exhausted. NL At the end of your turn, increase the Block per card by !growth!."
   },
   "Agrypnos:Dandelion": {
     "NAME": "Dandelion",
-    "DESCRIPTION": "Flower. NL Gain !B! Block. NL At the end of your turn, increase Block gain by ",
-    "EXTENDED_DESCRIPTION": ["."]
+    "DESCRIPTION": "Flower. NL Gain !B! Block. NL At the end of your turn, increase Block gain by !growth!."
   },
   "Agrypnos:Narcissus": {
     "NAME": "Narcissus",
-    "DESCRIPTION": "Flower. NL Choose a card. Exhaust !M! random other card(s). Add !M! identical copies of the chosen card to your hand. NL At the end of your turn, increase the number by 1. NL Exhaust.",
-    "UPGRADE_DESCRIPTION":  "Flower. NL Choose a card. Exhaust !M! random other card(s). Add !M! identical copies of the chosen card to your hand. NL At the end of your turn, increase the number by 1."
+    "DESCRIPTION": "Flower. NL Choose a card. Exhaust !M! random other cards. NL Add !M! identical copies of the chosen card to your hand. NL At the end of your turn, increase the number by !growth!. NL Exhaust.",
+    "UPGRADE_DESCRIPTION":  "Flower. NL Choose a card. Exhaust !M! random other cards. NL Add !M! identical copies of the chosen card to your hand. NL At the end of your turn, increase the number by !growth!."
   },
   "Agrypnos:QueenOfTheNight": {
     "NAME": "Queen of the Night",
-    "DESCRIPTION": "Flower. NL Unplayable. NL Upon taking damage, reduce it by !B! and discard this card. NL At the end of your turn, increase the reduction by ",
-    "EXTENDED_DESCRIPTION": ["."]
+    "DESCRIPTION": "Flower. NL Unplayable. NL Upon taking damage, reduce it by !M! and discard this card. NL At the end of your turn, increase the reduction by !growth!."
   },
   "Agrypnos:Zinnia": {
     "NAME": "Zinnia",
-    "DESCRIPTION": "Flower. NL Gain !M! Dexterity until the end of this turn. NL At the end of your turn, increase the Dexterity gain by 1. NL Exhaust."
+    "DESCRIPTION": "Flower. NL Gain !M! Dexterity until the end of this turn. NL At the end of your turn, increase the Dexterity gain by !growth!. NL Exhaust."
   },
   "Agrypnos:Rue": {
     "NAME": "Rue",
-    "DESCRIPTION": "Flower. NL Remove !M! random debuff(s). NL Any unused removal grants 1 Artifact instead. NL Exhaust."
+    "DESCRIPTION": "Flower. NL Remove !M! random debuff(s). NL Any unused removal grants 1 Artifact instead. NL At the end of your turn, increase removal by !growth!. NL Exhaust."
   },
   "Agrypnos:Poppy": {
     "NAME": "Poppy",
-    "DESCRIPTION": "Flower. NL Gain !M! temporary health. NL At the end of your turn, increase this by 1. NL Exhaust."
+    "DESCRIPTION": "Flower. NL Gain !M! temporary health. NL At the end of your turn, increase this by !growth!. NL Exhaust."
+  },
+  "Agrypnos:Cattail": {
+    "NAME": "Cattail",
+    "DESCRIPTION": "Flower. NL Apply !M! Weak. NL Gain !B! Block. NL At the end of your turn, increase the Weak by !growth!."
   },
   "Agrypnos:Lotus": {
     "NAME": "Lotus",
-    "DESCRIPTION": "Flower. NL Unplayable. NL At the start of your turn, draw 1 additional card. NL Exhausts itself after !M! turns.",
-    "UPGRADE_DESCRIPTION": "Flower. NL Unplayable. NL At the start of your turn, draw 2 additional cards. NL Exhausts itself after !M! turns."
+    "DESCRIPTION": "Flower. NL Draw !M! cards. NL At the end of your turn, increase the draw by !growth!."
   },
   "Agrypnos:Camellia": {
     "NAME": "Camellia",
-    "DESCRIPTION": "Flower. NL Deal damage multiple times, starting with !D! and inflicting 1 less damage each time until reaching 0. NL At the end of your turn, increase the amount of damage by 1."
+    "DESCRIPTION": "Flower. NL Deal damage multiple times, starting with !D! and inflicting 1 less damage each time until reaching 0. NL At the end of your turn, increase the damage by !growth!."
   },
   "Agrypnos:Snapdragon": {
     "NAME": "Snapdragon",
-    "DESCRIPTION": "Flower. NL Deal !D! damage to a random enemy X times. NL At the end of your turn, increase the amount of damage by 1.",
-    "UPGRADE_DESCRIPTION": "Flower. NL Deal !D! damage to a random enemy X + !M! times. NL At the end of your turn, increase the amount of damage by 1."
+    "DESCRIPTION": "Flower. NL Deal !D! damage to a random enemy X times. NL At the end of your turn, increase the damage by !growth!.",
+    "UPGRADE_DESCRIPTION": "Flower. NL Deal !D! damage to a random enemy X + !M! times. NL At the end of your turn, increase the damage by !growth!."
+  },
+  "Agrypnos:Orchid": {
+    "NAME": "Orchid",
+    "DESCRIPTION": "Flower. NL Enemy loses X + !M! Strength this turn. NL At the end of your turn, increase the Strength loss by !growth!. NL Exhaust."
   },
   "Agrypnos:Sunflower": {
     "NAME": "Sunflower",
-    "DESCRIPTION": "Flower. NL Gain !M! [E]. NL At the end of your turn, increase the energy gain by 1."
+    "DESCRIPTION": "Flower. NL Gain !M! [E]. NL At the end of your turn, increase the energy gain by !growth!."
   },
   "Agrypnos:Myosotis": {
     "NAME": "Myosotis",
-    "DESCRIPTION": "Flower. NL Ethereal. NL Deal !D! damage. NL At the end of your turn or when this card is played, increase the damage by ",
-    "EXTENDED_DESCRIPTION": [" permanently. NL Does not reset when played."]
+    "DESCRIPTION": "Flower. NL Ethereal. NL Deal !D! damage. NL At the end of your turn or when this card is played, increase the damage by !growth! permanently. NL Does not reset when played."
   },
   "Agrypnos:GhostLily": {
     "NAME": "Ghost Lily",
@@ -187,6 +219,10 @@
   },
   "Agrypnos:MorningSun": {
     "NAME": "Morning Sun",
+    "DESCRIPTION": "Flowers that have not grown cost !M! less [E]."
+  },
+  "Agrypnos:Greenhouse": {
+    "NAME": "Greenhouse",
     "DESCRIPTION": "Flowers that have not grown cost !M! less [E]."
   },
   "Agrypnos:SunZenith": {

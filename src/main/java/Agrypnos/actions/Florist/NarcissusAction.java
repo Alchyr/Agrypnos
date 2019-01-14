@@ -1,5 +1,6 @@
 package Agrypnos.actions.Florist;
 
+import Agrypnos.Agrypnos;
 import Agrypnos.actions.General.ExhaustConditionalCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -31,6 +32,8 @@ public class NarcissusAction extends AbstractGameAction {
     }
 
     public void update() {
+        Agrypnos.logger.info("Narcissus: Making " + amount + " copies of chosen card");
+
         Iterator cardIterator;
         AbstractCard c;
         if (this.duration == Settings.ACTION_DUR_FAST) {
@@ -49,6 +52,7 @@ public class NarcissusAction extends AbstractGameAction {
                 copyCard = this.p.hand.getTopCard();
                 copyCard.superFlash();
 
+                Agrypnos.logger.info("Narcissus: No other cards in hand.");
                 AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(copyCard.makeStatEquivalentCopy(), amount));
 
                 this.isDone = true;
@@ -64,11 +68,15 @@ public class NarcissusAction extends AbstractGameAction {
                 this.p.hand.addToTop(copyCard);
             }
 
+            Agrypnos.logger.info("Narcissus: Card chosen - " + copyCard.cardID);
+
             AbstractDungeon.handCardSelectScreen.wereCardsRetrieved = true;
             AbstractDungeon.handCardSelectScreen.selectedCards.group.clear();
 
             //copyCard is selected
             int exhaustCount = Math.min(AbstractDungeon.player.hand.group.size() - 1, amount);
+
+            Agrypnos.logger.info("Narcissus: Cards to exhaust: " + exhaustCount);
 
             AbstractDungeon.actionManager.addToBottom(new ExhaustConditionalCardsAction(AbstractDungeon.player.hand, (card)->!card.equals(copyCard), exhaustCount));
 

@@ -29,7 +29,7 @@ public class Rose extends FlowerCard
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 2;
     private static final int DAMAGE = 10;
@@ -51,6 +51,11 @@ public class Rose extends FlowerCard
         this.baseDamage = DAMAGE;
 
         thornCard = new Thorn().makeCopy();
+    }
+
+    @Override
+    public boolean UPGRADE_GROWTH() {
+        return false;
     }
 
     @Override

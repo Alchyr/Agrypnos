@@ -26,11 +26,11 @@ public class MortarAndPestle extends CustomCard
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.NONE;
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
-    public static final AbstractCard.CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final AbstractCard.CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 0;
     private static final int HEAL = 5;
-    private static final int UPGRADE_HEAL = 3;
+    private static final int UPGRADE_HEAL = 2;
 
     private static final int EXHAUST_COUNT = 1;
 

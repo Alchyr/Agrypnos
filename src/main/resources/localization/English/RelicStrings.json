@@ -1,9 +1,16 @@
 {
+  "Agrypnos:Floristry": {
+    "NAME": "Floristry",
+    "FLAVOR": "A place for any flower to shine.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, draw a #yFlower from your deck."
+    ]
+  },
   "Agrypnos:Floriculture": {
     "NAME": "Floriculture",
     "FLAVOR": "Of all the fields of study, none are as pleasant as the field of flowers.",
     "DESCRIPTIONS": [
-      "At the start of each combat, draw a #yFlower from your deck."
+      "At the start of each combat, draw a #yFlower from your deck. NL Trigger the growth of a random #yFlower in your hand at the start of each turn."
     ]
   },
   "Agrypnos:War Drum": {

@@ -3,7 +3,6 @@ package Agrypnos.cards.Florist.Flowers;
 import Agrypnos.Agrypnos;
 import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.actions.Florist.ResetFlowerGrowthAction;
-import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.actions.General.HiddenApplyPowerAction;
 import Agrypnos.cards.CardImages;
 import Agrypnos.powers.Florist.CorpseFlowerPower;
@@ -26,15 +25,14 @@ public class CorpseFlower extends FlowerCard implements StartupCard {
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 2;
     private static final int POISON = 8;
-    private static final int UPGRADE_PLUS_POISON = 2;
+    private static final int UPGRADE_PLUS_POISON = 3;
     private static final int GROWTH = 2;
     private static final int UPGRADE_PLUS_GROWTH = 1;
 
@@ -50,9 +48,11 @@ public class CorpseFlower extends FlowerCard implements StartupCard {
         this.magicNumber = this.baseMagicNumber = POISON;
         initialValue = POISON;
         this.FlowerGrowth = GrowthType.magic;
+    }
 
-        this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
-        this.initializeDescription();
+    @Override
+    public boolean UPGRADE_GROWTH() {
+        return true;
     }
 
     @Override
@@ -102,7 +102,6 @@ public class CorpseFlower extends FlowerCard implements StartupCard {
             this.upgradeMagicNumber(UPGRADE_PLUS_POISON);
             this.upgradeGrowth(UPGRADE_PLUS_GROWTH);
             initialValue = baseMagicNumber;
-            this.rawDescription = DESCRIPTION + growth + EXTENDED_DESCRIPTION[0];
             this.initializeDescription();
         }
     }

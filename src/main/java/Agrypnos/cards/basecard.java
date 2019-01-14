@@ -22,7 +22,7 @@ public class basecard extends CustomCard
     private static final CardRarity RARITY = CardRarity.rarity;
     private static final CardTarget TARGET = CardTarget.target;
     private static final CardType TYPE = CardType.type;
-    public static final CardColor COLOR = CardColorEnum.FLORIST_GREEN;
+    public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = x;
 
