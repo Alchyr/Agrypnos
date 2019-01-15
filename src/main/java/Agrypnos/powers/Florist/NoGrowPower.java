@@ -26,7 +26,7 @@ public class NoGrowPower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.updateDescription();
-        this.type = PowerType.BUFF;
+        this.type = PowerType.DEBUFF;
         this.isTurnBased = true;
         this.img = new Texture(IMG);
         this.source = source;
@@ -34,7 +34,12 @@ public class NoGrowPower extends AbstractPower {
 
     @Override
     public void atStartOfTurnPostDraw() {
-        if (this.amount <= 0) {
+        if (this.amount == -1)
+        {
+            return;
+        }
+        else if (this.amount <= 0)
+        {
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, ID));
         }
         else
@@ -46,7 +51,12 @@ public class NoGrowPower extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        if (this.amount == 1) {
+        if (this.amount == -1)
+        {
+            this.description = DESCRIPTIONS[3];
+        }
+        if (this.amount == 1)
+        {
             this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
         }
         else if (this.amount > 1)

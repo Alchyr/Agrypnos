@@ -71,7 +71,10 @@ public class GhostLily extends FlowerCard
     public void triggerOnEndOfTurnForPlayingCard()
     {
         super.triggerOnEndOfTurnForPlayingCard();
-        AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
+        if (this.isEthereal)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
+        }
     }
 
 

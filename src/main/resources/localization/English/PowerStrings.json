@@ -21,12 +21,19 @@
       " until the end of the turn."
     ]
   },
+  "Agrypnos:WinterPower": {
+    "NAME": "Winter",
+    "DESCRIPTIONS": [
+      "All Flowers are played twice. Flowers will not grow."
+    ]
+  },
   "Agrypnos:NoGrowPower": {
-    "NAME": "Storm Shelter",
+    "NAME": "No Growth",
     "DESCRIPTIONS": [
       "Flowers will not grow for ",
       " turn.",
-      " turns."
+      " turns.",
+      "Flowers will not grow."
     ]
   },
   "Agrypnos:QueenOfTheNightPower": {
@@ -41,6 +48,13 @@
     "DESCRIPTIONS": [
       "Upon playing a Flower that has grown at least once, gain ",
       " Block."
+    ]
+  },
+  "Agrypnos:KudzuPower": {
+    "NAME": "Kudzu",
+    "DESCRIPTIONS": [
+      "Upon playing an attack, or at the end of the turn, lose ",
+      " Strength."
     ]
   },
   "Agrypnos:CorpseFlowerPower": {

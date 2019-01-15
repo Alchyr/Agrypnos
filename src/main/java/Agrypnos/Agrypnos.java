@@ -2,6 +2,7 @@ package Agrypnos;
 
 import Agrypnos.cards.Florist.Attacks.*;
 import Agrypnos.cards.Florist.Flowers.*;
+import Agrypnos.cards.Florist.FuneralWreath;
 import Agrypnos.cards.Florist.Powers.*;
 import Agrypnos.cards.Florist.Skills.*;
 import Agrypnos.util.CardColorEnum;
@@ -112,6 +113,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new Replanting()); //reset a flower and now it's free
         BaseMod.addCard(new Thorn()); //damage + vulnerable
         BaseMod.addCard(new FloralScent()); //weak to all
+        BaseMod.addCard(new FuneralWreath()); //big boy card
         BaseMod.addCard(new Watering()); //grow all flowers
         BaseMod.addCard(new Rainfall()); //grow ALL flowers
         BaseMod.addCard(new BigShovel()); //damage, get seeds
@@ -137,6 +139,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new MorningSun()); //Reduces cost of un-grown flowers
         BaseMod.addCard(new SunZenith()); //Reduces cost of most-grown flower
         BaseMod.addCard(new Harvest()); //Playing grown flower gain block
+        BaseMod.addCard(new Winter()); //Flower no grow, flower do doubletap
         BaseMod.addCard(new Pollen()); //Poison when flowers grow
         BaseMod.addCard(new RoseGarden()); //Thorns and thorns
 
@@ -150,6 +153,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new MorningGlory()); //uncommon, decent damage, but decays instead of grow
         BaseMod.addCard(new Sunflower()); //uncommon, give energy
         BaseMod.addCard(new Cattail()); //uncommon, block + weak
+        BaseMod.addCard(new Kudzu()); //uncommon, damage, gain strength for one attack
         BaseMod.addCard(new Poppy()); //uncommon, give temporary health
         BaseMod.addCard(new Carnation()); //uncommon, gain mediocre block, double if exhausted and move to discard
         BaseMod.addCard(new Poinsettia()); //uncommon, exhaust cards for block
@@ -174,6 +178,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(Thorn.ID);
         UnlockTracker.unlockCard(FloralScent.ID);
         UnlockTracker.unlockCard(StormShelter.ID);
+        UnlockTracker.unlockCard(FuneralWreath.ID);
         UnlockTracker.unlockCard(Till.ID);
         UnlockTracker.unlockCard(Watering.ID);
         UnlockTracker.unlockCard(NaturePurity.ID);
@@ -199,6 +204,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(Pollen.ID);
         UnlockTracker.unlockCard(Harvest.ID);
         UnlockTracker.unlockCard(MorningSun.ID);
+        UnlockTracker.unlockCard(Winter.ID);
         UnlockTracker.unlockCard(SunZenith.ID);
         UnlockTracker.unlockCard(RoseGarden.ID);
 
@@ -211,6 +217,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(Sunflower.ID);
         UnlockTracker.unlockCard(Cattail.ID);
         UnlockTracker.unlockCard(Poppy.ID);
+        UnlockTracker.unlockCard(Kudzu.ID);
         UnlockTracker.unlockCard(Carnation.ID);
         UnlockTracker.unlockCard(Narcissus.ID);
         UnlockTracker.unlockCard(Zinnia.ID);

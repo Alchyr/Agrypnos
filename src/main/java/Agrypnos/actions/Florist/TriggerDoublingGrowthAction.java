@@ -3,6 +3,7 @@ package Agrypnos.actions.Florist;
 import Agrypnos.actions.General.CardFlashAction;
 import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.powers.Florist.NoGrowPower;
+import Agrypnos.powers.Florist.WinterPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -12,7 +13,7 @@ import com.megacrit.cardcrawl.vfx.combat.PowerIconShowEffect;
 import java.util.Iterator;
 
 public class TriggerDoublingGrowthAction extends AbstractGameAction {
-    FlowerCard target;
+    private FlowerCard target;
 
     public TriggerDoublingGrowthAction(FlowerCard target)
     {
@@ -24,7 +25,7 @@ public class TriggerDoublingGrowthAction extends AbstractGameAction {
     public void update()
     {
         Agrypnos.Agrypnos.logger.info("Triggering doubling growth of " + target.cardID);
-        if (AbstractDungeon.player.hasPower(NoGrowPower.POWER_ID))
+        if (AbstractDungeon.player.hasPower(NoGrowPower.POWER_ID) || AbstractDungeon.player.hasPower(WinterPower.POWER_ID))
         {
             Agrypnos.Agrypnos.logger.info("Growth prevented by NoGrowPower.");
             this.isDone = true;

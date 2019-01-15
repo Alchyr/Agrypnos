@@ -6,6 +6,7 @@ import Agrypnos.util.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -28,14 +29,17 @@ public class Till extends CustomCard
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
-    private static final int COST = 1;
-    private static final int DAMAGE = 3;
+    private static final int COST = 0;
+    private static final int DAMAGE = 1;
     private static final int UPGRADE_PLUS_DMG = 1;
+    private static final int DEBUFF = 2;
+    private static final int UPGRADE_PLUS_DEBUFF = 1;
 
 
     public Till() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         this.baseDamage = DAMAGE;
+        this.magicNumber = this.baseMagicNumber = DEBUFF;
     }
 
     @Override
@@ -56,7 +60,13 @@ public class Till extends CustomCard
         if (m.currentBlock > 0)
         {
             AbstractDungeon.actionManager.addToBottom(
-                    new ApplyPowerAction(m, p, new VulnerablePower(m, 2, false), 2, true)
+                    new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber, true)
+            );
+        }
+        else
+        {
+            AbstractDungeon.actionManager.addToBottom(
+                    new DrawCardAction(p, 1)
             );
         }
     }
@@ -70,6 +80,7 @@ public class Till extends CustomCard
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
+            this.upgradeMagicNumber(UPGRADE_PLUS_DEBUFF);
             this.upgradeDamage(UPGRADE_PLUS_DMG);
             this.initializeDescription();
         }

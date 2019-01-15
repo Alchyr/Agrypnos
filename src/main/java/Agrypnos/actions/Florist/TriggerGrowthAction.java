@@ -2,6 +2,7 @@ package Agrypnos.actions.Florist;
 
 import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.powers.Florist.NoGrowPower;
+import Agrypnos.powers.Florist.WinterPower;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -46,7 +47,7 @@ public class TriggerGrowthAction extends AbstractGameAction {
         {
             Agrypnos.Agrypnos.logger.info("Triggering growth of " + target.cardID + " - Growth: " + growth);
 
-            if (AbstractDungeon.player.hasPower(NoGrowPower.POWER_ID))
+            if (AbstractDungeon.player.hasPower(NoGrowPower.POWER_ID) || AbstractDungeon.player.hasPower(WinterPower.POWER_ID))
             {
                 Agrypnos.Agrypnos.logger.info("Growth prevented by NoGrowPower.");
                 this.isDone = true;

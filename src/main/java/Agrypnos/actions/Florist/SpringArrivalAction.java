@@ -1,6 +1,8 @@
 package Agrypnos.actions.Florist;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -39,9 +41,10 @@ public class SpringArrivalAction extends AbstractGameAction {
         effect += bonusSeeds;
 
         if (effect > 0) {
-            for (int i = 0; i < effect; ++i) {
-                AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(seedCard, 1));
-            }
+            AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(seedCard, effect));
+            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(seedCard, effect, true, true));
+            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(seedCard, effect));
+
 
             if (!this.freeToPlayOnce) {
                 this.p.energy.use(EnergyPanel.totalCount);
