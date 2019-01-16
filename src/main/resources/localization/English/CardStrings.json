@@ -25,6 +25,14 @@
     "DESCRIPTION": "Costs 1 less [E] for each Flower in your hand. NL Deal !D! damage to all enemies once for each Flower in your hand. NL Exhaust all cards in your hand.",
     "UPGRADE_DESCRIPTION": "Costs 1 less [E] for each Flower in your hand. NL Deal !D! damage to all enemies once for each Flower in your hand. NL Discard all cards in your hand."
   },
+  "Agrypnos:Weeding": {
+    "NAME": "Weeding",
+    "DESCRIPTION": "Deal !D! damage. NL If the enemy has Weak, hit again for double the damage."
+  },
+  "Agrypnos:ViolentBloom": {
+    "NAME": "Violent Bloom",
+    "DESCRIPTION": "Reset the growth of a Flower. Deal !D! damage for each time it had grown."
+  },
   "Agrypnos:NaturePurity": {
     "NAME": "Nature's Purity",
     "DESCRIPTION": "Exhaust all cards other than Flower cards in your hand. NL Gain !M! [E] for each card Exhausted."
