@@ -27,7 +27,7 @@ public class Harvest extends CustomCard {
 
     private static final int COST = 1;
     private static final int MAGIC = 2;
-    private static final int MAGIC_UPGRADE = 2;
+    private static final int MAGIC_UPGRADE = 1;
 
     public Harvest() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

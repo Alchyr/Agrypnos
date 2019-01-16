@@ -27,7 +27,7 @@ public class StormShelter extends CustomCard
     public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 2;
-    private static final int BLOCK = 16;
+    private static final int BLOCK = 18;
     private static final int UPGRADE_PLUS_BLOCK = 7;
     private static final int DEBUFF_AMT = 1;
 

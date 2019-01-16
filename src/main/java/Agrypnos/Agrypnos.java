@@ -116,7 +116,9 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new FuneralWreath()); //big boy card
         BaseMod.addCard(new Watering()); //grow all flowers
         BaseMod.addCard(new Rainfall()); //grow ALL flowers
+        BaseMod.addCard(new Weeding()); //eliminate the weak and unworthy weeds
         BaseMod.addCard(new BigShovel()); //damage, get seeds
+        BaseMod.addCard(new ViolentBloom()); //reset flower, damage based on growth
         BaseMod.addCard(new SpringArrival()); //SEEDS
         BaseMod.addCard(new NaturePurity()); //exhaust not flower, get energy
         BaseMod.addCard(new Verdancy()); //double growth
@@ -140,6 +142,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new SunZenith()); //Reduces cost of most-grown flower
         BaseMod.addCard(new Harvest()); //Playing grown flower gain block
         BaseMod.addCard(new Winter()); //Flower no grow, flower do doubletap
+        BaseMod.addCard(new Summer()); //Flower mega grow
         BaseMod.addCard(new Pollen()); //Poison when flowers grow
         BaseMod.addCard(new RoseGarden()); //Thorns and thorns
 
@@ -158,6 +161,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new Carnation()); //uncommon, gain mediocre block, double if exhausted and move to discard
         BaseMod.addCard(new Poinsettia()); //uncommon, exhaust cards for block
         BaseMod.addCard(new CorpseFlower()); //uncommon, poison, grow on apply poison
+        BaseMod.addCard(new Nightshade()); //uncommon, poison, affliction
         BaseMod.addCard(new Snapdragon()); //uncommon, deal x damage
         BaseMod.addCard(new Orchid()); //uncommon, reduce x +growth strength
         BaseMod.addCard(new Myosotis()); //uncommon, permanent growing damage
@@ -184,8 +188,10 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(NaturePurity.ID);
         UnlockTracker.unlockCard(CombTheEarth.ID);
         UnlockTracker.unlockCard(Pesticide.ID);
+        UnlockTracker.unlockCard(ViolentBloom.ID);
         UnlockTracker.unlockCard(BigShovel.ID);
         UnlockTracker.unlockCard(EntanglingVines.ID);
+        UnlockTracker.unlockCard(Weeding.ID);
         UnlockTracker.unlockCard(Restock.ID);
         UnlockTracker.unlockCard(SpringArrival.ID);
         UnlockTracker.unlockCard(Rainfall.ID);
@@ -205,6 +211,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(Harvest.ID);
         UnlockTracker.unlockCard(MorningSun.ID);
         UnlockTracker.unlockCard(Winter.ID);
+        UnlockTracker.unlockCard(Summer.ID);
         UnlockTracker.unlockCard(SunZenith.ID);
         UnlockTracker.unlockCard(RoseGarden.ID);
 
@@ -220,6 +227,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(Kudzu.ID);
         UnlockTracker.unlockCard(Carnation.ID);
         UnlockTracker.unlockCard(Narcissus.ID);
+        UnlockTracker.unlockCard(Nightshade.ID);
         UnlockTracker.unlockCard(Zinnia.ID);
         UnlockTracker.unlockCard(CorpseFlower.ID);
         UnlockTracker.unlockCard(Orchid.ID);
@@ -257,6 +265,9 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
 
         final String[] Thorn = { "Thorn","thorn" };
         BaseMod.addKeyword("Thorn", Thorn, "A 0 cost damage card that applies Vulnerable.");
+
+        final String[] Affliction = { "Affliction", "affliction" };
+        BaseMod.addKeyword("Affliction", Affliction, "Negates the application of buffs.");
 
         final String[] Fertilizer = { "Fertilizer", "fertilizer" };
         BaseMod.addKeyword("Fertilizer", Fertilizer, "Triggers the growth of one random Flower at the start of your turn for each stack.");

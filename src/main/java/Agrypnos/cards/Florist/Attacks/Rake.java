@@ -9,7 +9,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.blue.Scrape;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -52,7 +51,8 @@ public class Rake extends CustomCard
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters)
         {
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(new ScrapeEffect(mo.hb.cX, mo.hb.cY), 0.1F));
+            if (!mo.isDeadOrEscaped())
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new ScrapeEffect(mo.hb.cX, mo.hb.cY), 0.1F));
         }
         AbstractDungeon.actionManager.addToBottom(
                 new com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction(p, multiDamage, this.damageTypeForTurn,

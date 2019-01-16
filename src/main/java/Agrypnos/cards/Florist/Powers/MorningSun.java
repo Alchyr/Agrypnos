@@ -25,8 +25,7 @@ public class MorningSun extends CustomCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
-    private static final int COST = 3;
-    private static final int UPG_COST = 2;
+    private static final int COST = 2;
 
     private static final int REDUCTION = 1;
 
@@ -34,6 +33,8 @@ public class MorningSun extends CustomCard {
     public MorningSun() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         this.magicNumber = this.baseMagicNumber = REDUCTION;
+
+        this.isEthereal = true;
     }
 
     // Actions the card should do.
@@ -54,7 +55,8 @@ public class MorningSun extends CustomCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeBaseCost(UPG_COST);
+            this.isEthereal = false;
+            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
     }

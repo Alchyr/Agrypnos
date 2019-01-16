@@ -35,6 +35,10 @@ public class Carnation extends FlowerCard
     private static final int UPGRADE_PLUS_GROWTH = 1;
 
 
+    private int returnLimit = 0;
+    private static final int RETURN_CAP = 10; //to prevent softlocks with certain interactions
+
+
     public Carnation() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
 
@@ -58,20 +62,35 @@ public class Carnation extends FlowerCard
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.GainBlockAction(p, p, this.block));
+        this.returnLimit = RETURN_CAP;
 
         if (ResetOnPlay)
             AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(this));
     }
 
     @Override
+    public void triggerWhenDrawn() {
+        super.triggerWhenDrawn();
+        this.returnLimit = RETURN_CAP;
+    }
+
+    @Override
     public void triggerOnExhaust() {
+        returnLimit--;
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.block));
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.block));
 
         if (ResetOnPlay)
             AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(this));
 
-        AbstractDungeon.actionManager.addToBottom(new ExhaustToDiscardAction(this));
+        if (returnLimit > 0)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ExhaustToDiscardAction(this));
+        }
+        else
+        {
+            Agrypnos.logger.info("CARNATION: Return from Exhaust canceled to prevent infinite cycle");
+        }
     }
 
     @Override

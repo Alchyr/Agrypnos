@@ -57,7 +57,7 @@ public class MortarAndPestle extends CustomCard
             }
         }
         if (flowerCount >= 1) {
-            return true;
+            return super.canUse(p, m);
         }
         cantUseMessage = "This card cannot be used without enough Flowers.";
         return false;

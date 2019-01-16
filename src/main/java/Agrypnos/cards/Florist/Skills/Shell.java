@@ -28,11 +28,9 @@ public class Shell extends CustomCard
     public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 1;
-    private static final int BLOCK = 3;
+    private static final int BLOCK = 4;
     private static final int UPGRADE_PLUS_BLOCK = 1;
 
-
-    // /STAT DECLARATION/
 
 
     public Shell() {

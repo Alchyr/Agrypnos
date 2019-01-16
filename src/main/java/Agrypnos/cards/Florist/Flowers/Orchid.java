@@ -35,7 +35,7 @@ public class Orchid extends FlowerCard
     private static final int COST = -1;
     private static final int DEBUFF = 1;
     private static final int UPG_DEBUFF = 2;
-    private static final int GROWTH = 1;
+    private static final int GROWTH = 2;
 
 
     public Orchid() {
@@ -44,8 +44,6 @@ public class Orchid extends FlowerCard
         this.initialValue = DEBUFF;
         this.FlowerGrowth = GrowthType.magic;
         this.magicNumber = this.baseMagicNumber = DEBUFF;
-
-        this.exhaust = true;
     }
 
     @Override

@@ -47,7 +47,7 @@ public class Restock extends CustomCard {
             }
         }
 
-        return true;
+        return super.canUse(p, m);
     }
 
     @Override

@@ -6,6 +6,7 @@ import Agrypnos.abstracts.FlowerCard;
 import Agrypnos.util.CardColorEnum;
 
 import basemod.helpers.CardTags;
+import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.DamageHooks;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AlwaysRetainField;
 
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
@@ -73,16 +74,16 @@ public class Seed extends CustomCard
 
     @Override
     public void triggerOnExhaust() {
+        this.applyPowers();
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.block));
 
         Agrypnos.logger.info("Getting random flower.");
 
         ArrayList<String> FlowerCardKeys = new ArrayList<>();
-        Iterator<AbstractCard> i = CardLibrary.getAllCards().iterator();
+        ArrayList<AbstractCard> Cards = CardLibrary.getAllCards();
 
-        while (i.hasNext())
+        for (AbstractCard c : Cards)
         {
-            AbstractCard c = i.next();
             if (c instanceof FlowerCard && !(c.tags.contains(CardTags.HEALING)))
             {
                 switch (c.rarity) //much more likely to generate more common cards

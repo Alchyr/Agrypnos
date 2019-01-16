@@ -1,4 +1,12 @@
 {
+  "Agrypnos:Affliction": {
+    "NAME": "Affliction",
+    "DESCRIPTIONS": [
+      "Negates ",
+      " buff.",
+      " buffs."
+    ]
+  },
   "Agrypnos:FertilizerPower": {
     "NAME": "Fertilizer",
     "DESCRIPTIONS": [
@@ -25,6 +33,13 @@
     "NAME": "Winter",
     "DESCRIPTIONS": [
       "All Flowers are played twice. Flowers will not grow."
+    ]
+  },
+  "Agrypnos:SummerPower": {
+    "NAME": "Summer",
+    "DESCRIPTIONS": [
+      "The growth amount of all Flowers is increased by ",
+      "."
     ]
   },
   "Agrypnos:NoGrowPower": {

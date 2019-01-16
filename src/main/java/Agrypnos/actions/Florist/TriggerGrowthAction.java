@@ -47,11 +47,18 @@ public class TriggerGrowthAction extends AbstractGameAction {
         {
             Agrypnos.Agrypnos.logger.info("Triggering growth of " + target.cardID + " - Growth: " + growth);
 
-            if (AbstractDungeon.player.hasPower(NoGrowPower.POWER_ID) || AbstractDungeon.player.hasPower(WinterPower.POWER_ID))
+            if (AbstractDungeon.player.hasPower(NoGrowPower.POWER_ID))
             {
-                Agrypnos.Agrypnos.logger.info("Growth prevented by NoGrowPower.");
+                Agrypnos.Agrypnos.logger.info("Growth prevented by No Grow Power.");
                 this.isDone = true;
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new PowerIconShowEffect(AbstractDungeon.player.getPower(NoGrowPower.POWER_ID)), 0.1f));
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new PowerIconShowEffect(AbstractDungeon.player.getPower(NoGrowPower.POWER_ID)), 0.25f));
+                return;
+            }
+            else if (AbstractDungeon.player.hasPower(WinterPower.POWER_ID))
+            {
+                Agrypnos.Agrypnos.logger.info("Growth prevented by Winter Power.");
+                this.isDone = true;
+                AbstractDungeon.actionManager.addToBottom(new VFXAction(new PowerIconShowEffect(AbstractDungeon.player.getPower(WinterPower.POWER_ID)), 0.25f));
                 return;
             }
 

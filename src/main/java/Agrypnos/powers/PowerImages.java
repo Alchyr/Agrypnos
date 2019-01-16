@@ -13,4 +13,6 @@ public class PowerImages {
     public static String HARVEST = "powers/Harvest.png";
     public static String KUDZU = "powers/Kudzu.png";
     public static String WINTER = "powers/Winter.png";
+    public static String AFFLICTION = "powers/Affliction.png";
+    public static String SUMMER = "powers/Summer.png";
 }

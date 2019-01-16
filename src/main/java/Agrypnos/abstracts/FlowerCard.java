@@ -2,6 +2,7 @@ package Agrypnos.abstracts;
 
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.powers.Florist.MorningSunPower;
+import Agrypnos.powers.Florist.SummerPower;
 import Agrypnos.util.CustomTags;
 import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.graphics.Color;
@@ -23,6 +24,7 @@ public abstract class FlowerCard extends CustomCard {
     private int MorningSunTurnCostReduction = 0; //tracks whether Morning Sun has already been activated this turn
     private int MorningSunCostReduction = 0; //tracks whether Morning Sun has already been activated this turn
 
+    public int baseGrowth;
     public int growth;
 
     public boolean upgradePreview = false;
@@ -42,7 +44,7 @@ public abstract class FlowerCard extends CustomCard {
     public FlowerCard(String ID, String NAME, String IMG, int COST, String DESCRIPTION, CardType TYPE, CardColor COLOR, CardRarity RARITY, CardTarget TARGET, int GROWTH) {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
-        this.growth = GROWTH;
+        this.growth = this.baseGrowth = GROWTH;
         AlwaysRetainField.alwaysRetain.set(this, true);
         initialValue = 0;
         this.tags.add(CustomTags.FLOWER);
@@ -93,6 +95,7 @@ public abstract class FlowerCard extends CustomCard {
 
     public void upgradeGrowth(int GrowthIncrease)
     {
+        this.baseGrowth += GrowthIncrease;
         this.growth += GrowthIncrease;
     }
 
@@ -104,6 +107,13 @@ public abstract class FlowerCard extends CustomCard {
     @Override
     public void applyPowers() {
         super.applyPowers();
+
+        this.growth = baseGrowth;
+
+        if (AbstractDungeon.player.hasPower(SummerPower.POWER_ID))
+        {
+            this.growth += AbstractDungeon.player.getPower(SummerPower.POWER_ID).amount;
+        }
 
         if (MorningSunTurnCostReduction != 0)
         {

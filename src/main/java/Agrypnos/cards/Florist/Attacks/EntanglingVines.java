@@ -53,7 +53,7 @@ public class EntanglingVines extends CustomCard
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters)
         {
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(new EntangleEffect(mo.hb.cX, mo.hb.cY, mo.hb.cX, mo.hb.cY), 0.2F));
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(new EntangleEffect(mo.hb.cX, mo.hb.cY, mo.hb.cX, mo.hb.cY), 0.1F));
             AbstractDungeon.actionManager.addToBottom(
                     new DamageAction(mo,
                             new DamageInfo(p, this.damage, this.damageTypeForTurn),

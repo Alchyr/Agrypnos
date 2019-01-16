@@ -49,7 +49,7 @@
   },
   "Agrypnos:Till": {
     "NAME": "Till",
-    "DESCRIPTION": "Deal !D! damage 3 times. NL If the target has Block, apply !M! Vulnerable. Otherwise, draw a card."
+    "DESCRIPTION": "Deal !D! damage 3 times. NL If the target has Block, apply !M! Vulnerable and draw a card."
   },
   "Agrypnos:Replanting": {
     "NAME": "Replanting",
@@ -127,6 +127,11 @@
     "NAME": "Wolfsbane",
     "DESCRIPTION": "Flower. NL Apply !M! Poison. NL At the end of your turn, increase the Poison applied by !growth!."
   },
+  "Agrypnos:Nightshade": {
+    "NAME": "Nightshade",
+    "DESCRIPTION": "Flower. NL Apply 7 Poison. NL Apply !M! Affliction. NL At the end of your turn, increase the Affliction applied by !growth!.",
+    "UPGRADE_DESCRIPTION": "Flower. NL Apply 10 Poison. NL Apply !M! Affliction. NL At the end of your turn, increase the Affliction applied by !growth!."
+  },
   "Agrypnos:Azalea": {
     "NAME": "Azalea",
     "DESCRIPTION": "Flower. NL Deal !D! damage. NL At the end of your turn, increase the damage by !growth!."
@@ -195,7 +200,7 @@
   },
   "Agrypnos:Orchid": {
     "NAME": "Orchid",
-    "DESCRIPTION": "Flower. NL Enemy loses X + !M! Strength this turn. NL At the end of your turn, increase the Strength loss by !growth!. NL Exhaust."
+    "DESCRIPTION": "Flower. NL Enemy loses X + !M! Strength this turn. NL At the end of your turn, increase the Strength loss by !growth!."
   },
   "Agrypnos:Sunflower": {
     "NAME": "Sunflower",
@@ -220,11 +225,17 @@
   },
   "Agrypnos:Harvest": {
     "NAME": "Harvest",
-    "DESCRIPTION": "Upon playing a Flower that has grown at least once, gain !M! Block."
+    "DESCRIPTION": "Upon playing a Flower, gain !M! Block."
   },
   "Agrypnos:Winter": {
     "NAME": "Winter",
-    "DESCRIPTION": "Flowers no longer grow. NL All Flowers are played twice."
+    "DESCRIPTION": "Ethereal. NL Flowers no longer grow. NL All Flowers are played twice.",
+    "UPGRADE_DESCRIPTION": "Flowers no longer grow. NL All Flowers are played twice."
+  },
+  "Agrypnos:Summer": {
+    "NAME": "Summer",
+    "DESCRIPTION": "Ethereal. NL Increase the growth amount of all Flowers by !M!.",
+    "UPGRADE_DESCRIPTION": "Increase the growth amount of all Flowers by !M!."
   },
   "Agrypnos:Pollen": {
     "NAME": "Pollen",
@@ -236,11 +247,12 @@
   },
   "Agrypnos:MorningSun": {
     "NAME": "Morning Sun",
-    "DESCRIPTION": "Flowers that have not grown cost !M! less [E]."
+    "DESCRIPTION": "Flowers that have not grown cost !M! less [E]. NL Ethereal.",
+    "UPGRADE_DESCRIPTION": "Flowers that have not grown cost !M! less [E]."
   },
   "Agrypnos:Greenhouse": {
     "NAME": "Greenhouse",
-    "DESCRIPTION": "Flowers that have not grown cost !M! less [E]."
+    "DESCRIPTION": ""
   },
   "Agrypnos:SunZenith": {
     "NAME": "Sun's Zenith",

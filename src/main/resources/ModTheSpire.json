@@ -3,8 +3,8 @@
   "name": "The Florist",
   "author_list": ["Alchyr"],
   "description": "Contains a florist.",
-  "version": "0.3.1",
-  "sts_version": "01-03-2019",
+  "version": "0.3.2",
+  "sts_version": "01-14-2019",
   "mts_version": "3.6.3",
   "dependencies": ["basemod","stslib"]
 }
