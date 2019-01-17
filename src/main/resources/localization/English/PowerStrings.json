@@ -58,10 +58,25 @@
       "."
     ]
   },
+  "Agrypnos:PreservePower": {
+    "NAME": "Preserve",
+    "DESCRIPTIONS": [
+      "#yEnergy will be conserved until next turn.",
+      "#yEnergy will be conserved for ",
+      " turns."
+    ]
+  },
+  "Agrypnos:FloristEnergized": {
+    "NAME": "Energized",
+    "DESCRIPTIONS": [
+      "Gain ",
+      " #yEnergy at the start of your next turn."
+    ]
+  },
   "Agrypnos:HarvestPower": {
     "NAME": "Harvest",
     "DESCRIPTIONS": [
-      "Upon playing a Flower that has grown at least once, gain ",
+      "Upon playing a Flower, gain ",
       " Block."
     ]
   },

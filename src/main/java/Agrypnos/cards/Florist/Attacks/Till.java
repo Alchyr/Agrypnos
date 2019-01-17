@@ -62,6 +62,7 @@ public class Till extends CustomCard
             AbstractDungeon.actionManager.addToBottom(
                     new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber, true)
             );
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
         }
     }
 

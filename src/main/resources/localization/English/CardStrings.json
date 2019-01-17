@@ -35,7 +35,7 @@
   },
   "Agrypnos:NaturePurity": {
     "NAME": "Nature's Purity",
-    "DESCRIPTION": "Exhaust all cards other than Flower cards in your hand. NL Gain !M! [E] for each card Exhausted."
+    "DESCRIPTION": "Exhaust all cards other than Flower cards in your hand. NL Gain [E] for each card Exhausted."
   },
   "Agrypnos:Restock": {
     "NAME": "Restock",
@@ -85,14 +85,18 @@
     "NAME": "Storm Shelter",
     "DESCRIPTION": "Gain !B! Block. For !M! turn, Flowers cannot grow."
   },
+  "Agrypnos:Preserve": {
+    "NAME": "Preserve",
+    "DESCRIPTION": "Flowers will not grow for !M! turn. NL Gain !B! Block. NL Block and [E] are not reset at the start of your next turn."
+  },
   "Agrypnos:Tumbleweed": {
     "NAME": "Tumbleweed",
     "DESCRIPTION": "Deal !D! damage to all enemies. NL Exhaust. "
   },
   "Agrypnos:Prune": {
     "NAME": "Prune",
-    "DESCRIPTION": "Reset the growth of a random Flower in your hand. NL Draw 2 cards.",
-    "UPGRADE_DESCRIPTION":  "Reset the growth of a Flower in your hand. NL Draw 2 cards."
+    "DESCRIPTION": "Reset the growth of a random Flower in your hand. NL Draw !M! cards.",
+    "UPGRADE_DESCRIPTION":  "Reset the growth of a Flower in your hand. NL Draw !M! cards."
   },
   "Agrypnos:FloralScent": {
     "NAME": "Floral Scent",

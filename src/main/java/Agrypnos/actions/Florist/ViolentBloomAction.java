@@ -33,6 +33,7 @@ public class ViolentBloomAction extends AbstractGameAction
     }
     public ViolentBloomAction(AbstractCreature target, AbstractCreature source, DamageInfo damage) {
         this.p = AbstractDungeon.player;
+        this.amount = 1;
         this.target = target;
         this.source = source;
         this.damage = damage;

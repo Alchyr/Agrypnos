@@ -33,7 +33,6 @@ public class NaturePurity extends CustomCard
 
     public NaturePurity() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = this.baseMagicNumber = ENERGY_PER_CARD;
     }
 
     @Override
@@ -45,7 +44,7 @@ public class NaturePurity extends CustomCard
                 nonFlowerCount++;
         }
         AbstractDungeon.actionManager.addToBottom(new ExhaustConditionalCardsAction(p.hand, (c)->!(c instanceof FlowerCard), -1));
-        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(nonFlowerCount));
+        AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(nonFlowerCount * ENERGY_PER_CARD));
     }
 
     @Override

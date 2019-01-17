@@ -116,6 +116,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new FuneralWreath()); //big boy card
         BaseMod.addCard(new Watering()); //grow all flowers
         BaseMod.addCard(new Rainfall()); //grow ALL flowers
+        BaseMod.addCard(new Preserve()); //no grow for one turn, keep energy and block
         BaseMod.addCard(new Weeding()); //eliminate the weak and unworthy weeds
         BaseMod.addCard(new BigShovel()); //damage, get seeds
         BaseMod.addCard(new ViolentBloom()); //reset flower, damage based on growth
@@ -186,6 +187,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(Till.ID);
         UnlockTracker.unlockCard(Watering.ID);
         UnlockTracker.unlockCard(NaturePurity.ID);
+        UnlockTracker.unlockCard(Preserve.ID);
         UnlockTracker.unlockCard(CombTheEarth.ID);
         UnlockTracker.unlockCard(Pesticide.ID);
         UnlockTracker.unlockCard(ViolentBloom.ID);
