@@ -18,5 +18,10 @@
     "TEXT": [
       "Exhaust."
     ]
+  },
+  "UpgradeFlowerGrowthAction": {
+    "TEXT": [
+      "Improve."
+    ]
   }
 }

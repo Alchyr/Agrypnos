@@ -30,8 +30,8 @@ public class Nightshade extends FlowerCard {
     public static final AbstractCard.CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 2;
-    private static final int POISON = 7;
-    private static final int UPGRADE_POISON = 10;
+    private static final int POISON = 8;
+    private static final int UPGRADE_POISON = 11;
     private static final int DEBUFF = 1;
     private static final int UPGRADE_PLUS_DEBUFF = 1;
     private static final int GROWTH = 1;

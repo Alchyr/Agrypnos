@@ -114,8 +114,10 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new Thorn()); //damage + vulnerable
         BaseMod.addCard(new FloralScent()); //weak to all
         BaseMod.addCard(new FuneralWreath()); //big boy card
+        BaseMod.addCard(new RustyShear()); //affliction attack
         BaseMod.addCard(new Watering()); //grow all flowers
         BaseMod.addCard(new Rainfall()); //grow ALL flowers
+        BaseMod.addCard(new Sunbeam()); //get energy, grow some flowers
         BaseMod.addCard(new Preserve()); //no grow for one turn, keep energy and block
         BaseMod.addCard(new Weeding()); //eliminate the weak and unworthy weeds
         BaseMod.addCard(new BigShovel()); //damage, get seeds
@@ -129,6 +131,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addCard(new Pesticide()); //poison cycled
         BaseMod.addCard(new StormShelter()); //armor, no flower growth
         BaseMod.addCard(new Prune()); //reset growth, draw
+        BaseMod.addCard(new GeneModification()); //upgrade a flower permanently
         BaseMod.addCard(new NaturalNutrition()); //grow plants, cost hp no energy
         BaseMod.addCard(new Tumbleweed()); //damage all enemies, exhaust
         BaseMod.addCard(new Rot()); //give poison, exhaust card
@@ -186,12 +189,15 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         UnlockTracker.unlockCard(FuneralWreath.ID);
         UnlockTracker.unlockCard(Till.ID);
         UnlockTracker.unlockCard(Watering.ID);
+        UnlockTracker.unlockCard(Sunbeam.ID);
         UnlockTracker.unlockCard(NaturePurity.ID);
         UnlockTracker.unlockCard(Preserve.ID);
+        UnlockTracker.unlockCard(RustyShear.ID);
         UnlockTracker.unlockCard(CombTheEarth.ID);
         UnlockTracker.unlockCard(Pesticide.ID);
         UnlockTracker.unlockCard(ViolentBloom.ID);
         UnlockTracker.unlockCard(BigShovel.ID);
+        UnlockTracker.unlockCard(GeneModification.ID);
         UnlockTracker.unlockCard(EntanglingVines.ID);
         UnlockTracker.unlockCard(Weeding.ID);
         UnlockTracker.unlockCard(Restock.ID);

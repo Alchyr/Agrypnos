@@ -43,6 +43,8 @@ public class Lotus extends FlowerCard
 
         this.FlowerGrowth = GrowthType.magic;
         this.magicNumber = this.baseMagicNumber = DRAW;
+
+        this.exhaust = true;
     }
 
     @Override

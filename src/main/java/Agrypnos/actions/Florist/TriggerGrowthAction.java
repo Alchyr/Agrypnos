@@ -5,10 +5,8 @@ import Agrypnos.powers.Florist.NoGrowPower;
 import Agrypnos.powers.Florist.WinterPower;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.vfx.combat.PowerIconShowEffect;
 
 import java.util.Iterator;
 
@@ -51,14 +49,12 @@ public class TriggerGrowthAction extends AbstractGameAction {
             {
                 Agrypnos.Agrypnos.logger.info("Growth prevented by No Grow Power.");
                 this.isDone = true;
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new PowerIconShowEffect(AbstractDungeon.player.getPower(NoGrowPower.POWER_ID)), 0.25f));
                 return;
             }
             else if (AbstractDungeon.player.hasPower(WinterPower.POWER_ID))
             {
                 Agrypnos.Agrypnos.logger.info("Growth prevented by Winter Power.");
                 this.isDone = true;
-                AbstractDungeon.actionManager.addToBottom(new VFXAction(new PowerIconShowEffect(AbstractDungeon.player.getPower(WinterPower.POWER_ID)), 0.25f));
                 return;
             }
 
@@ -106,6 +102,7 @@ public class TriggerGrowthAction extends AbstractGameAction {
                     if (target.baseDamage < 0)
                         target.baseDamage = 0;
 
+                    target.misc = target.baseDamage;
                     target.grown = true;
 
 
@@ -116,6 +113,10 @@ public class TriggerGrowthAction extends AbstractGameAction {
                         c = (AbstractCard)cardIterator.next();
                         if (c.uuid.equals(target.uuid)) {
                             c.baseDamage += growth;
+                            if (c.baseDamage < 0)
+                                c.baseDamage = 0;
+
+                            c.misc = c.baseDamage;
                             c.isDamageModified = false;
                         }
                     }
@@ -124,6 +125,7 @@ public class TriggerGrowthAction extends AbstractGameAction {
 
             target.applyPowers();
             AbstractDungeon.player.hand.refreshHandLayout();
+            AbstractDungeon.player.hand.glowCheck();
 
             if (flashColor != null) {
                 target.flash(flashColor);

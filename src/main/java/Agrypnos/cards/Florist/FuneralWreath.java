@@ -47,24 +47,20 @@ public class FuneralWreath extends CustomCard
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int bellCooldown = 0;
+        boolean bell = true;
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
             if (c instanceof FlowerCard)
             {
-                AbstractDungeon.actionManager.addToBottom(
-                        new VFXAction(new ShockWaveEffect(p.hb.cX, p.hb.cY, Color.DARK_GRAY, ShockWaveEffect.ShockWaveType.ADDITIVE))
-                );
-                if (bellCooldown == 0)
+                if (bell)
                 {
                     AbstractDungeon.actionManager.addToBottom(
                             new SFXAction("BELL", 0.075f)
                     );
-                    bellCooldown = 2;
+                    bell = false;
                 }
-                else
-                {
-                    bellCooldown--;
-                }
+                AbstractDungeon.actionManager.addToBottom(
+                        new VFXAction(new ShockWaveEffect(p.hb.cX, p.hb.cY, Color.DARK_GRAY, ShockWaveEffect.ShockWaveType.ADDITIVE))
+                );
                 AbstractDungeon.actionManager.addToBottom(
                         new com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction(p, multiDamage, this.damageTypeForTurn,
                                 AbstractGameAction.AttackEffect.NONE, false));

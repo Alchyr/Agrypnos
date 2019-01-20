@@ -44,6 +44,8 @@ public class Orchid extends FlowerCard
         this.initialValue = DEBUFF;
         this.FlowerGrowth = GrowthType.magic;
         this.magicNumber = this.baseMagicNumber = DEBUFF;
+
+        this.exhaust = true;
     }
 
     @Override

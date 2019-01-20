@@ -1,16 +1,23 @@
 package Agrypnos.abstracts;
 
+import Agrypnos.Agrypnos;
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.powers.Florist.MorningSunPower;
 import Agrypnos.powers.Florist.SummerPower;
 import Agrypnos.util.CustomTags;
 import basemod.abstracts.CustomCard;
+import basemod.abstracts.CustomSavable;
+import basemod.patches.com.megacrit.cardcrawl.saveAndContinue.SaveAndContinue.Save;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AlwaysRetainField;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.saveAndContinue.SaveAndContinue;
 
-public abstract class FlowerCard extends CustomCard {
+import java.lang.reflect.Type;
+
+public abstract class FlowerCard extends CustomCard implements CustomSavable<Integer> {
     static public boolean ResetOnPlay = true;
 
     public int initialValue;
@@ -24,7 +31,7 @@ public abstract class FlowerCard extends CustomCard {
     private int MorningSunTurnCostReduction = 0; //tracks whether Morning Sun has already been activated this turn
     private int MorningSunCostReduction = 0; //tracks whether Morning Sun has already been activated this turn
 
-    public int baseGrowth;
+    public Integer baseGrowth;
     public int growth;
 
     public boolean upgradePreview = false;
@@ -83,6 +90,7 @@ public abstract class FlowerCard extends CustomCard {
         {
             ((FlowerCard) AbstractCopy).initialValue = this.initialValue;
             ((FlowerCard) AbstractCopy).grown = this.grown;
+            ((FlowerCard) AbstractCopy).baseGrowth = this.baseGrowth;
             ((FlowerCard) AbstractCopy).growth = this.growth;
             ((FlowerCard) AbstractCopy).FlowerGrowth = this.FlowerGrowth;
             ((FlowerCard) AbstractCopy).magicNumber = this.magicNumber;
@@ -92,6 +100,8 @@ public abstract class FlowerCard extends CustomCard {
 
         return AbstractCopy;
     }
+
+
 
     public void upgradeGrowth(int GrowthIncrease)
     {
@@ -175,8 +185,23 @@ public abstract class FlowerCard extends CustomCard {
     }
 
     @Override
-    public void triggerOnEndOfTurnForPlayingCard()
+    public Integer onSave()
     {
-        super.triggerOnEndOfTurnForPlayingCard();
+        return baseGrowth;
+    }
+
+    @Override
+    public void onLoad(Integer baseGrowth)
+    {
+        if (baseGrowth == null) {
+            return;
+        }
+        this.growth = this.baseGrowth = baseGrowth;
+        this.initializeDescription();
+    }
+
+    @Override
+    public Type savedType() {
+        return Integer.TYPE;
     }
 }

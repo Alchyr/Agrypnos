@@ -6,12 +6,11 @@
         <file id="2" name="body.png" width="69" height="127" pivot_x="0.5" pivot_y="0.5"/>
         <file id="3" name="Cloak.png" width="79" height="164" pivot_x="0.5" pivot_y="0.5"/>
         <file id="4" name="flowers.png" width="38" height="42" pivot_x="0.5" pivot_y="0.928571"/>
-        <file id="5" name="hed.png" width="53" height="63" pivot_x="0.5" pivot_y="0.5"/>
-        <file id="6" name="shadow.png" width="153" height="64" pivot_x="0.5" pivot_y="0.5"/>
-        <file id="7" name="legL.png" width="33" height="97" pivot_x="0.5" pivot_y="0"/>
-        <file id="8" name="legR.png" width="37" height="92" pivot_x="0.5" pivot_y="0"/>
-        <file id="9" name="Head.png" width="38" height="47" pivot_x="0" pivot_y="1"/>
-        <file id="10" name="Hood.png" width="47" height="56" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="shadow.png" width="153" height="64" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="6" name="legL.png" width="33" height="97" pivot_x="0.5" pivot_y="0"/>
+        <file id="7" name="legR.png" width="37" height="92" pivot_x="0.5" pivot_y="0"/>
+        <file id="8" name="Head.png" width="38" height="47" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="Hood.png" width="47" height="56" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="entity_000">
         <animation id="0" name="NewAnimation" length="4000" interval="100">
@@ -43,26 +42,26 @@
             </mainline>
             <timeline id="0" name="shadow">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="23.045584" y="1.720798" angle="0"/>
+                    <object folder="0" file="5" x="23.045584" y="1.720798" angle="0"/>
                 </key>
                 <key id="1" time="1998" spin="0">
-                    <object folder="0" file="6" x="17.290188" y="6.037344" angle="0" scale_x="0.877947"/>
+                    <object folder="0" file="5" x="17.290188" y="6.037344" angle="0" scale_x="0.877947"/>
                 </key>
             </timeline>
             <timeline id="1" name="legL">
                 <key id="0" spin="-1">
-                    <object folder="0" file="7" x="-15.324818" y="-0.759124" angle="357.082025"/>
+                    <object folder="0" file="6" x="-15.324818" y="-0.759124" angle="357.082025"/>
                 </key>
                 <key id="1" time="1998">
-                    <object folder="0" file="7" x="-15.324818" y="-0.759124" angle="355.127975" scale_y="1"/>
+                    <object folder="0" file="6" x="-15.324818" y="-0.759124" angle="355.127975"/>
                 </key>
             </timeline>
             <timeline id="2" name="legR">
                 <key id="0" spin="-1">
-                    <object folder="0" file="8" x="13.682482" y="-5.613139" angle="358.539582"/>
+                    <object folder="0" file="7" x="12.907288" y="-4.062751" angle="358.111519" scale_x="1" scale_y="1"/>
                 </key>
                 <key id="1" time="1998">
-                    <object folder="0" file="8" x="13.682482" y="-5.613139" angle="354.134476"/>
+                    <object folder="0" file="7" x="13.682482" y="-4.062751" angle="353.722058" scale_y="1"/>
                 </key>
             </timeline>
             <timeline id="3" name="body">
@@ -70,23 +69,23 @@
                     <object folder="0" file="2" x="-1.167883" y="126.167883" angle="359.09062"/>
                 </key>
                 <key id="1" time="1998">
-                    <object folder="0" file="2" x="9.658328" y="123.888681" angle="352.932476" scale_y="1"/>
+                    <object folder="0" file="2" x="6.798754" y="119.574383" angle="356.468103" scale_y="1"/>
                 </key>
             </timeline>
             <timeline id="4" name="Cloak">
                 <key id="0" spin="-1">
-                    <object folder="0" file="3" x="-14.87637" y="105.755922" angle="359.572427"/>
+                    <object folder="0" file="3" x="-16.236914" y="98.953201" angle="359.572427"/>
                 </key>
                 <key id="1" time="1998">
-                    <object folder="0" file="3" x="-6.329361" y="106.895523" angle="352.818556" scale_y="1"/>
+                    <object folder="0" file="3" x="-8.521835" y="95.281043" angle="357.475813" scale_x="1" scale_y="1"/>
                 </key>
             </timeline>
             <timeline id="5" name="armR">
                 <key id="0" spin="-1">
-                    <object folder="0" file="1" x="-0.181546" y="156.219436" angle="330.760657"/>
+                    <object folder="0" file="1" x="-0.181546" y="156.219436" angle="326.15895" scale_y="1"/>
                 </key>
                 <key id="1" time="1998">
-                    <object folder="0" file="1" x="11.784266" y="153.940233" angle="322.571988" scale_x="1"/>
+                    <object folder="0" file="1" x="8.683491" y="147.738683" angle="322.571988"/>
                 </key>
             </timeline>
             <timeline id="6" name="armL">
@@ -96,26 +95,26 @@
             </timeline>
             <timeline id="7" name="flowers">
                 <key id="0" spin="-1">
-                    <object folder="0" file="4" x="30.379104" y="96.881382" angle="2.713374" scale_y="1"/>
+                    <object folder="0" file="4" x="27.278329" y="95.330994" angle="2.713374"/>
                 </key>
                 <key id="1" time="1998">
-                    <object folder="0" file="4" x="32.658307" y="91.183376" angle="355.679758" scale_x="1"/>
+                    <object folder="0" file="4" x="31.107919" y="86.532213" angle="355.679758"/>
                 </key>
             </timeline>
             <timeline id="8" name="Head">
                 <key id="0" spin="-1">
-                    <object folder="0" file="9" x="-11.965812" y="219.088319"/>
+                    <object folder="0" file="8" x="-14.006628" y="209.564509" angle="0"/>
                 </key>
                 <key id="1" time="1998">
-                    <object folder="0" file="9" x="14.814815" y="217.378917" angle="348.407825" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="8" x="0.309809" y="207.015461" angle="354.104323"/>
                 </key>
             </timeline>
             <timeline id="9" name="Hood">
                 <key id="0" spin="-1">
-                    <object folder="0" file="10" x="-23.931624" y="218.518519"/>
+                    <object folder="0" file="9" x="-25.292168" y="211.715798" angle="0"/>
                 </key>
                 <key id="1" time="1998">
-                    <object folder="0" file="10" x="3.988604" y="220.797721" angle="346.390268" scale_y="1"/>
+                    <object folder="0" file="9" x="-11.135585" y="210.024109" angle="355.481725"/>
                 </key>
             </timeline>
         </animation>

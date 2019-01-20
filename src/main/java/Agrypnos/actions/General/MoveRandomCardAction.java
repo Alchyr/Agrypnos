@@ -78,6 +78,7 @@ public class MoveRandomCardAction extends AbstractGameAction {
                         this.source.removeCard(c);
                         this.destination.addToTop(c);
                         AbstractDungeon.player.hand.refreshHandLayout();
+                        AbstractDungeon.player.hand.glowCheck();
                         AbstractDungeon.player.hand.applyPowers();
                     }
                 }

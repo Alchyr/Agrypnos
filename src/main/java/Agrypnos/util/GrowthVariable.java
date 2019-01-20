@@ -22,15 +22,13 @@ public class GrowthVariable extends DynamicVariable {
         return false;
     }
 
-    /* Feature for newer version, uncomment later
-    @Override
     public void setIsModified(AbstractCard card, boolean v)
     {
         if (card instanceof FlowerCard)
         {
             ((FlowerCard) card).upgradePreview = v;
         }
-    }*/
+    }
 
     @Override
     public int value(AbstractCard card)

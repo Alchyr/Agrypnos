@@ -40,14 +40,13 @@ public class Seed extends CustomCard
     public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = -2;
-    private static final int BLOCK = 4;
+    private static final int BLOCK = 3;
+    private static final int UPGRADE_BLOCK = 1;
 
     public Seed() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
         this.baseBlock = BLOCK;
-
-        AlwaysRetainField.alwaysRetain.set(this, true);
 
         this.isEthereal = true;
     }
@@ -63,13 +62,6 @@ public class Seed extends CustomCard
     {
         cantUseMessage = "This card cannot be played.";
         return false;
-    }
-
-    @Override
-    public void triggerOnEndOfTurnForPlayingCard()
-    {
-        dontTriggerOnUseCard = true;
-        AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
     }
 
     @Override
@@ -127,6 +119,7 @@ public class Seed extends CustomCard
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
+            this.upgradeBlock(UPGRADE_BLOCK);
             this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }

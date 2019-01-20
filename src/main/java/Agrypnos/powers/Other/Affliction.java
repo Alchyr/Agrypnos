@@ -40,6 +40,11 @@ public class Affliction extends AbstractPower {
     }
 
     @Override
+    public void stackPower(int stackAmount) {
+        super.stackPower(stackAmount);
+    }
+
+    @Override
     public void updateDescription() {
         if (this.amount == 1) {
             this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];

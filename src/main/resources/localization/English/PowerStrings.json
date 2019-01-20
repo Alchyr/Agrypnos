@@ -32,7 +32,9 @@
   "Agrypnos:WinterPower": {
     "NAME": "Winter",
     "DESCRIPTIONS": [
-      "All Flowers are played twice. Flowers will not grow."
+      "All Flowers are played twice. Flowers will not grow.",
+      "All Flowers are played ",
+      "additional times. Flowers will not grow."
     ]
   },
   "Agrypnos:SummerPower": {

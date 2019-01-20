@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.IceCream;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class PreservePower extends AbstractPower {
@@ -43,7 +44,7 @@ public class PreservePower extends AbstractPower {
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
         } else {
             AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(this.owner, this.owner, POWER_ID, 1));
-            if (isPlayer && this.amount > 0)
+            if (isPlayer && this.amount > 0 && !AbstractDungeon.player.hasRelic(IceCream.ID))
             {
                 int energy = EnergyPanel.getCurrentEnergy();
 

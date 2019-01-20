@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.colorless.RitualDagger;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -41,6 +42,7 @@ public class Myosotis extends FlowerCard
         FlowerGrowth = GrowthType.permanentdamage;
 
         this.baseDamage = DAMAGE;
+        this.misc = DAMAGE;
 
         this.isEthereal = true;
     }
@@ -58,24 +60,30 @@ public class Myosotis extends FlowerCard
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        AbstractDungeon.actionManager.addToBottom(getTriggerGrowthAction());
+        //add growth action first so that it grows even when used to kill last enemy
+
+        //damage value should not be affected
         AbstractDungeon.actionManager.addToBottom(
                 new com.megacrit.cardcrawl.actions.common.DamageAction(m,
                         new DamageInfo(p, this.damage, this.damageTypeForTurn),
                         AbstractGameAction.AttackEffect.FIRE));
-        AbstractDungeon.actionManager.addToBottom(getTriggerGrowthAction());
     }
 
     @Override
-    public void triggerOnEndOfTurnForPlayingCard()
-    {
-        super.triggerOnEndOfTurnForPlayingCard();
-        if (this.isEthereal)
+    public void onLoad(Integer baseGrowth) {
+        if (this.baseDamage != this.misc)
         {
-            AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
+            this.damage = this.baseDamage = this.misc;
         }
+        super.onLoad(baseGrowth);
     }
 
     public void applyPowers() {
+        if (this.baseDamage != this.misc)
+        {
+            this.baseDamage = this.misc;
+        }
         super.applyPowers();
         this.initializeDescription();
     }

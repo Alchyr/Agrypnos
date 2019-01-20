@@ -44,16 +44,6 @@ public class Summer extends CustomCard {
                 new SummerPower(p, this.magicNumber), this.magicNumber));
     }
 
-    @Override
-    public void triggerOnEndOfTurnForPlayingCard()
-    {
-        super.triggerOnEndOfTurnForPlayingCard();
-        if (this.isEthereal)
-        {
-            AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
-        }
-    }
-
     // Which card to return when making a copy of this card.
     @Override
     public AbstractCard makeCopy() {

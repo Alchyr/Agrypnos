@@ -25,11 +25,17 @@ public class TriggerDoublingGrowthAction extends AbstractGameAction {
     public void update()
     {
         Agrypnos.Agrypnos.logger.info("Triggering doubling growth of " + target.cardID);
-        if (AbstractDungeon.player.hasPower(NoGrowPower.POWER_ID) || AbstractDungeon.player.hasPower(WinterPower.POWER_ID))
+
+        if (AbstractDungeon.player.hasPower(NoGrowPower.POWER_ID))
         {
-            Agrypnos.Agrypnos.logger.info("Growth prevented by NoGrowPower.");
+            Agrypnos.Agrypnos.logger.info("Growth prevented by No Grow Power.");
             this.isDone = true;
-            AbstractDungeon.actionManager.addToBottom(new VFXAction(new PowerIconShowEffect(AbstractDungeon.player.getPower(NoGrowPower.POWER_ID)), 0.1f));
+            return;
+        }
+        else if (AbstractDungeon.player.hasPower(WinterPower.POWER_ID))
+        {
+            Agrypnos.Agrypnos.logger.info("Growth prevented by Winter Power.");
+            this.isDone = true;
             return;
         }
 
@@ -73,6 +79,8 @@ public class TriggerDoublingGrowthAction extends AbstractGameAction {
             case permanentdamage:
                 int growth = target.baseDamage - target.initialValue;
                 target.baseDamage += growth;
+                target.misc = target.baseDamage;
+
                 if (target.baseDamage != target.initialValue)
                     target.grown = true;
 
@@ -84,6 +92,7 @@ public class TriggerDoublingGrowthAction extends AbstractGameAction {
                     c = (AbstractCard)cardIterator.next();
                     if (c.uuid.equals(target.uuid)) {
                         c.baseDamage += growth;
+                        c.misc = c.baseDamage;
                         c.isDamageModified = false;
                     }
                 }
@@ -92,7 +101,12 @@ public class TriggerDoublingGrowthAction extends AbstractGameAction {
                 break;
         }
 
+        AbstractDungeon.player.hand.refreshHandLayout();
+        AbstractDungeon.player.hand.glowCheck();
+
         AbstractDungeon.actionManager.addToBottom(new CardFlashAction(target.uuid, FlowerCard.growthFlash));
+
+        AbstractDungeon.actionManager.addToBottom(new OnFlowerGrowthAction(target));
 
         this.isDone = true;
 
