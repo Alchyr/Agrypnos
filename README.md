@@ -11,5 +11,7 @@ Also, no cards have their own images.
 
 
 Progress to completion:
-52/~80 cards? maybe more, maybe less.
+63/~80 cards? maybe more, maybe less.
 3/x relics - Probably going to aim for just a few more character relics
+
+This spreadsheet has more up-to-date information: https://docs.google.com/spreadsheets/d/1n9v8eoo4e4haviQ7XV-oz5lWYYViRpCPhfb1zc6kmWE/edit?usp=sharing
