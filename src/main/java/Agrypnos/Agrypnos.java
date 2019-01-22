@@ -2,7 +2,7 @@ package Agrypnos;
 
 import Agrypnos.cards.Florist.Attacks.*;
 import Agrypnos.cards.Florist.Flowers.*;
-import Agrypnos.cards.Florist.FuneralWreath;
+import Agrypnos.cards.Florist.Attacks.FuneralWreath;
 import Agrypnos.cards.Florist.Powers.*;
 import Agrypnos.cards.Florist.Skills.*;
 import Agrypnos.util.CardColorEnum;
@@ -17,6 +17,7 @@ import basemod.interfaces.*;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -91,6 +92,8 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         BaseMod.addRelicToCustomPool(new Floriculture(), CardColorEnum.FLORIST_COLOR);
         logger.info("RELIC: FLORIST: Added Flower Pot.");
         BaseMod.addRelicToCustomPool(new FlowerPot(), CardColorEnum.FLORIST_COLOR);
+        logger.info("RELIC: FLORIST: Added Greenhouse.");
+        BaseMod.addRelicToCustomPool(new Greenhouse(), CardColorEnum.FLORIST_COLOR);
         logger.info("RELIC: FLORIST: Added Miniature Garden.");
         BaseMod.addRelicToCustomPool(new MiniatureGarden(), CardColorEnum.FLORIST_COLOR);
     }
@@ -101,151 +104,89 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         logger.info("CARDS: Adding Growth variable");
         BaseMod.addDynamicVariable(new GrowthVariable());
 
-        logger.info("CARDS: Adding all");
+        logger.info("CARDS: Adding and unlocking all");
         // Add the cards
 
         //Most Stuff
-        BaseMod.addCard(new BasicStrike()); //strike
-        BaseMod.addCard(new BasicDefend()); //block
-        BaseMod.addCard(new Trowel()); //whack and grow
-        BaseMod.addCard(new Till()); //whack and smack and if they have block vulnerable
-        BaseMod.addCard(new Rake()); //slash all and seed
-        BaseMod.addCard(new Replanting()); //reset a flower and now it's free
-        BaseMod.addCard(new Thorn()); //damage + vulnerable
-        BaseMod.addCard(new FloralScent()); //weak to all
-        BaseMod.addCard(new FuneralWreath()); //big boy card
-        BaseMod.addCard(new RustyShear()); //affliction attack
-        BaseMod.addCard(new Watering()); //grow all flowers
-        BaseMod.addCard(new Rainfall()); //grow ALL flowers
-        BaseMod.addCard(new Sunbeam()); //get energy, grow some flowers
-        BaseMod.addCard(new Preserve()); //no grow for one turn, keep energy and block
-        BaseMod.addCard(new Weeding()); //eliminate the weak and unworthy weeds
-        BaseMod.addCard(new BigShovel()); //damage, get seeds
-        BaseMod.addCard(new ViolentBloom()); //reset flower, damage based on growth
-        BaseMod.addCard(new SpringArrival()); //SEEDS
-        BaseMod.addCard(new NaturePurity()); //exhaust not flower, get energy
-        BaseMod.addCard(new Verdancy()); //double growth
-        BaseMod.addCard(new Restock()); //draw flowers if no flowers
-        BaseMod.addCard(new EntanglingVines()); //damage + strength down temporarily
-        BaseMod.addCard(new CombTheEarth()); //seed in hand, seed in deck
-        BaseMod.addCard(new Pesticide()); //poison cycled
-        BaseMod.addCard(new StormShelter()); //armor, no flower growth
-        BaseMod.addCard(new Prune()); //reset growth, draw
-        BaseMod.addCard(new GeneModification()); //upgrade a flower permanently
-        BaseMod.addCard(new NaturalNutrition()); //grow plants, cost hp no energy
-        BaseMod.addCard(new Tumbleweed()); //damage all enemies, exhaust
-        BaseMod.addCard(new Rot()); //give poison, exhaust card
-        BaseMod.addCard(new Seed()); //random flower + small amount of block
-        BaseMod.addCard(new Shell()); //Defend scaling with number of flowers
-        BaseMod.addCard(new MortarAndPestle()); //Heal that requires exhausting a Flower
+        AddCard(new BasicStrike()); //strike
+        AddCard(new BasicDefend()); //block
+        AddCard(new Trowel()); //whack and grow
+        AddCard(new Till()); //whack and smack and if they have block vulnerable
+        AddCard(new Rake()); //slash all and seed
+        AddCard(new Replanting()); //reset a flower and now it's free
+        AddCard(new Thorn()); //damage + vulnerable
+        AddCard(new Bramble()); //damage + thorn
+        AddCard(new FloralScent()); //weak to all
+        AddCard(new FuneralWreath()); //big boy card
+        AddCard(new RustyShear()); //affliction attack
+        AddCard(new Watering()); //grow all flowers
+        AddCard(new Rainfall()); //grow ALL flowers
+        AddCard(new Sunbeam()); //get energy, grow some flowers
+        AddCard(new Preserve()); //no grow for one turn, keep energy and block
+        AddCard(new Weeding()); //eliminate the weak and unworthy weeds
+        AddCard(new BigShovel()); //damage, get seeds
+        AddCard(new ViolentBloom()); //reset flower, damage based on growth
+        AddCard(new SpringArrival()); //SEEDS
+        AddCard(new NaturePurity()); //exhaust not flower, get energy
+        AddCard(new Verdancy()); //double growth
+        AddCard(new SeedPacket()); //SEEDS
+        AddCard(new Restock()); //draw flowers if no flowers
+        AddCard(new EntanglingVines()); //damage + strength down temporarily
+        AddCard(new CombTheEarth()); //seed in hand, seed in deck
+        AddCard(new Pesticide()); //poison cycled
+        AddCard(new StormShelter()); //armor, no flower growth
+        AddCard(new Prune()); //reset growth, draw
+        AddCard(new GeneModification()); //upgrade a flower permanently
+        AddCard(new NaturalNutrition()); //grow plants, cost hp no energy
+        AddCard(new Tumbleweed()); //damage all enemies, exhaust
+        AddCard(new Rot()); //give poison, exhaust card
+        AddCard(new Seed()); //random flower + small amount of block
+        AddCard(new Shell()); //Defend scaling with number of flowers
+        AddCard(new MortarAndPestle()); //Heal that requires exhausting a Flower
 
         //Powers
-        BaseMod.addCard(new Fertilize()); //Triggers growth of flowers at start of turn
-        BaseMod.addCard(new Composting()); //Grants fertilize by exhausting cards
-        BaseMod.addCard(new MorningSun()); //Reduces cost of un-grown flowers
-        BaseMod.addCard(new SunZenith()); //Reduces cost of most-grown flower
-        BaseMod.addCard(new Harvest()); //Playing grown flower gain block
-        BaseMod.addCard(new Winter()); //Flower no grow, flower do doubletap
-        BaseMod.addCard(new Summer()); //Flower mega grow
-        BaseMod.addCard(new Pollen()); //Poison when flowers grow
-        BaseMod.addCard(new RoseGarden()); //Thorns and thorns
+        AddCard(new Fertilize()); //Triggers growth of flowers at start of turn
+        AddCard(new Composting()); //Grants fertilize by exhausting cards
+        AddCard(new MorningSun()); //Reduces cost of un-grown flowers
+        AddCard(new SunZenith()); //Reduces cost of most-grown flower
+        AddCard(new Harvest()); //Playing grown flower gain block
+        AddCard(new Winter()); //Flower no grow, flower do doubletap
+        AddCard(new Summer()); //Flower mega grow
+        AddCard(new Pollen()); //Poison when flowers grow
+        AddCard(new RoseGarden()); //Thorns and thorns
 
         //Flowers
-        BaseMod.addCard(new Dandelion()); //basic, gain block
-        BaseMod.addCard(new Azalea()); //common, 1 cost damage
-        BaseMod.addCard(new Rose()); //common, 2 cost damage + give thorn
-        BaseMod.addCard(new Zinnia()); //common, temporary dex
-        BaseMod.addCard(new Dandelion()); //common, gain block
-        BaseMod.addCard(new Wolfsbane()); //common, apply poison
-        BaseMod.addCard(new MorningGlory()); //uncommon, decent damage, but decays instead of grow
-        BaseMod.addCard(new Sunflower()); //uncommon, give energy
-        BaseMod.addCard(new Cattail()); //uncommon, block + weak
-        BaseMod.addCard(new Kudzu()); //uncommon, damage, gain strength for one attack
-        BaseMod.addCard(new Poppy()); //uncommon, give temporary health
-        BaseMod.addCard(new Carnation()); //uncommon, gain mediocre block, double if exhausted and move to discard
-        BaseMod.addCard(new Poinsettia()); //uncommon, exhaust cards for block
-        BaseMod.addCard(new CorpseFlower()); //uncommon, poison, grow on apply poison
-        BaseMod.addCard(new Nightshade()); //uncommon, poison, affliction
-        BaseMod.addCard(new Snapdragon()); //uncommon, deal x damage
-        BaseMod.addCard(new Orchid()); //uncommon, reduce x +growth strength
-        BaseMod.addCard(new Myosotis()); //uncommon, permanent growing damage
-        BaseMod.addCard(new QueenOfTheNight()); //rare, damage reduction in hand
-        BaseMod.addCard(new Narcissus()); //rare, copies a card in hand, exhausts other cards
-        BaseMod.addCard(new GhostLily()); //rare, exhaust all flowers give seeds
-        BaseMod.addCard(new Lotus()); //rare, draw cards
-        BaseMod.addCard(new Rue()); //rare, remove debuff/grant artifact
-        BaseMod.addCard(new Camellia()); //rare, deal damage with somewhat exponential scaling
+        AddCard(new Dandelion()); //basic, gain block
+        AddCard(new Azalea()); //common, 1 cost damage
+        AddCard(new Rose()); //common, 2 cost damage + give thorn
+        AddCard(new Zinnia()); //common, temporary dex
+        AddCard(new Dandelion()); //common, gain block
+        AddCard(new Wolfsbane()); //common, apply poison
+        AddCard(new MorningGlory()); //uncommon, decent damage, but decays instead of grow
+        AddCard(new Sunflower()); //uncommon, give energy
+        AddCard(new Cattail()); //uncommon, block + weak
+        AddCard(new Hyacinth()); //uncommon, damage, gain strength for one attack
+        AddCard(new Poppy()); //uncommon, give temporary health
+        AddCard(new Carnation()); //uncommon, gain mediocre block, double if exhausted and move to discard
+        AddCard(new Poinsettia()); //uncommon, exhaust cards for block
+        AddCard(new CorpseFlower()); //uncommon, poison, grow on apply poison
+        AddCard(new Nightshade()); //uncommon, poison, affliction
+        AddCard(new Snapdragon()); //uncommon, deal x damage
+        AddCard(new Orchid()); //uncommon, reduce x +growth strength
+        AddCard(new Myosotis()); //uncommon, permanent growing damage
+        AddCard(new Kudzu()); //rare, greedy flower that exhausts other cards
+        AddCard(new QueenOfTheNight()); //rare, damage reduction in hand
+        AddCard(new Narcissus()); //rare, copies a card in hand, exhausts other cards
+        AddCard(new GhostLily()); //rare, exhaust all flowers give seeds
+        AddCard(new Lotus()); //rare, draw cards
+        AddCard(new Rue()); //rare, remove debuff/grant artifact
+        AddCard(new Camellia()); //rare, deal damage with somewhat exponential scaling
+    }
 
-        logger.info("CARDS: Unlocking");
-        // Unlock the cards
-        UnlockTracker.unlockCard(BasicStrike.ID);
-        UnlockTracker.unlockCard(BasicDefend.ID);
-        UnlockTracker.unlockCard(Trowel.ID);
-        UnlockTracker.unlockCard(Replanting.ID);
-        UnlockTracker.unlockCard(Rake.ID);
-        UnlockTracker.unlockCard(Thorn.ID);
-        UnlockTracker.unlockCard(FloralScent.ID);
-        UnlockTracker.unlockCard(StormShelter.ID);
-        UnlockTracker.unlockCard(FuneralWreath.ID);
-        UnlockTracker.unlockCard(Till.ID);
-        UnlockTracker.unlockCard(Watering.ID);
-        UnlockTracker.unlockCard(Sunbeam.ID);
-        UnlockTracker.unlockCard(NaturePurity.ID);
-        UnlockTracker.unlockCard(Preserve.ID);
-        UnlockTracker.unlockCard(RustyShear.ID);
-        UnlockTracker.unlockCard(CombTheEarth.ID);
-        UnlockTracker.unlockCard(Pesticide.ID);
-        UnlockTracker.unlockCard(ViolentBloom.ID);
-        UnlockTracker.unlockCard(BigShovel.ID);
-        UnlockTracker.unlockCard(GeneModification.ID);
-        UnlockTracker.unlockCard(EntanglingVines.ID);
-        UnlockTracker.unlockCard(Weeding.ID);
-        UnlockTracker.unlockCard(Restock.ID);
-        UnlockTracker.unlockCard(SpringArrival.ID);
-        UnlockTracker.unlockCard(Rainfall.ID);
-        UnlockTracker.unlockCard(Verdancy.ID);
-        UnlockTracker.unlockCard(Prune.ID);
-        UnlockTracker.unlockCard(NaturalNutrition.ID);
-        UnlockTracker.unlockCard(Tumbleweed.ID);
-        UnlockTracker.unlockCard(Rot.ID);
-        UnlockTracker.unlockCard(Seed.ID);
-        UnlockTracker.unlockCard(Shell.ID);
-        UnlockTracker.unlockCard(MortarAndPestle.ID);
-
-        //Powers
-        UnlockTracker.unlockCard(Fertilize.ID);
-        UnlockTracker.unlockCard(Composting.ID);
-        UnlockTracker.unlockCard(Pollen.ID);
-        UnlockTracker.unlockCard(Harvest.ID);
-        UnlockTracker.unlockCard(MorningSun.ID);
-        UnlockTracker.unlockCard(Winter.ID);
-        UnlockTracker.unlockCard(Summer.ID);
-        UnlockTracker.unlockCard(SunZenith.ID);
-        UnlockTracker.unlockCard(RoseGarden.ID);
-
-        //Flowers
-        UnlockTracker.unlockCard(Rose.ID);
-        UnlockTracker.unlockCard(QueenOfTheNight.ID);
-        UnlockTracker.unlockCard(GhostLily.ID);
-        UnlockTracker.unlockCard(Poinsettia.ID);
-        UnlockTracker.unlockCard(Lotus.ID);
-        UnlockTracker.unlockCard(Sunflower.ID);
-        UnlockTracker.unlockCard(Cattail.ID);
-        UnlockTracker.unlockCard(Poppy.ID);
-        UnlockTracker.unlockCard(Kudzu.ID);
-        UnlockTracker.unlockCard(Carnation.ID);
-        UnlockTracker.unlockCard(Narcissus.ID);
-        UnlockTracker.unlockCard(Nightshade.ID);
-        UnlockTracker.unlockCard(Zinnia.ID);
-        UnlockTracker.unlockCard(CorpseFlower.ID);
-        UnlockTracker.unlockCard(Orchid.ID);
-        UnlockTracker.unlockCard(Dandelion.ID);
-        UnlockTracker.unlockCard(Camellia.ID);
-        UnlockTracker.unlockCard(Snapdragon.ID);
-        UnlockTracker.unlockCard(Wolfsbane.ID);
-        UnlockTracker.unlockCard(MorningGlory.ID);
-        UnlockTracker.unlockCard(Rue.ID);
-        UnlockTracker.unlockCard(Myosotis.ID);
+    private<T extends AbstractCard> void AddCard(T card)
+    {
+        BaseMod.addCard(card);
+        UnlockTracker.unlockCard(card.cardID);
     }
 
     // ===================================== STRINGS =====================================

@@ -9,8 +9,13 @@
   },
   "Agrypnos:Trowel": {
     "NAME": "Trowel",
-    "DESCRIPTION": "Deal !D! damage. Trigger the growth of a random Flower in your hand.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage. Trigger the growth of a Flower in your hand."
+    "DESCRIPTION": "Deal !D! damage. NL Trigger the growth of a random Flower in your hand.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Trigger the growth of a Flower in your hand."
+  },
+  "Agrypnos:Bramble": {
+    "NAME": "Bramble",
+    "DESCRIPTION": "Deal !D! damage. NL Add !M! Thorn to your hand.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Add !M! Upgraded Thorn to your hand."
   },
   "Agrypnos:Rose": {
     "NAME": "Rose",
@@ -77,6 +82,11 @@
     "DESCRIPTION": "Add !M! Seed to your hand.",
     "UPGRADE_DESCRIPTION": "Add !M! Upgraded Seed to your hand."
   },
+  "Agrypnos:SeedPacket": {
+    "NAME": "Seed Packet",
+    "DESCRIPTION": "Gain !B! Block. NL Add !M! Seeds to your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Add !M! Upgraded Seeds to your hand. NL Exhaust."
+  },
   "Agrypnos:MortarAndPestle": {
     "NAME": "Mortar And Pestle",
     "DESCRIPTION": "Exhaust a Flower in your hand. Heal !M! HP. NL Exhaust."
@@ -125,8 +135,8 @@
   },
   "Agrypnos:SpringArrival": {
     "NAME": "Spring's Arrival",
-    "DESCRIPTION": "Add X Seeds to your hand, draw pile, and discard pile.",
-    "UPGRADE_DESCRIPTION":  "Add X + !M! Upgraded Seeds to your hand, draw pile, and discard pile."
+    "DESCRIPTION": "Add X Seeds to your hand, draw pile, and discard pile. NL Exhaust.",
+    "UPGRADE_DESCRIPTION":  "Add X Upgraded Seeds to your hand, draw pile, and discard pile. NL Exhaust."
   },
   "Agrypnos:NaturalNutrition": {
     "NAME": "Natural Nutrition",
@@ -174,10 +184,14 @@
   },
   "Agrypnos:Poinsettia": {
     "NAME": "Poinsettia",
-    "DESCRIPTION": "Flower. NL Exhaust up to !M! cards. Gain !B! Block for each card exhausted. NL At the end of your turn, increase the Block per card by !growth!."
+    "DESCRIPTION": "Flower. NL Exhaust up to !M! cards. Gain !B! Block for each Exhausted card. NL At the end of your turn, increase the Block per card by !growth!."
   },
   "Agrypnos:Kudzu": {
     "NAME": "Kudzu",
+    "DESCRIPTION": "Flower. NL Deal !D! damage. NL At the end of your turn, Exhaust !M! random cards in your hand prioritizing Flowers and increase the damage by !growth! for each Exhausted card."
+  },
+  "Agrypnos:Hyacinth": {
+    "NAME": "Hyacinth",
     "DESCRIPTION": "Flower. NL Deal !D! damage. Your next attack this turn has an additional !M! Strength. NL At the end of your turn, increase the Strength by !growth!."
   },
   "Agrypnos:Dandelion": {
@@ -203,11 +217,11 @@
   },
   "Agrypnos:Poppy": {
     "NAME": "Poppy",
-    "DESCRIPTION": "Flower. NL Gain !M! temporary health. NL At the end of your turn, increase this by !growth!. NL Exhaust."
+    "DESCRIPTION": "Flower. NL Gain !M! temporary health. NL At the end of your turn, increase the temporary health gain by !growth!. NL Exhaust."
   },
   "Agrypnos:Cattail": {
     "NAME": "Cattail",
-    "DESCRIPTION": "Flower. NL Apply !M! Weak. NL Gain !B! Block. NL At the end of your turn, increase the Weak by !growth!."
+    "DESCRIPTION": "Flower. NL Apply !M! Weak. NL Gain !B! Block. NL At the end of your turn, increase the Weak applied by !growth!."
   },
   "Agrypnos:Lotus": {
     "NAME": "Lotus",
@@ -236,8 +250,8 @@
   },
   "Agrypnos:GhostLily": {
     "NAME": "Ghost Lily",
-    "DESCRIPTION": "Flower. NL Ethereal. NL Upon being Exhausted, Exhaust all Flowers in your hand and add !M! Seed(s) to your hand for each card Exhausted.",
-    "UPGRADE_DESCRIPTION": "Flower. NL Ethereal. NL Upon being Exhausted, Exhaust all Flowers in your hand and add !M! Upgraded Seed(s) to your hand for each card Exhausted."
+    "DESCRIPTION": "Flower. NL Ethereal. NL Upon being Exhausted, Exhaust all Flowers in your hand and add !M! Seed(s) to your hand for each Exhausted card.",
+    "UPGRADE_DESCRIPTION": "Flower. NL Ethereal. NL Upon being Exhausted, Exhaust all Flowers in your hand and add !M! Upgraded Seed(s) to your hand for each Exhausted card."
   },
   "Agrypnos:RoseGarden": {
     "NAME": "Rose Garden",
@@ -271,7 +285,7 @@
   },
   "Agrypnos:MorningSun": {
     "NAME": "Morning Sun",
-    "DESCRIPTION": "Flowers that have not grown cost !M! less [E]. NL Ethereal."
+    "DESCRIPTION": "Ethereal. NL Flowers that have not grown cost !M! less [E]."
   },
   "Agrypnos:Greenhouse": {
     "NAME": "Greenhouse",

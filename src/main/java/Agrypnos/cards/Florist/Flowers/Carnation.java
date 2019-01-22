@@ -2,13 +2,17 @@ package Agrypnos.cards.Florist.Flowers;
 
 import Agrypnos.Agrypnos;
 import Agrypnos.abstracts.FlowerCard;
+import Agrypnos.actions.General.AddActionToBottomAction;
 import Agrypnos.actions.General.ExhaustToDiscardAction;
 import Agrypnos.actions.Florist.ResetFlowerGrowthAction;
 import Agrypnos.actions.Florist.TriggerGrowthAction;
 import Agrypnos.cards.CardImages;
 import Agrypnos.util.CardColorEnum;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.blue.Hologram;
+import com.megacrit.cardcrawl.cards.green.Bane;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -35,8 +39,8 @@ public class Carnation extends FlowerCard
     private static final int UPGRADE_PLUS_GROWTH = 1;
 
 
-    private int returnLimit = 0;
-    private static final int RETURN_CAP = 10; //to prevent softlocks with certain interactions
+    private static final int RETURN_CAP = 2; //to prevent softlocks with certain interactions, ex hubris Black Hole
+    private int returnLimit = RETURN_CAP;
 
 
     public Carnation() {
@@ -75,6 +79,11 @@ public class Carnation extends FlowerCard
     }
 
     @Override
+    public void applyPowers() {
+        super.applyPowers();
+    }
+
+    @Override
     public void triggerOnExhaust() {
         returnLimit--;
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.block));
@@ -85,12 +94,15 @@ public class Carnation extends FlowerCard
 
         if (returnLimit > 0)
         {
+            AbstractDungeon.actionManager.addToBottom(new WaitAction(1.0f)); //have to wait for exhaust animation to end
             AbstractDungeon.actionManager.addToBottom(new ExhaustToDiscardAction(this));
         }
         else
         {
             Agrypnos.logger.info("CARNATION: Return from Exhaust canceled to prevent infinite cycle");
+            this.returnLimit = RETURN_CAP;
         }
+
     }
 
     @Override

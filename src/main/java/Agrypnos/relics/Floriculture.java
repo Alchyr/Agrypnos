@@ -8,6 +8,7 @@ import Agrypnos.actions.General.MoveRandomCardAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.RingOfTheSerpent;
 
 public class Floriculture extends Relic
 {
@@ -43,7 +44,7 @@ public class Floriculture extends Relic
 
     @Override
     public boolean canSpawn() {
-        return false;
+        return AbstractDungeon.player.hasRelic(Floristry.ID);
     }
 
     @Override
@@ -54,6 +55,7 @@ public class Floriculture extends Relic
 
     @Override
     public void atTurnStartPostDraw() {
+        AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         AbstractDungeon.actionManager.addToBottom(new GrowRandomFlowersAction(AbstractDungeon.player.hand, 1));
     }
 }

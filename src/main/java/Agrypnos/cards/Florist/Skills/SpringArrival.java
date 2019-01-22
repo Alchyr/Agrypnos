@@ -32,8 +32,9 @@ public class SpringArrival extends CustomCard {
     {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 0;
         seedCard = new Seed().makeCopy();
+
+        this.exhaust = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
@@ -41,7 +42,7 @@ public class SpringArrival extends CustomCard {
             this.energyOnUse = EnergyPanel.totalCount;
         }
 
-        AbstractDungeon.actionManager.addToBottom(new SpringArrivalAction(p, this.freeToPlayOnce, this.energyOnUse, this.magicNumber, seedCard));
+        AbstractDungeon.actionManager.addToBottom(new SpringArrivalAction(p, this.freeToPlayOnce, this.energyOnUse, 0, seedCard));
     }
 
     public AbstractCard makeCopy() {
@@ -51,7 +52,6 @@ public class SpringArrival extends CustomCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeMagicNumber(1);
             this.seedCard.upgrade();
             this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();

@@ -39,7 +39,7 @@ public class Rose extends FlowerCard
     private static final int DAMAGE_PER_THORN = 10;
 
 
-    private static AbstractCard thornCard;
+    private AbstractCard thornCard;
 
 
     public Rose() {

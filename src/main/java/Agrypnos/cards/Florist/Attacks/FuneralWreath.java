@@ -1,4 +1,4 @@
-package Agrypnos.cards.Florist;
+package Agrypnos.cards.Florist.Attacks;
 
 import Agrypnos.Agrypnos;
 import Agrypnos.abstracts.FlowerCard;

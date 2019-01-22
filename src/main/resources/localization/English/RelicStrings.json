@@ -13,6 +13,13 @@
       "At the start of each combat, draw a #yFlower from your deck. NL Trigger the growth of a random #yFlower in your hand at the start of each turn."
     ]
   },
+  "Agrypnos:Greenhouse": {
+    "NAME": "Greenhouse",
+    "FLAVOR": "Too small to actually grow any plants inside.",
+    "DESCRIPTIONS": [
+      "At the end of your turn, trigger the growth of a random #yFlower for each unused energy."
+    ]
+  },
   "Agrypnos:War Drum": {
     "NAME": "War Drum",
     "FLAVOR": "The drums of war are nothing, if not steady.",
@@ -29,7 +36,7 @@
   },
   "Agrypnos:Miniature Garden": {
     "NAME": "Miniature Garden",
-    "FLAVOR": "A garden for a traveler.",
+    "FLAVOR": "A garden for a traveler. Or, anyone else, I guess.",
     "DESCRIPTIONS": [
       "At the end of each turn, discard all #yFlowers. #yFlowers no longer lose their growth when played."
     ]

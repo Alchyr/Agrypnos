@@ -5,6 +5,7 @@ import Agrypnos.abstracts.Relic;
 import Agrypnos.actions.Florist.DiscardAllFlowersAction;
 import Agrypnos.abstracts.FlowerCard;
 
+import Agrypnos.actions.General.AddActionToBottomAction;
 import Agrypnos.characters.TheFlorist;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -41,6 +42,6 @@ public class MiniatureGarden extends Relic
 
     @Override
     public void onPlayerEndTurn() {
-        AbstractDungeon.actionManager.addToBottom(new DiscardAllFlowersAction());
+        AbstractDungeon.actionManager.addToBottom(new AddActionToBottomAction(new DiscardAllFlowersAction()));
     }
 }

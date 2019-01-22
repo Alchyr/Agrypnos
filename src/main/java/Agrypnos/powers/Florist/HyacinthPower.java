@@ -14,16 +14,16 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
-public class KudzuPower extends AbstractPower {
+public class HyacinthPower extends AbstractPower {
     public AbstractCreature source;
 
-    public static final String POWER_ID = Agrypnos.createID("KudzuPower");
+    public static final String POWER_ID = Agrypnos.createID("HyacinthPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final String IMG = Agrypnos.makePath(PowerImages.KUDZU);
+    public static final String IMG = Agrypnos.makePath(PowerImages.HYACINTH);
 
-    public KudzuPower(final AbstractCreature owner, final int amount) {
+    public HyacinthPower(final AbstractCreature owner, final int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -39,8 +39,8 @@ public class KudzuPower extends AbstractPower {
         if (card.type == AbstractCard.CardType.ATTACK)
         {
             this.flash();
-            AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, -this.amount), -this.amount));
-            AbstractDungeon.actionManager.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new StrengthPower(this.owner, -this.amount), -this.amount));
+            AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
         }
     }
 

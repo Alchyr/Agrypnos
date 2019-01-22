@@ -15,7 +15,7 @@ import java.util.Iterator;
 
 public class GrowXFlowersAction extends AbstractGameAction
 {
-    ArrayList<AbstractCard> NotFlowerCards = new ArrayList<>();
+    private ArrayList<AbstractCard> NotFlowerCards = new ArrayList<>();
 
     private static final UIStrings uiStrings;
     public static final String[] TEXT;

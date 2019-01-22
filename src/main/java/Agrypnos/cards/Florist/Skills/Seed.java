@@ -34,7 +34,7 @@ public class Seed extends CustomCard
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.NONE;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
@@ -62,6 +62,13 @@ public class Seed extends CustomCard
     {
         cantUseMessage = "This card cannot be played.";
         return false;
+    }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractCard c = super.makeStatEquivalentCopy();
+        c.retain = this.retain;
+        return c;
     }
 
     @Override

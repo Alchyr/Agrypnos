@@ -3,6 +3,7 @@ package Agrypnos.actions.Florist;
 import Agrypnos.abstracts.FlowerCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
+import com.megacrit.cardcrawl.actions.unique.ArmamentsAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -22,6 +23,7 @@ public class ExhaustXFlowersAction extends AbstractGameAction
     public static final String[] TEXT;
     private AbstractPlayer p;
     private boolean isRandom;
+    private boolean first;
     public static int numExhaust;
 
     static {
@@ -35,11 +37,12 @@ public class ExhaustXFlowersAction extends AbstractGameAction
         this.setValues(target, source, amount);
         this.duration = Settings.ACTION_DUR_FAST;
         this.actionType = ActionType.CARD_MANIPULATION;
+        this.first = true;
     }
 
 
     public void update() {
-        if (this.duration == Settings.ACTION_DUR_FAST) {
+        if (this.first) {
             if (this.p.hand.size() == 0) {
                 this.isDone = true;
                 return;
@@ -96,7 +99,7 @@ public class ExhaustXFlowersAction extends AbstractGameAction
 
                 if (this.p.hand.group.size() > 1) {
                     AbstractDungeon.handCardSelectScreen.open(TEXT[0], amount, false, false, false, false);
-                    this.tickDuration();
+                    this.first = false;
                     return;
                 }
                 else if (this.p.hand.group.size() == 1) {
@@ -109,16 +112,20 @@ public class ExhaustXFlowersAction extends AbstractGameAction
                     this.isDone = true;
                 }
 
-                this.tickDuration();
+                this.first = false;
                 return;
             }
         }
 
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
-            for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group)
+            for (int i = AbstractDungeon.handCardSelectScreen.selectedCards.group.size(); i > 0; i--)
             {
-                if (c instanceof  FlowerCard) {
-                    AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
+                AbstractCard c = AbstractDungeon.handCardSelectScreen.selectedCards.getTopCard();
+                if (c instanceof FlowerCard) {
+                    AbstractDungeon.handCardSelectScreen.selectedCards.moveToExhaustPile(c);
+                    CardCrawlGame.dungeon.checkForPactAchievement();
+                    c.exhaustOnUseOnce = false;
+                    c.freeToPlayOnce = false;
                 }
             }
 

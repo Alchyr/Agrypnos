@@ -3,8 +3,9 @@
   "name": "The Florist",
   "author_list": ["Alchyr"],
   "description": "Contains a florist.",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "sts_version": "01-14-2019",
   "mts_version": "3.6.3",
-  "dependencies": ["basemod","stslib"]
+  "dependencies": ["basemod","stslib"],
+  "update_json": "https://api.github.com/repos/Alchyr/Agrypnos/releases/latest"
 }

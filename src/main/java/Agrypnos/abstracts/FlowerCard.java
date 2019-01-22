@@ -10,6 +10,7 @@ import basemod.abstracts.CustomSavable;
 import basemod.patches.com.megacrit.cardcrawl.saveAndContinue.SaveAndContinue.Save;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AlwaysRetainField;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -101,8 +102,6 @@ public abstract class FlowerCard extends CustomCard implements CustomSavable<Int
         return AbstractCopy;
     }
 
-
-
     public void upgradeGrowth(int GrowthIncrease)
     {
         this.baseGrowth += GrowthIncrease;
@@ -117,6 +116,17 @@ public abstract class FlowerCard extends CustomCard implements CustomSavable<Int
     @Override
     public void applyPowers() {
         super.applyPowers();
+
+        if (this.isEthereal && this.retain) //To ensure it works properly with some things that could possibly add or remove ethereal
+        {
+            AlwaysRetainField.alwaysRetain.set(this, false);
+            this.retain = false;
+        }
+        else
+        {
+            AlwaysRetainField.alwaysRetain.set(this, true);
+            this.retain = true;
+        }
 
         this.growth = baseGrowth;
 

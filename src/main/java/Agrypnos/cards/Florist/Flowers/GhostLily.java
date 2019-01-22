@@ -6,6 +6,7 @@ import Agrypnos.actions.Florist.GhostLilyAction;
 import Agrypnos.cards.CardImages;
 import Agrypnos.cards.Florist.Skills.Seed;
 import Agrypnos.util.CardColorEnum;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AlwaysRetainField;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -45,6 +46,8 @@ public class GhostLily extends FlowerCard
         FlowerGrowth = GrowthType.magic;
 
         this.isEthereal = true;
+        AlwaysRetainField.alwaysRetain.set(this, false);
+        this.retain = false;
 
         seedCard = new Seed().makeCopy();
     }
@@ -63,13 +66,21 @@ public class GhostLily extends FlowerCard
     }
 
     @Override
+    public void triggerOnEndOfTurnForPlayingCard() {
+        if (this.isEthereal) { //this causes the Ghost Lily to exhaust before other Ethereal cards. Required for it to work properly.
+            AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
+        }
+    }
+
+    @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new UseCardAction(this));
     }
 
+
     @Override
     public void triggerOnExhaust() {
-        AbstractDungeon.actionManager.addToBottom(new GhostLilyAction(seedCard, this.magicNumber));
+        AbstractDungeon.actionManager.addToTop(new GhostLilyAction(seedCard, this.magicNumber));
     }
 
     @Override
