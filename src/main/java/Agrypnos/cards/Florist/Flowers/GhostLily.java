@@ -36,6 +36,8 @@ public class GhostLily extends FlowerCard
 
     private AbstractCard seedCard;
 
+    private boolean triggeredEndOfTurn = false;
+
 
     public GhostLily() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET, GROWTH);
@@ -69,6 +71,7 @@ public class GhostLily extends FlowerCard
     public void triggerOnEndOfTurnForPlayingCard() {
         super.triggerOnEndOfTurnForPlayingCard();
         if (this.isEthereal) { //this causes the Ghost Lily to exhaust before other Ethereal cards. Required for it to work properly.
+            triggeredEndOfTurn = true;
             AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
         }
     }
@@ -81,7 +84,8 @@ public class GhostLily extends FlowerCard
 
     @Override
     public void triggerOnExhaust() {
-        AbstractDungeon.actionManager.addToTop(new GhostLilyAction(seedCard, this.magicNumber));
+        AbstractDungeon.actionManager.addToTop(new GhostLilyAction(seedCard, this.magicNumber, triggeredEndOfTurn));
+        triggeredEndOfTurn = false;
     }
 
     @Override

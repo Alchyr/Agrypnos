@@ -153,7 +153,9 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         AddCard(new MorningSun()); //Reduces cost of un-grown flowers
         AddCard(new SunZenith()); //Reduces cost of most-grown flower
         AddCard(new Harvest()); //Playing grown flower gain block
+        AddCard(new Autumn()); //Seed give draw instead of flower
         AddCard(new Winter()); //Flower no grow, flower do doubletap
+        AddCard(new Spring()); //Flower exhaust give seed
         AddCard(new Summer()); //Flower mega grow
         AddCard(new Pollen()); //Poison when flowers grow
         AddCard(new RoseGarden()); //Thorns and thorns

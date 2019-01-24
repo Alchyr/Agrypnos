@@ -58,10 +58,10 @@
             </timeline>
             <timeline id="2" name="legR">
                 <key id="0" spin="-1">
-                    <object folder="0" file="7" x="12.907288" y="-4.062751" angle="358.111519" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="7" x="12.907288" y="-4.062751" angle="358.111519"/>
                 </key>
                 <key id="1" time="1998">
-                    <object folder="0" file="7" x="13.682482" y="-4.062751" angle="353.722058" scale_y="1"/>
+                    <object folder="0" file="7" x="11.682482" y="-4.062751" angle="354.504498"/>
                 </key>
             </timeline>
             <timeline id="3" name="body">
@@ -69,7 +69,7 @@
                     <object folder="0" file="2" x="-1.167883" y="126.167883" angle="359.09062"/>
                 </key>
                 <key id="1" time="1998">
-                    <object folder="0" file="2" x="6.798754" y="119.574383" angle="356.468103" scale_y="1"/>
+                    <object folder="0" file="2" x="6.798754" y="119.574383" angle="356.468103"/>
                 </key>
             </timeline>
             <timeline id="4" name="Cloak">
@@ -77,12 +77,12 @@
                     <object folder="0" file="3" x="-16.236914" y="98.953201" angle="359.572427"/>
                 </key>
                 <key id="1" time="1998">
-                    <object folder="0" file="3" x="-8.521835" y="95.281043" angle="357.475813" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="3" x="-8.521835" y="95.281043" angle="357.475813"/>
                 </key>
             </timeline>
             <timeline id="5" name="armR">
                 <key id="0" spin="-1">
-                    <object folder="0" file="1" x="-0.181546" y="156.219436" angle="326.15895" scale_y="1"/>
+                    <object folder="0" file="1" x="-0.181546" y="156.219436" angle="326.15895"/>
                 </key>
                 <key id="1" time="1998">
                     <object folder="0" file="1" x="8.683491" y="147.738683" angle="322.571988"/>

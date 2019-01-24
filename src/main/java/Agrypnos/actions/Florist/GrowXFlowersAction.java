@@ -21,7 +21,7 @@ public class GrowXFlowersAction extends AbstractGameAction
     public static final String[] TEXT;
     private AbstractPlayer p;
     private boolean isRandom;
-    private boolean anyNumber;
+    private int growAmount;
 
     /* If growing a large number of random flowers, use GrowRandomFlowers instead */
 
@@ -31,11 +31,11 @@ public class GrowXFlowersAction extends AbstractGameAction
     }
 
     public GrowXFlowersAction(AbstractCreature target, AbstractCreature source, int amount, boolean isRandom) {
-        this(target, source, amount, isRandom, false);
+        this(target, source, amount, isRandom, 1);
     }
 
-    public GrowXFlowersAction(AbstractCreature target, AbstractCreature source, int amount, boolean isRandom, boolean anyNumber) {
-        this.anyNumber = anyNumber;
+    public GrowXFlowersAction(AbstractCreature target, AbstractCreature source, int amount, boolean isRandom, int growAmount) {
+        this.growAmount = growAmount;
         this.p = (AbstractPlayer)target;
         this.isRandom = isRandom;
         this.setValues(target, source, amount);
@@ -58,11 +58,12 @@ public class GrowXFlowersAction extends AbstractGameAction
                     FlowerCardsInHand.add((FlowerCard) c);
             }
 
-            if (!this.anyNumber && FlowerCardsInHand.size() <= this.amount) {
+            if (FlowerCardsInHand.size() <= this.amount) {
                 this.amount = FlowerCardsInHand.size();
 
                 for(FlowerCard c : FlowerCardsInHand) {
-                    AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(c.getTriggerGrowthAction(), true, FlowerCard.growthFlash));
+                    for (int i = 0; i < growAmount; i++)
+                        AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(c.getTriggerGrowthAction(), true, FlowerCard.growthFlash));
                 }
 
                 this.isDone = true;
@@ -108,7 +109,8 @@ public class GrowXFlowersAction extends AbstractGameAction
                 else if (this.p.hand.group.size() == 1) {
                     if (this.p.hand.getTopCard() instanceof FlowerCard)
                     {
-                        AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(((FlowerCard)p.hand.getTopCard()).getTriggerGrowthAction(), true, FlowerCard.growthFlash));
+                        for (int i = 0; i < growAmount; i++)
+                            AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(((FlowerCard)p.hand.getTopCard()).getTriggerGrowthAction(), true, FlowerCard.growthFlash));
                     }
 
                     this.returnCards();
@@ -124,7 +126,8 @@ public class GrowXFlowersAction extends AbstractGameAction
                 {
                     if (FlowerCardsInHand.size() > 0) {
                         FlowerCard c = FlowerCardsInHand.remove(AbstractDungeon.cardRng.random(FlowerCardsInHand.size() - 1));
-                        AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(c.getTriggerGrowthAction(), true, FlowerCard.growthFlash));
+                        for (int j = 0; j < growAmount; j++)
+                            AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(c.getTriggerGrowthAction(), true, FlowerCard.growthFlash));
                     }
                 }
                 this.isDone = true;
@@ -134,7 +137,9 @@ public class GrowXFlowersAction extends AbstractGameAction
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
             for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group)
             {
-                if (c instanceof  FlowerCard) {AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(((FlowerCard)c).getTriggerGrowthAction(), true, FlowerCard.growthFlash));
+                if (c instanceof  FlowerCard) {
+                    for (int i = 0; i < growAmount; i++)
+                        AbstractDungeon.actionManager.addToBottom(new TriggerGrowthAction(((FlowerCard)c).getTriggerGrowthAction(), true, FlowerCard.growthFlash));
                 }
                 this.p.hand.addToTop(c);
             }

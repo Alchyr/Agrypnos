@@ -34,6 +34,7 @@ public class Sunbeam extends CustomCard
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
         this.magicNumber = this.baseMagicNumber = GROW;
+        this.exhaust = true;
     }
 
     // Actions the card should do.
@@ -41,10 +42,7 @@ public class Sunbeam extends CustomCard
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(ENERGY));
 
-        for (int i = 0; i < this.magicNumber; i++) //to allow same flower multiple times
-        {
-            AbstractDungeon.actionManager.addToBottom(new GrowXFlowersAction(p, p, 1, !this.upgraded));
-        }
+        AbstractDungeon.actionManager.addToBottom(new GrowXFlowersAction(p, p, 1, !this.upgraded, this.magicNumber));
     }
 
     // Which card to return when making a copy of this card.

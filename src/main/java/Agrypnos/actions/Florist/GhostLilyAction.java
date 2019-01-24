@@ -12,14 +12,16 @@ import java.util.ArrayList;
 
 public class GhostLilyAction extends AbstractGameAction {
     private AbstractCard seedCard;
+    private boolean saveSeeds;
 
-    public GhostLilyAction(AbstractCard seedCard, int amount)
+    public GhostLilyAction(AbstractCard seedCard, int amount, boolean saveSeeds)
     {
         this.actionType = ActionType.CARD_MANIPULATION;
         this.amount = amount;
         this.seedCard = seedCard;
+        this.saveSeeds = saveSeeds;
 
-        this.seedCard.retain = true;
+        this.seedCard.retain = saveSeeds; //if saveSeeds is false, does nothing
     }
 
     @Override
@@ -50,7 +52,7 @@ public class GhostLilyAction extends AbstractGameAction {
                 handSpace++; //since this will be exhausted
                 if (handSpace >= 1)
                 {
-                    seedCard.retain = true;
+                    seedCard.retain = saveSeeds;
                 }
 
                 for (int i = 0; i < this.amount; i++)

@@ -11,62 +11,70 @@
     "NAME": "Fertilizer",
     "DESCRIPTIONS": [
       "At the start of your turn, trigger the growth of ",
-      " random Flower.",
-      " random Flowers."
+      " random #yFlower.",
+      " random #yFlowers."
     ]
   },
   "Agrypnos:PollenPower": {
     "NAME": "Pollen",
     "DESCRIPTIONS": [
-      "When a Flower grows, apply ",
-      " Poison to a random enemy."
+      "When a #yFlower grows, apply ",
+      " #yPoison to a random enemy."
     ]
   },
   "Agrypnos:SunZenithPower": {
     "NAME": "Sun's Zenith",
     "DESCRIPTIONS": [
-      "At the start of your turn, reduce the cost of the Flower in your hand that has grown the most times by ",
+      "At the start of your turn, reduce the cost of the #yFlower in your hand that has grown the most times by ",
       " until the end of the turn."
+    ]
+  },
+  "Agrypnos:AutumnPower": {
+    "NAME": "Autumn",
+    "DESCRIPTIONS": [
+      "Upon #yExhausting a #ySeed, instead of generating a #yFlower, draw ",
+      " card.",
+      " cards."
     ]
   },
   "Agrypnos:WinterPower": {
     "NAME": "Winter",
     "DESCRIPTIONS": [
-      "All Flowers are played twice. Flowers will not grow.",
-      "All Flowers are played ",
-      "additional times. Flowers will not grow."
+      "All #yFlowers are played twice. #yFlowers will not grow.",
+      "All #yFlowers are played ",
+      "additional times. #yFlowers will not grow."
     ]
   },
   "Agrypnos:SpringPower": {
     "NAME": "Spring",
     "DESCRIPTIONS": [
-      "Upon Exhausting a Flower, add ",
-      " Seed to your draw pile.",
-      " Seeds to your draw pile."
+      "Upon #yExhausting a #yFlower, add ",
+      " #ySeed to your draw pile.",
+      " #ySeeds to your draw pile."
     ]
   },
   "Agrypnos:UpgradedSpringPower": {
     "NAME": "Spring+",
     "DESCRIPTIONS": [
-      "Upon Exhausting a Flower, add ",
-      " Upgraded Seed to your draw pile.",
-      " Upgraded Seeds to your draw pile."
+      "Upon #yExhausting a #yFlower, add ",
+      " #yUpgraded #ySeed to your draw pile.",
+      " #yUpgraded #ySeeds to your draw pile."
     ]
   },
   "Agrypnos:SummerPower": {
     "NAME": "Summer",
     "DESCRIPTIONS": [
-      "The growth amount of all Flowers is increased by ",
+      "The growth amount of all #yFlowers is increased by ",
       "."
     ]
   },
   "Agrypnos:NoGrowPower": {
     "NAME": "No Growth",
     "DESCRIPTIONS": [
-      "Flowers will not grow for ",
+      "#yFlowers will not grow for ",
       " turn.",
       " turns.",
-      "Flowers will not grow."
+      "#yFlowers will not grow."
     ]
   },
   "Agrypnos:QueenOfTheNightPower": {
@@ -94,43 +102,43 @@
   "Agrypnos:HarvestPower": {
     "NAME": "Harvest",
     "DESCRIPTIONS": [
-      "Upon playing a Flower, gain ",
-      " Block."
+      "Upon playing a #yFlower, gain ",
+      " #yBlock."
     ]
   },
   "Agrypnos:HyacinthPower": {
     "NAME": "Hyacinth",
     "DESCRIPTIONS": [
       "Upon playing an attack, or at the end of the turn, lose ",
-      " Strength."
+      " #yStrength."
     ]
   },
   "Agrypnos:CorpseFlowerPower": {
     "NAME": "Corpse Flower",
     "DESCRIPTIONS": [
-      "Triggers growth of Corpse Flowers on applying poison."
+      "Triggers growth of Corpse Flowers on a card being exhausted."
     ]
   },
   "Agrypnos:RoseThorns": {
     "NAME": "Rose Garden",
     "DESCRIPTIONS": [
       "The next ",
-      " times you are attacked, deal 4 damage back and add a Thorn to your hand."
+      " times you are attacked, deal 4 damage back and add a #yThorn to your hand."
     ]
   },
   "Agrypnos:CompostPower": {
     "NAME": "Compost",
     "DESCRIPTIONS": [
-      "After exhausting ",
+      "After #yExhausting ",
       " more card, gain ",
       " more cards, gain ",
-      " stack of Fertilizer."
+      " stack of #yFertilizer."
     ]
   },
   "Agrypnos:MorningSunPower": {
     "NAME": "Morning Sun",
     "DESCRIPTIONS": [
-      "Reduce the cost of all Flowers that have not grown by ",
+      "Reduce the cost of all #yFlowers that have not grown by ",
       "."
     ]
   }

@@ -2,7 +2,8 @@ package Agrypnos.cards.Florist.Powers;
 
 import Agrypnos.Agrypnos;
 import Agrypnos.cards.CardImages;
-import Agrypnos.powers.Florist.SunZenithPower;
+import Agrypnos.powers.Florist.SpringPower;
+import Agrypnos.powers.Florist.UpgradedSpringPower;
 import Agrypnos.util.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -13,8 +14,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class SunZenith extends CustomCard {
-    public static final String ID = Agrypnos.createID("SunZenith");
+public class Spring extends CustomCard {
+    public static final String ID = Agrypnos.createID("Spring");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = Agrypnos.makePath(CardImages.FLORIST_POWER);
 
@@ -26,27 +27,33 @@ public class SunZenith extends CustomCard {
     public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 1;
+    private static final int BUFF = 1;
 
-    private static final int REDUCTION = 1;
-    private static final int UPG_REDUCTION = 1;
-
-
-    public SunZenith() {
+    public Spring() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = this.baseMagicNumber = REDUCTION;
+
+        this.magicNumber = this.baseMagicNumber = BUFF;
     }
 
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
-                new SunZenithPower(p, p, this.magicNumber), this.magicNumber));
+        if (!upgraded)
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
+                    new SpringPower(p, this.magicNumber), this.magicNumber));
+        }
+        else
+        {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
+                    new UpgradedSpringPower(p, this.magicNumber), this.magicNumber));
+        }
     }
 
     // Which card to return when making a copy of this card.
     @Override
     public AbstractCard makeCopy() {
-        return new SunZenith();
+        return new Spring();
     }
 
     //Upgraded stats.
@@ -54,7 +61,7 @@ public class SunZenith extends CustomCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeMagicNumber(UPG_REDUCTION);
+            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
     }

@@ -132,7 +132,7 @@
   },
   "Agrypnos:GeneModification": {
     "NAME": "Gene Modification",
-    "DESCRIPTION": "Increase the amount by which a Flower in your hand grow by !M! permanently. NL Fleeting."
+    "DESCRIPTION": "Increase the amount by which a Flower in your hand grows by !M! permanently. NL Fleeting."
   },
   "Agrypnos:FloralScent": {
     "NAME": "Floral Scent",
@@ -283,10 +283,20 @@
     "NAME": "Harvest",
     "DESCRIPTION": "Upon playing a Flower, gain !M! Block."
   },
+  "Agrypnos:Autumn": {
+    "NAME": "Autumn",
+    "DESCRIPTION": "When a Seed is Exhausted, instead of generating a random Flower, draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Innate. NL When a Seed is Exhausted, instead of generating a random Flower, draw !M! card."
+  },
   "Agrypnos:Winter": {
     "NAME": "Winter",
     "DESCRIPTION": "Ethereal. NL Flowers no longer grow. NL All Flowers are played twice.",
     "UPGRADE_DESCRIPTION": "Flowers no longer grow. NL All Flowers are played twice."
+  },
+  "Agrypnos:Spring": {
+    "NAME": "Spring",
+    "DESCRIPTION": "Upon Exhausting a Flower, add !M! Seed to your draw pile.",
+    "UPGRADE_DESCRIPTION": "Upon Exhausting a Flower, add !M! Upgraded Seed to your draw pile."
   },
   "Agrypnos:Summer": {
     "NAME": "Summer",

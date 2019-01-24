@@ -3,12 +3,14 @@ package Agrypnos.cards.Florist.Skills;
 import Agrypnos.Agrypnos;
 import Agrypnos.cards.CardImages;
 import Agrypnos.abstracts.FlowerCard;
+import Agrypnos.powers.Florist.AutumnPower;
 import Agrypnos.util.CardColorEnum;
 
 import basemod.helpers.CardTags;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.DamageHooks;
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AlwaysRetainField;
 
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
@@ -76,45 +78,52 @@ public class Seed extends CustomCard
         this.applyPowers();
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.block));
 
-        Agrypnos.logger.info("Getting random flower.");
-
-        ArrayList<String> FlowerCardKeys = new ArrayList<>();
-        ArrayList<AbstractCard> Cards = CardLibrary.getAllCards();
-
-        for (AbstractCard c : Cards)
+        if (!AbstractDungeon.player.hasPower(AutumnPower.POWER_ID))
         {
-            if (c instanceof FlowerCard && !(c.tags.contains(CardTags.HEALING)))
+            Agrypnos.logger.info("Getting random flower.");
+
+            ArrayList<String> FlowerCardKeys = new ArrayList<>();
+            ArrayList<AbstractCard> Cards = CardLibrary.getAllCards();
+
+            for (AbstractCard c : Cards)
             {
-                switch (c.rarity) //much more likely to generate more common cards
+                if (c instanceof FlowerCard && !(c.tags.contains(CardTags.HEALING)))
                 {
-                    case BASIC:
-                    case COMMON:
-                        FlowerCardKeys.add(c.cardID);
-                        FlowerCardKeys.add(c.cardID);
-                        FlowerCardKeys.add(c.cardID);
-                        FlowerCardKeys.add(c.cardID);
-                        break;
-                    case UNCOMMON:
-                        FlowerCardKeys.add(c.cardID);
-                        FlowerCardKeys.add(c.cardID);
-                        FlowerCardKeys.add(c.cardID);
-                        break;
-                    case RARE:
-                        FlowerCardKeys.add(c.cardID);
-                    default:
-                        break;
+                    switch (c.rarity) //much more likely to generate more common cards
+                    {
+                        case BASIC:
+                        case COMMON:
+                            FlowerCardKeys.add(c.cardID);
+                            FlowerCardKeys.add(c.cardID);
+                            FlowerCardKeys.add(c.cardID);
+                            FlowerCardKeys.add(c.cardID);
+                            break;
+                        case UNCOMMON:
+                            FlowerCardKeys.add(c.cardID);
+                            FlowerCardKeys.add(c.cardID);
+                            FlowerCardKeys.add(c.cardID);
+                            break;
+                        case RARE:
+                            FlowerCardKeys.add(c.cardID);
+                        default:
+                            break;
+                    }
                 }
             }
+
+            AbstractCard randomFlower = CardLibrary.getCard(FlowerCardKeys.get(AbstractDungeon.cardRandomRng.random(FlowerCardKeys.size() - 1))).makeCopy();
+
+            if (upgraded)
+                randomFlower.upgrade();
+
+            Agrypnos.logger.info("Result: " + randomFlower.cardID);
+
+            AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(randomFlower, 1));
         }
-
-        AbstractCard randomFlower = CardLibrary.getCard(FlowerCardKeys.get(AbstractDungeon.cardRandomRng.random(FlowerCardKeys.size() - 1))).makeCopy();
-
-        if (upgraded)
-            randomFlower.upgrade();
-
-        Agrypnos.logger.info("Result: " + randomFlower.cardID);
-
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(randomFlower, 1));
+        else //the player has AutumnPower
+        {
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, AbstractDungeon.player.getPower(AutumnPower.POWER_ID).amount));
+        }
     }
 
     @Override
