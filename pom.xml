@@ -38,10 +38,42 @@
             <scope>system</scope>
             <systemPath>${basedir}/../lib/ModTheSpire.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>Yohane</groupId>
+            <artifactId>Yohane</artifactId>
+            <version>0.0.1</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../lib/Yohane.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>slimebound</groupId>
+            <artifactId>slimebound</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../lib/SlimeboundMod.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>ReplayTheSpireMod</groupId>
+            <artifactId>ReplayTheSpireMod</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../lib/ReplayTheSpireMod.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>
         <finalName>Agrypnos</finalName>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/*.pdn</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

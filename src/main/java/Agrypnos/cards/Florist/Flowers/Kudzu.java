@@ -27,7 +27,7 @@ public class Kudzu extends FlowerCard
 {
     public static final String ID = Agrypnos.createID("Kudzu");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = Agrypnos.makePath(CardImages.FLORIST_ATTACK);
+    public static final String IMG = Agrypnos.makePath(CardImages.FLOWER_ATTACK);
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -37,9 +37,8 @@ public class Kudzu extends FlowerCard
     public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 3;
-    private static final int DAMAGE = 20;
+    private static final int DAMAGE = 18;
     private static final int GROWTH = 7;
-    private static final int UPGRADE_PLUS_GROWTH = 2;
     private static final int EXHAUST = 2;
     private static final int UPGRADE_PLUS_EXHAUST = 1;
 
@@ -154,9 +153,7 @@ public class Kudzu extends FlowerCard
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeGrowth(UPGRADE_PLUS_GROWTH);
             this.upgradeMagicNumber(UPGRADE_PLUS_EXHAUST);
-            initialValue = baseDamage;
             this.initializeDescription();
         }
     }

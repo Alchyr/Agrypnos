@@ -1,13 +1,11 @@
 package Agrypnos.cards.Florist.Attacks;
 
 import Agrypnos.Agrypnos;
-import Agrypnos.abstracts.FlowerCard;
-import Agrypnos.actions.Florist.ViolentBloomAction;
+import Agrypnos.actions.Florist.HoeAction;
 import Agrypnos.cards.CardImages;
 import Agrypnos.util.CardColorEnum;
 import basemod.abstracts.CustomCard;
-import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.DamageHooks;
-import com.megacrit.cardcrawl.actions.unique.IncreaseMaxHpAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,8 +14,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class ViolentBloom extends CustomCard {
-    public static final String ID = Agrypnos.createID("ViolentBloom");
+public class Hoe extends CustomCard
+{
+    public static final String ID = Agrypnos.createID("Hoe");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = Agrypnos.makePath(CardImages.FLORIST_ATTACK);
 
@@ -29,40 +28,35 @@ public class ViolentBloom extends CustomCard {
     public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 5;
-    private static final int UPGRADE_PLUS_DAMAGE = 2;
+    private static final int DAMAGE = 10;
+    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int POWER_AMOUNT = 1;
 
-    public ViolentBloom() {
+
+    public Hoe() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
-        this.damage = this.baseDamage = DAMAGE;
-    }
+        this.baseDamage = DAMAGE;
 
-    @Override
-    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        for (AbstractCard c : AbstractDungeon.player.hand.group) {
-            if (c instanceof FlowerCard)
-                return super.canUse(p, m);
-        }
-        cantUseMessage = "This card cannot be used without any Flowers.";
-        return false;
+        this.magicNumber = this.baseMagicNumber = POWER_AMOUNT;
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ViolentBloomAction(m, p, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
+        AbstractDungeon.actionManager.addToBottom(new HoeAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), this.magicNumber,
+                AbstractGameAction.AttackEffect.BLUNT_HEAVY));
     }
 
     @Override
     public AbstractCard makeCopy() {
-        return new ViolentBloom();
+        return new Hoe();
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeDamage(UPGRADE_PLUS_DAMAGE);
+            this.upgradeDamage(UPGRADE_PLUS_DMG);
             this.initializeDescription();
         }
     }

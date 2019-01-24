@@ -20,7 +20,7 @@ public class GhostLily extends FlowerCard
 {
     public static final String ID = Agrypnos.createID("GhostLily");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = Agrypnos.makePath(CardImages.FLORIST_SKILL);
+    public static final String IMG = Agrypnos.makePath(CardImages.FLOWER_SKILL);
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -67,6 +67,7 @@ public class GhostLily extends FlowerCard
 
     @Override
     public void triggerOnEndOfTurnForPlayingCard() {
+        super.triggerOnEndOfTurnForPlayingCard();
         if (this.isEthereal) { //this causes the Ghost Lily to exhaust before other Ethereal cards. Required for it to work properly.
             AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(this, AbstractDungeon.player.hand));
         }

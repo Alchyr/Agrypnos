@@ -112,9 +112,11 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         AddCard(new BasicDefend()); //block
         AddCard(new Trowel()); //whack and grow
         AddCard(new Till()); //whack and smack and if they have block vulnerable
+        AddCard(new Hoe()); //whack and get some fertilizer
         AddCard(new Rake()); //slash all and seed
         AddCard(new Replanting()); //reset a flower and now it's free
         AddCard(new Thorn()); //damage + vulnerable
+        AddCard(new Leaf()); //damage + weak
         AddCard(new Bramble()); //damage + thorn
         AddCard(new FloralScent()); //weak to all
         AddCard(new FuneralWreath()); //big boy card
@@ -126,6 +128,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         AddCard(new Weeding()); //eliminate the weak and unworthy weeds
         AddCard(new BigShovel()); //damage, get seeds
         AddCard(new ViolentBloom()); //reset flower, damage based on growth
+        AddCard(new Blossom()); //x cost grow flower and play it
         AddCard(new SpringArrival()); //SEEDS
         AddCard(new NaturePurity()); //exhaust not flower, get energy
         AddCard(new Verdancy()); //double growth
@@ -174,6 +177,7 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
         AddCard(new Snapdragon()); //uncommon, deal x damage
         AddCard(new Orchid()); //uncommon, reduce x +growth strength
         AddCard(new Myosotis()); //uncommon, permanent growing damage
+        AddCard(new Wolffia()); //rare, debuff machine. Use debuffs from other mods?
         AddCard(new Kudzu()); //rare, greedy flower that exhausts other cards
         AddCard(new QueenOfTheNight()); //rare, damage reduction in hand
         AddCard(new Narcissus()); //rare, copies a card in hand, exhausts other cards
@@ -209,19 +213,19 @@ public class Agrypnos implements EditCardsSubscriber, EditRelicsSubscriber, Edit
     // ===================================== KEYWORDS =====================================
     @Override
     public void receiveEditKeywords() {
-        final String[] Flower = { "Flower", "flower", "Flowers", "flowers" };
+        final String[] Flower = { "flower", "flowers" };
         BaseMod.addKeyword("Flower", Flower, "Cards that stay in your hand and slowly grow in power. Their growth resets when used.");
 
-        final String[] Thorn = { "Thorn","thorn" };
+        final String[] Thorn = { "thorn" };
         BaseMod.addKeyword("Thorn", Thorn, "A 0 cost damage card that applies Vulnerable.");
 
-        final String[] Affliction = { "Affliction", "affliction" };
+        final String[] Affliction = { "affliction" };
         BaseMod.addKeyword("Affliction", Affliction, "Negates the application of buffs.");
 
-        final String[] Fertilizer = { "Fertilizer", "fertilizer" };
+        final String[] Fertilizer = { "fertilizer" };
         BaseMod.addKeyword("Fertilizer", Fertilizer, "Triggers the growth of one random Flower at the start of your turn for each stack.");
 
-        final String[] Seed = { "Seed", "seed" , "Seeds" , "seeds" };
+        final String[] Seed = { "seed" , "seeds" };
         BaseMod.addKeyword("Seed", Seed, "#yEthereal card that grants a small amount of #yBlock and a random #yFlower when #yExhausted. #yUpgraded #ySeeds grant an #yUpgraded #yFlower.");
     }
 

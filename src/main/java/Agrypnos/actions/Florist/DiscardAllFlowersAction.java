@@ -38,6 +38,7 @@ public class DiscardAllFlowersAction extends AbstractGameAction {
                     c.triggerOnManualDiscard();
                 }
             }
+            AbstractDungeon.player.hand.applyPowers();
         }
 
         this.tickDuration();

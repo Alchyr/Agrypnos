@@ -116,10 +116,6 @@ public class TheFlorist extends CustomPlayer {
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        logger.info("Begin loading starting Deck strings");
-
-
-        retVal.add(BasicStrike.ID);
         retVal.add(BasicStrike.ID);
         retVal.add(BasicStrike.ID);
         retVal.add(BasicStrike.ID);

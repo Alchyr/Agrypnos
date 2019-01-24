@@ -20,7 +20,7 @@ import com.megacrit.cardcrawl.powers.PoisonPower;
 public class Nightshade extends FlowerCard {
     public static final String ID = Agrypnos.createID("Nightshade");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = Agrypnos.makePath(CardImages.FLORIST_SKILL);
+    public static final String IMG = Agrypnos.makePath(CardImages.FLOWER_SKILL);
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -30,10 +30,9 @@ public class Nightshade extends FlowerCard {
     public static final AbstractCard.CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 2;
-    private static final int POISON = 8;
-    private static final int UPGRADE_POISON = 11;
+    private static final int POISON = 7;
+    private static final int UPGRADE_POISON = 10;
     private static final int DEBUFF = 1;
-    private static final int UPGRADE_PLUS_DEBUFF = 1;
     private static final int GROWTH = 1;
 
 
@@ -90,8 +89,6 @@ public class Nightshade extends FlowerCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeMagicNumber(UPGRADE_PLUS_DEBUFF);
-            initialValue = baseMagicNumber;
             this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }

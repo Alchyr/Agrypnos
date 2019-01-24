@@ -4,6 +4,7 @@ import java.util.HashMap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 
 public class TextureLoader {
     private static HashMap<String, Texture> textures = new HashMap<String, Texture>();
@@ -24,16 +25,21 @@ public class TextureLoader {
         return textures.get(textureString);
     }
 
-    /**
-     * Creates and instance of the texture, applies a linear filter to it, and places it in the HashMap
-     *
-     * @param textureString - String path to the texture you want to load relative to resources,
-     * Example: "img/ui/missingtexture.png"
-     * @throws GdxRuntimeException
-     */
+
     private static void loadTexture(final String textureString) throws GdxRuntimeException {
+        loadTexture(textureString, false);
+    }
+
+    private static void loadTexture(final String textureString, boolean linearFilter) throws GdxRuntimeException {
         Texture texture =  new Texture(textureString);
-        texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+        if (linearFilter)
+        {
+            texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+        }
+        else
+        {
+            texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+        }
         textures.put(textureString, texture);
     }
 }

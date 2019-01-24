@@ -29,7 +29,6 @@ public class Sunbeam extends CustomCard
     private static final int COST = 0;
     private static final int ENERGY = 2;
     private static final int GROW = 2;
-    private static final int UPGRADE_GROW = 1;
 
     public Sunbeam() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -44,7 +43,7 @@ public class Sunbeam extends CustomCard
 
         for (int i = 0; i < this.magicNumber; i++) //to allow same flower multiple times
         {
-            AbstractDungeon.actionManager.addToBottom(new GrowXFlowersAction(p, p, 1, true));
+            AbstractDungeon.actionManager.addToBottom(new GrowXFlowersAction(p, p, 1, !this.upgraded));
         }
     }
 
@@ -59,7 +58,7 @@ public class Sunbeam extends CustomCard
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeMagicNumber(UPGRADE_GROW);
+            this.rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }
     }

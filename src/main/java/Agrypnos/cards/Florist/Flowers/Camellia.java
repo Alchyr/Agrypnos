@@ -20,7 +20,7 @@ public class Camellia extends FlowerCard
 {
     public static final String ID = Agrypnos.createID("Camellia");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = Agrypnos.makePath(CardImages.FLORIST_ATTACK);
+    public static final String IMG = Agrypnos.makePath(CardImages.FLOWER_ATTACK);
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -30,7 +30,7 @@ public class Camellia extends FlowerCard
     public static final CardColor COLOR = CardColorEnum.FLORIST_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 3;
+    private static final int DAMAGE = 2;
     private static final int UPGRADE_PLUS_DAMAGE = 1;
     private static final int GROWTH = 1;
 

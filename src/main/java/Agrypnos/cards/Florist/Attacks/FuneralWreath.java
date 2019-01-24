@@ -2,6 +2,8 @@ package Agrypnos.cards.Florist.Attacks;
 
 import Agrypnos.Agrypnos;
 import Agrypnos.abstracts.FlowerCard;
+import Agrypnos.actions.Florist.DiscardAllFlowersAction;
+import Agrypnos.actions.General.ExhaustConditionalCardsAction;
 import Agrypnos.cards.CardImages;
 import Agrypnos.util.CardColorEnum;
 import basemod.abstracts.CustomCard;
@@ -70,11 +72,11 @@ public class FuneralWreath extends CustomCard
         }
         if (!upgraded)
         {
-            AbstractDungeon.actionManager.addToBottom(new ExhaustAction(p, p, 5000, true));
+            AbstractDungeon.actionManager.addToBottom(new ExhaustConditionalCardsAction(p.hand, (c)->(c instanceof FlowerCard), 1000));
         }
-        else //i'm sure nobody will have over 5000 cards. Probably.
+        else //i'm sure nobody will have over 1000 cards. Probably.
         {
-            AbstractDungeon.actionManager.addToBottom(new DiscardAction(p, p, 5000, true));
+            AbstractDungeon.actionManager.addToBottom(new DiscardAllFlowersAction());
         }
     }
 

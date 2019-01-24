@@ -201,6 +201,13 @@ public abstract class FlowerCard extends CustomCard implements CustomSavable<Int
     }
 
     @Override
+    public void triggerOnEndOfTurnForPlayingCard() {
+        if (this.isEthereal) {
+            this.retain = false;
+        }
+    }
+
+    @Override
     public void onLoad(Integer baseGrowth)
     {
         if (baseGrowth == null) {

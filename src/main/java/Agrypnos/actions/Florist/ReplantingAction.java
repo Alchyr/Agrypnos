@@ -16,24 +16,24 @@ import java.util.Iterator;
 
 public class ReplantingAction extends AbstractGameAction
 {
-    ArrayList<AbstractCard> NotFlowerCards = new ArrayList<>();
+    private ArrayList<AbstractCard> NotFlowerCards = new ArrayList<>();
 
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
     private AbstractPlayer p;
-    private boolean isRandom;
+    private boolean resetGrowth;
 
     static {
-        uiStrings = CardCrawlGame.languagePack.getUIString("ResetFlowerGrowthAction");
+        uiStrings = CardCrawlGame.languagePack.getUIString("ReplantingAction");
         TEXT = uiStrings.TEXT;
     }
 
-    public ReplantingAction(AbstractCreature target, AbstractCreature source, boolean isRandom) {
+    public ReplantingAction(AbstractCreature target, AbstractCreature source, boolean resetGrowth) {
         this.p = (AbstractPlayer)target;
         this.setValues(target, source, 1);
         this.duration = Settings.ACTION_DUR_FAST;
         this.actionType = ActionType.CARD_MANIPULATION;
-        this.isRandom = isRandom;
+        this.resetGrowth = resetGrowth;
     }
 
 
@@ -54,7 +54,8 @@ public class ReplantingAction extends AbstractGameAction
             if (FlowerCardsInHand.size() == 1) {
                 if (FlowerCardsInHand.get(0).cost >= 0)
                 {
-                    AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(FlowerCardsInHand.get(0)));
+                    if (resetGrowth)
+                        AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(FlowerCardsInHand.get(0)));
                     FlowerCardsInHand.get(0).freeToPlayOnce = true;
                 }
 
@@ -63,57 +64,52 @@ public class ReplantingAction extends AbstractGameAction
                 return;
             }
 
-            if (!this.isRandom) {
-                for (AbstractCard c : AbstractDungeon.player.hand.group) {
-                    if (!(c instanceof FlowerCard) || c.cost < 0) {
-                        this.NotFlowerCards.add(c);
-                    }
+            for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                if (!(c instanceof FlowerCard) || c.cost < 0) {
+                    this.NotFlowerCards.add(c);
                 }
-                if (this.NotFlowerCards.size() == this.p.hand.group.size()) {
-                    this.isDone = true;
-                    return;
-                }
+            }
+            if (this.NotFlowerCards.size() == this.p.hand.group.size()) {
+                this.isDone = true;
+                return;
+            }
 
-                this.p.hand.group.removeAll(this.NotFlowerCards);
+            this.p.hand.group.removeAll(this.NotFlowerCards);
 
-                if (this.p.hand.group.size() > 1) {
+            if (this.p.hand.group.size() > 1) {
+                if (resetGrowth)
+                {
                     AbstractDungeon.handCardSelectScreen.open(TEXT[0], amount, false, false, false, false);
-                    this.tickDuration();
-                    return;
                 }
-                else if (this.p.hand.group.size() == 1) {
-                    if (this.p.hand.getTopCard() instanceof FlowerCard)
-                    {
-                        AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction((FlowerCard)this.p.hand.getTopCard()));
-                    }
-
-                    this.returnCards();
-                    this.isDone = true;
+                else
+                {
+                    AbstractDungeon.handCardSelectScreen.open(TEXT[1], amount, false, false, false, false);
                 }
-
                 this.tickDuration();
                 return;
             }
-            else
-            {
-                for (int i = 0; i < amount; i++)
+            else if (this.p.hand.group.size() == 1) {
+                if (this.p.hand.getTopCard() instanceof FlowerCard)
                 {
-                    if (FlowerCardsInHand.size() > 0) {
-                        FlowerCard c = FlowerCardsInHand.remove(AbstractDungeon.cardRng.random(FlowerCardsInHand.size() - 1));
-
-                        AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction(c));
-                        c.freeToPlayOnce = true;
-                    }
+                    if (resetGrowth)
+                        AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction((FlowerCard)this.p.hand.getTopCard()));
+                    this.p.hand.getTopCard().freeToPlayOnce = true;
                 }
+
+                this.returnCards();
                 this.isDone = true;
             }
+
+            this.tickDuration();
+            return;
         }
 
         if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
             for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group)
             {
                 if (c instanceof  FlowerCard) {
-                    AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction((FlowerCard)c));
+                    if (resetGrowth)
+                        AbstractDungeon.actionManager.addToBottom(new ResetFlowerGrowthAction((FlowerCard)c));
                     c.freeToPlayOnce = true;
                 }
                 this.p.hand.addToTop(c);

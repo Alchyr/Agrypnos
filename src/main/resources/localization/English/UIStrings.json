@@ -9,6 +9,12 @@
       "Grow."
     ]
   },
+  "ReplantingAction": {
+    "TEXT": [
+      "Reset.",
+      "Make Free."
+    ]
+  },
   "NarcissusAction": {
     "TEXT": [
       "Duplicate."

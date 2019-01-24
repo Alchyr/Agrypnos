@@ -37,6 +37,22 @@
       "additional times. Flowers will not grow."
     ]
   },
+  "Agrypnos:SpringPower": {
+    "NAME": "Spring",
+    "DESCRIPTIONS": [
+      "Upon Exhausting a Flower, add ",
+      " Seed to your draw pile.",
+      " Seeds to your draw pile."
+    ]
+  },
+  "Agrypnos:UpgradedSpringPower": {
+    "NAME": "Spring+",
+    "DESCRIPTIONS": [
+      "Upon Exhausting a Flower, add ",
+      " Upgraded Seed to your draw pile.",
+      " Upgraded Seeds to your draw pile."
+    ]
+  },
   "Agrypnos:SummerPower": {
     "NAME": "Summer",
     "DESCRIPTIONS": [
